@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diogo Silva — Data Scientist &amp; CPA</title>
+    <meta name="description" content="Data scientist with a CPA background. Building ML and LLM systems for Portuguese tax law, invoice analysis, and forecasting.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<aside class="side-nav" aria-label="Primary">
+    <a href="#top" class="mark" aria-label="Home">DS</a>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <div class="side-nav__foot">
+        <a href="https://github.com/krav0x" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://huggingface.co/krav0x" target="_blank" rel="noopener">HF</a>
+    </div>
+</aside>
+
+<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+</button>
+
+<main id="top">
+
+    <section class="hero">
+        <p class="eyebrow">§ Diogo Silva</p>
+        <h1>
+            Data scientist with a <em>CPA background</em>.
+        </h1>
+        <p class="lede">
+            I build ML and LLM systems for problems I've lived: Portuguese tax law, invoice analysis, forecasting.
+        </p>
+        <div class="hero__meta">
+            <span>Lisbon, Portugal</span>
+            <span class="sep">/</span>
+            <span>Available for data science roles</span>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <p class="section-label">§ 01 About</p>
+        <div class="section-body">
+            <p>
+                Nine years as a certified accountant in Portugal, working across a portfolio of small businesses. That gave me a working knowledge of Portuguese tax code, SAF-T, IRS Modelo 3, VAT regimes, and the operational reality of small business finance.
+            </p>
+            <p>
+                I'm now finishing a Master's in Data Science and transitioning full time into ML engineering. Most of my recent work sits at the intersection of accounting and machine learning: RAG over Portuguese tax law, invoice classification, forecasting, and multi-agent automation.
+            </p>
+            <p>
+                Comfortable with the full loop: data collection, modeling, deployment, and the messy domain work in between.
+            </p>
+
+            <div class="skills">
+                <p class="skills__label">Stack I reach for</p>
+                <ul class="tags">
+                    <li>Python</li>
+                    <li>PyTorch</li>
+                    <li>Transformers</li>
+                    <li>LLMs &amp; RAG</li>
+                    <li>LangGraph</li>
+                    <li>SQL &amp; Postgres</li>
+                    <li>Supabase</li>
+                    <li>PySpark</li>
+                    <li>Next.js</li>
+                    <li>TypeScript</li>
+                    <li>Docker</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="work" class="section">
+        <p class="section-label">§ 02 Selected work</p>
+        <div class="section-body">
+
+            <article class="project">
+                <header class="project__head">
+                    <h3>Transformer Forecasting for EV Charging Infrastructure</h3>
+                    <p class="project__kind">Master's dissertation (under NDA)</p>
+                </header>
+                <p>
+                    Adapted a Transformer architecture for multiclass classification of station availability across a national EV charging network. Built and audited an LSTM encoder-decoder baseline for comparison, and worked through several correctness issues in the reference implementation along the way. Specific data, results, and internals covered by NDA.
+                </p>
+                <p class="project__note">// PyTorch, Transformers, time series, per-horizon evaluation</p>
+                <ul class="tags tags--sm">
+                    <li>PyTorch</li>
+                    <li>Transformers</li>
+                    <li>Time series</li>
+                </ul>
+            </article>
+
+            <article class="project">
+                <header class="project__head">
+                    <h3>Portuguese Accounting LLM</h3>
+                    <p class="project__kind">In development</p>
+                </header>
+                <p>
+                    RAG system over Portuguese tax law: CIRS, CIRC, CIVA, and AT circulars. Architecture separates knowledge (RAG), behavior (LoRA fine-tuning if needed), and computation (always deterministic code). Three autonomy tiers, with AT submissions always requiring human approval. Portuguese open model candidates: Amália (EuroLLM-9B) and EuroLLM-22B.
+                </p>
+                <p class="project__note">// RAG, EuroLLM, deterministic tool use, human-in-the-loop</p>
+                <ul class="tags tags--sm">
+                    <li>LLMs</li>
+                    <li>RAG</li>
+                    <li>LangGraph</li>
+                    <li>Portuguese NLP</li>
+                </ul>
+            </article>
+
+            <article class="project">
+                <header class="project__head">
+                    <h3>SAF-T PT Invoice Analysis</h3>
+                    <p class="project__kind">Shipped, used by my practice</p>
+                </header>
+                <p>
+                    Web app that parses and classifies SAF-T PT files (Portugal's standard audit file for tax) for multi-company, multi-store operations. Handles 30 to 50 MB XML streams in-browser via a Web Worker. Includes fiscal classification (JOGOS, TABACO, IVA, SERVIÇOS, REVISÃO) and a scratch card commission calculator that replaced my old Excel model. Monetary values stored as bigint cents throughout.
+                </p>
+                <p class="project__note">// Streaming XML, Web Workers, bigint money</p>
+                <ul class="tags tags--sm">
+                    <li>Next.js 16</li>
+                    <li>TypeScript</li>
+                    <li>Supabase</li>
+                    <li>saxes</li>
+                </ul>
+            </article>
+
+            <article class="project">
+                <header class="project__head">
+                    <h3>Money Ball</h3>
+                    <p class="project__kind">Personal project</p>
+                </header>
+                <p>
+                    End-to-end fantasy football prediction and lineup optimization for Liga Record. Hurdle model combining P(plays) × E(minutes) × E(points/90), plus integer linear programming for weekly squad selection under the Valorização Record scoring rule. Full Postgres/Supabase schema, uv/ruff/pytest Python tooling. Cotações snapshots and pre-match odds captured from gameweek 1 (they can't be recovered later).
+                </p>
+                <p class="project__note">// Hurdle model, ILP, PuLP, weekly snapshots</p>
+                <ul class="tags tags--sm">
+                    <li>Python</li>
+                    <li>Postgres</li>
+                    <li>Optimization</li>
+                    <li>Sports analytics</li>
+                </ul>
+            </article>
+
+            <article class="project">
+                <header class="project__head">
+                    <h3>AfonsoAuto</h3>
+                    <p class="project__kind">Shipped for a client</p>
+                </header>
+                <p>
+                    Automotive marketplace for a used car dealer, with Portugal's regime da margem VAT calculation implemented live in the apuramento view. Row-level security policies, Resend email integration, admin flows for stock and leads.
+                </p>
+                <p class="project__note">// Regime da margem, RLS, transactional email</p>
+                <ul class="tags tags--sm">
+                    <li>Next.js</li>
+                    <li>Supabase</li>
+                    <li>TypeScript</li>
+                </ul>
+            </article>
+
+            <article class="project">
+                <header class="project__head">
+                    <h3>Accounting Automation Toolkit</h3>
+                    <p class="project__kind">In production at my practice</p>
+                </header>
+                <p>
+                    A set of tools that replaced manual work I used to do by hand. Bank statement PDF extraction into TOCOnline-compatible Excel imports (1,400 to 2,000+ transactions per file for MNS Food Products and CCAM Costa Azul). Portuguese IRS Modelo 3 XML declarations across eToro, Revolut, and DEGIRO with FIFO matching, Anexo J/G/G1 quadros, and country codes. Chrome skill for pulling client billing data from Portal das Finanças.
+                </p>
+                <p class="project__note">// PDF parsing, FIFO matching, XML generation, browser automation</p>
+                <ul class="tags tags--sm">
+                    <li>Python</li>
+                    <li>Pandas</li>
+                    <li>PDF extraction</li>
+                    <li>Chrome automation</li>
+                </ul>
+            </article>
+
+            <details class="more-projects">
+                <summary>More projects</summary>
+                <div class="more-projects__list">
+                    <div>
+                        <h4>CineMatch</h4>
+                        <p>Hybrid SVD + TF-IDF movie recommender, deployed on Streamlit.</p>
+                    </div>
+                    <div>
+                        <h4>Steam Game Recommender</h4>
+                        <p>Content-based recommender for Steam titles, deployed on Vercel.</p>
+                    </div>
+                    <div>
+                        <h4>PySpark Fraud Detection Pipeline</h4>
+                        <p>Fraud detection pipeline built on Databricks with PySpark.</p>
+                    </div>
+                    <div>
+                        <h4>Transformer from scratch</h4>
+                        <p>Built and trained a Transformer end to end as part of structured Python and ML self-study.</p>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <section id="experience" class="section">
+        <p class="section-label">§ 03 Experience</p>
+        <div class="section-body">
+
+            <article class="entry">
+                <div class="entry__meta">
+                    <p class="entry__when">11/2025 to 06/2026</p>
+                </div>
+                <div class="entry__body">
+                    <h3>Data Scientist Intern</h3>
+                    <p class="entry__where">Moongy (via DXspark Padawan program)</p>
+                    <ul>
+                        <li>Built a Transformer-based time series forecasting model in PyTorch, training on Azure ML GPU clusters to capture long-range temporal dependencies.</li>
+                        <li>Developed a geospatial clustering pipeline over GPS coordinates and asset-level features to segment assets into groups for more targeted forecasting.</li>
+                        <li>Implemented experiment tracking with MLflow, and built automated pipelines for data ingestion and feature engineering with cyclic temporal embeddings.</li>
+                        <li>Managed the end-to-end ML lifecycle with the Azure ML SDK, including experiment management and model registration.</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="entry">
+                <div class="entry__meta">
+                    <p class="entry__when">01/2017 to 11/2025</p>
+                </div>
+                <div class="entry__body">
+                    <h3>Certified Accountant</h3>
+                    <p class="entry__where">M.luz, Contabilidade, Fiscalidade e Gestão Lda.</p>
+                    <ul>
+                        <li>Full accounting and tax service for a portfolio of Portuguese small businesses, covering SAF-T PT, IRS Modelo 3, VAT regimes, and Portal das Finanças submissions.</li>
+                        <li>Introduced automation for bank reconciliation, IRS Modelo 3 preparation, and SAF-T analysis, absorbing more work per client without adding headcount.</li>
+                    </ul>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="education" class="section">
+        <p class="section-label">§ 04 Education</p>
+        <div class="section-body">
+
+            <article class="entry">
+                <div class="entry__meta">
+                    <p class="entry__when">2024 to present</p>
+                </div>
+                <div class="entry__body">
+                    <h3>Master's in Data Science</h3>
+                    <p class="entry__where">ESCE-IPS (GPA 4.25)</p>
+                    <ul>
+                        <li>Dissertation on Transformer-based multiclass classification for EV charging infrastructure (under NDA).</li>
+                    </ul>
+                </div>
+            </article>
+
+            <article class="entry">
+                <div class="entry__meta">
+                    <p class="entry__when">2022</p>
+                </div>
+                <div class="entry__body">
+                    <h3>Master's in Accounting and Finance</h3>
+                    <p class="entry__where">Escola Superior de Tecnologia e Gestão, Beja</p>
+                </div>
+            </article>
+
+            <article class="entry">
+                <div class="entry__meta">
+                    <p class="entry__when">2020</p>
+                </div>
+                <div class="entry__body">
+                    <h3>Bachelor's in Business Management</h3>
+                    <p class="entry__where">Escola Superior de Tecnologia e Gestão, Beja</p>
+                </div>
+            </article>
+
+            <article class="entry">
+                <div class="entry__meta">
+                    <p class="entry__when">Certifications</p>
+                </div>
+                <div class="entry__body">
+                    <h3>Continuing education</h3>
+                    <p class="entry__where">Recent coursework</p>
+                    <ul>
+                        <li>Machine Learning Specialization, DeepLearning.AI (11/2025).</li>
+                        <li>Data Science Professional Certificate, IBM (05/2025).</li>
+                        <li>AI Agents Fundamentals, Hugging Face (06/2025).</li>
+                        <li>Certified Accountant, Ordem dos Contabilistas Certificados (OCC).</li>
+                    </ul>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="contact" class="section section--contact">
+        <p class="section-label">§ 05 Contact</p>
+        <div class="section-body">
+            <p class="contact-lede">
+                Open to data science and ML engineering roles, especially where domain knowledge in accounting, tax, or Portuguese-language NLP is useful.
+            </p>
+            <ul class="contact-list">
+                <li><span>Email</span><a href="mailto:1302diogo@gmail.com">1302diogo@gmail.com</a></li>
+                <li><span>GitHub</span><a href="https://github.com/krav0x" target="_blank" rel="noopener">github.com/krav0x</a></li>
+                <li><span>Hugging Face</span><a href="https://huggingface.co/krav0x" target="_blank" rel="noopener">huggingface.co/krav0x</a></li>
+                <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/diogosilvacc/" target="_blank" rel="noopener">linkedin.com/in/diogosilvacc</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>© <span id="year">2026</span> Diogo Silva. Built by hand.</p>
+    </footer>
+
+</main>
+
+<script src="main.js"></script>
+</body>
+</html>

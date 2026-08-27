@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-label="Screenshot placeholder">
+  <rect width="800" height="500" fill="#F3EFE7"/>
+  <rect x="20" y="20" width="760" height="460" fill="none" stroke="#E4DED4" stroke-width="1" stroke-dasharray="6 6"/>
+  <text x="400" y="240" font-family="JetBrains Mono, ui-monospace, monospace" font-size="20" fill="#7A7268" text-anchor="middle">// screenshot placeholder</text>
+  <text x="400" y="280" font-family="JetBrains Mono, ui-monospace, monospace" font-size="14" fill="#B7302B" text-anchor="middle">projects/img/saft-01.png</text>
+</svg>

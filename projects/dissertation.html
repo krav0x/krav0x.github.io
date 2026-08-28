@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Transformer Classification, Portugal-Wide · Diogo Silva</title>
+    <meta name="description" content="Master's dissertation on Transformer-based multiclass classification with heavy class imbalance on a large Portugal-wide dataset. Under NDA.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="../styles-v2.css">
+
+    <style>
+        /* NDA notice panel, in place of the interactive browser */
+        .nda-panel {
+            max-width: var(--wide-w);
+            margin: 0 auto clamp(3rem, 6vh, 4.5rem);
+            padding-inline: var(--page-x);
+        }
+        .nda-panel__inner {
+            border: 1px dashed var(--hairline-strong);
+            border-radius: var(--radius-lg);
+            padding: clamp(2.5rem, 6vh, 4rem) clamp(1.5rem, 4vw, 3rem);
+            background: linear-gradient(180deg, var(--paper-warm), transparent);
+            text-align: center;
+        }
+        .nda-panel__label {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+        .nda-panel__title {
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: clamp(1.4rem, 2.6vw, 1.8rem);
+            color: var(--ink);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.015em;
+        }
+        .nda-panel__text {
+            color: var(--ink-soft);
+            max-width: 52ch;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="../index.html" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container container--wide">
+            <a href="../index.html" class="back-link">Back to portfolio</a>
+            <p class="project-kind">Master's dissertation (under NDA)</p>
+            <h1 class="project-title">Transformer Classification, Portugal-Wide</h1>
+            <p class="project-lede">
+                Adapted a Transformer architecture for a multiclass classification task with heavily imbalanced classes on a large Portugal-wide dataset. Built a baseline for controlled comparison and worked through several correctness issues in the reference implementation along the way. Domain, data, and results are covered by NDA.
+            </p>
+            <div class="project-meta">
+                <span class="tag">PyTorch</span>
+                <span class="tag">Transformers</span>
+                <span class="tag">Multiclass</span>
+                <span class="tag">Class imbalance</span>
+                <span class="tag">Stratified evaluation</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="nda-panel">
+        <div class="nda-panel__inner">
+            <p class="nda-panel__label">◉ Under NDA</p>
+            <h2 class="nda-panel__title">Screens, data, and results are not public</h2>
+            <p class="nda-panel__text">The dissertation is covered by a non-disclosure agreement with the industry partner. The write-up below stays at the level of methodology and architectural choices; concrete numbers, datasets, and figures cannot be shown here.</p>
+        </div>
+    </div>
+
+    <main class="case-study-body">
+        <div class="container">
+
+            <section class="prose">
+                <p class="section-num">01 · Context</p>
+                <h2 class="section-title">Context</h2>
+                <p>
+                    The task was multiclass classification with heavily imbalanced classes on a large Portugal-wide dataset. Class frequency spanned several orders of magnitude, which meant that a single pooled metric would collapse to whatever the majority class looked like: any model that always predicted the majority would score well on paper and be useless in practice. Reporting had to be per-class and stratified from the start, or it would hide the model's real behaviour on the minority classes that actually mattered.
+                </p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">02 · Approach</p>
+                <h2 class="section-title">Approach</h2>
+                <p>
+                    Adapted a Transformer architecture from the literature to the multiclass task, keeping the attention-over-history structure and swapping the output head for a softmax over the class labels. In parallel, built a controlled baseline with the same input features and evaluation layout, so the Transformer's gains could be attributed against a like-for-like comparison rather than against an arbitrary benchmark.
+                </p>
+                <p>
+                    Evaluation is per-class and stratified, not pooled. A single pooled metric would let the majority class dominate and hide what actually matters.
+                </p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">03 · Engineering notes</p>
+                <h2 class="section-title">Engineering notes</h2>
+                <ul class="notes-list">
+                    <li><strong>Reference-implementation audit.</strong> The upstream Transformer implementation the work started from carried several correctness issues in the training and evaluation code. Time was spent isolating and fixing these before any comparison against the baseline was defensible; otherwise the Transformer's numbers would have been reporting bugs rather than model quality.</li>
+                    <li><strong>Baseline you can trust.</strong> The baseline was built with the same input pipeline and evaluation setup as the Transformer, on purpose. Any measured delta comes from the model, not from feature-leakage or eval-shape differences between the two paths.</li>
+                    <li><strong>Per-class stratified reporting.</strong> Results are reported per class, not pooled. Pooling averages away the exact structure that a heavily imbalanced dataset would collapse: whether the model actually recognises the rare classes or is quietly leaning on the majority.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">04 · Stack</p>
+                <h2 class="section-title">Stack</h2>
+                <p>PyTorch. Transformer architecture adapted from the literature. Per-class stratified evaluation harness. Specific tooling, dataset, application domain, and metrics are under NDA.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026</span>
+            <span><a href="https://github.com/krav0x">github.com/krav0x</a></span>
+        </div>
+    </footer>
+
+    <script>
+        (function () { var nav = document.getElementById('topNav'); if (!nav) return; function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })();
+    </script>
+
+</body>
+</html>

@@ -1,1001 +1,339 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diogo Silva — Data Scientist &amp; CPA</title>
-    <meta name="description" content="Data scientist with a CPA background. Building ML and LLM systems for Portuguese tax law, invoice analysis, and forecasting.">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Diogo Silva · Certified Accountant, transitioning to ML/DS</title>
+    <meta name="description" content="Portuguese certified accountant transitioning to ML and data science. Domain-specialised systems for Portuguese accounting, tax, and beyond.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-v2.css">
 </head>
 <body>
 
-<aside class="side-nav" aria-label="Primary">
-    <a href="#top" class="mark" aria-label="Home">DS</a>
-    <nav>
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <div class="side-nav__foot">
-        <a href="https://github.com/krav0x" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://huggingface.co/krav0x" target="_blank" rel="noopener">HF</a>
-    </div>
-</aside>
-
-<button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
-    <span></span><span></span><span></span>
-</button>
-
-<main id="top">
-
-    <section class="hero">
-        <p class="eyebrow">§ Diogo Silva</p>
-        <h1>
-            Data scientist with a <em>CPA background</em>.
-        </h1>
-        <p class="lede">
-            I build ML and LLM systems for problems I've lived: Portuguese tax law, invoice analysis, forecasting.
-        </p>
-        <div class="hero__meta">
-            <span>Lisbon, Portugal</span>
-            <span class="sep">/</span>
-            <span>Available for data science roles</span>
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="#" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="#work">Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </section>
+    </nav>
+
+    <header class="landing-hero">
+        <div class="container container--wide">
+            <p class="landing-hero__eyebrow">Available for ML/DS roles from June 2026</p>
+            <h1 class="landing-hero__title">Portuguese <em>accountant,</em><br>ML engineer in training.</h1>
+            <p class="landing-hero__lede">
+                Nine years running the books for Portuguese small and mid-sized businesses, from micro companies to €40M in yearly turnover. Now building domain-specialised ML and data systems for the same corner of the world.
+            </p>
+            <div class="project-actions">
+                <a class="button button--primary" href="#work">See the work</a>
+                <a class="button button--ghost" href="#contact">Get in touch</a>
+            </div>
+        </div>
+    </header>
 
     <section id="about" class="section">
-        <p class="section-label">§ 01 About</p>
-        <div class="section-body">
+        <div class="container container--wide about">
+            <p class="section-eyebrow">01 · About</p>
+            <h2 class="section-heading">The bridge from books to models</h2>
             <p>
-                Nine years as a certified accountant in Portugal, working across a portfolio of small businesses. That gave me a working knowledge of Portuguese tax code, SAF-T, IRS Modelo 3, VAT regimes, and the operational reality of small business finance.
+                I spent nine years as a Certified Accountant in Portugal, working across a portfolio that ranged from micro companies to businesses turning over €40M a year. That gave me a working knowledge of Portuguese tax code, SAF-T, IRS Modelo 3, VAT regimes, and the operational reality of running finance for real businesses at very different scales.
             </p>
             <p>
-                I'm now finishing a Master's in Data Science and transitioning full time into ML engineering. Most of my recent work sits at the intersection of accounting and machine learning: RAG over Portuguese tax law, invoice classification, forecasting, and multi-agent automation.
+                Since then I've been rebuilding my toolkit around ML and data engineering, currently interning as a Data Scientist at Moongy while finishing a Master's in Data Science at ESCE-IPS. My angle is the intersection: domain-specialised ML systems for Portuguese accounting and tax, where a generic model will confidently paraphrase the wrong article and the correct answer is worth money.
             </p>
-            <p>
-                Comfortable with the full loop: data collection, modeling, deployment, and the messy domain work in between.
-            </p>
-
-            <div class="skills">
-                <p class="skills__label">Stack I reach for</p>
-                <ul class="tags">
-                    <li>Python</li>
-                    <li>PyTorch</li>
-                    <li>Transformers</li>
-                    <li>LLMs &amp; RAG</li>
-                    <li>LangGraph</li>
-                    <li>SQL &amp; Postgres</li>
-                    <li>Supabase</li>
-                    <li>PySpark</li>
-                    <li>Next.js</li>
-                    <li>TypeScript</li>
-                    <li>Docker</li>
-                </ul>
-            </div>
         </div>
     </section>
 
     <section id="work" class="section">
-        <p class="section-label">§ 02 Selected work</p>
-        <div class="section-body">
+        <div class="container container--wide">
+            <p class="section-eyebrow">02 · Selected work</p>
+            <h2 class="section-heading">Selected work</h2>
 
-            <article class="project">
-                <header class="project__head">
-                    <h3>Transformer Forecasting for EV Charging Infrastructure</h3>
-                    <p class="project__kind">Master's dissertation (under NDA)</p>
-                </header>
-                <p>
-                    Adapted a Transformer architecture for multiclass classification of station availability across a national EV charging network. Built and audited an LSTM encoder-decoder baseline for comparison, and worked through several correctness issues in the reference implementation along the way. Specific data, results, and internals covered by NDA.
-                </p>
-                <p class="project__note">// PyTorch, Transformers, time series, per-horizon evaluation</p>
-                <ul class="tags tags--sm">
-                    <li>PyTorch</li>
-                    <li>Transformers</li>
-                    <li>Time series</li>
-                </ul>
-            </article>
+            <div class="work-group">
+                <h3 class="work-group__label">Machine learning &amp; AI</h3>
+                <div class="project-grid">
 
-            <article class="project">
-                <header class="project__head">
-                    <h3>Portuguese Accounting RAG</h3>
-                    <p class="project__kind">WIP, retrieval baseline shipping</p>
-                </header>
-                <p>
-                    Portuguese-language RAG assistant over Portugal's core tax and accounting corpus (CIRS, CIRC, CIVA, RITI, LGT, EBF, SNC, NCRF). 4,448 article-level chunks embedded once with multilingual-e5-large, stored in Chroma, queried via Llama-3.3-70B on Groq. The prompt hard-codes three rules: answer only from retrieved context, cite the specific article, refuse otherwise. Retrieval iteration moved recall@5 from 57.1% to 66.7% on a 25-question held-out eval; 100% refusal accuracy on the 4 refuse-worthy questions; 9.5% hallucination rate on the baseline. Tier-1 (read-only lookup) only in the current build.
-                </p>
-                <p class="project__note">// article-level chunks, refuse on retrieval miss, iterated against a real eval</p>
-                <ul class="tags tags--sm">
-                    <li>RAG</li>
-                    <li>LangChain</li>
-                    <li>ChromaDB</li>
-                    <li>Streamlit</li>
-                    <li>Portuguese NLP</li>
-                </ul>
+                    <a class="project-card" href="projects/rag.html">
+                        <p class="project-card__kind">WIP · retrieval baseline shipping</p>
+                        <h3 class="project-card__title">Portuguese Accounting RAG</h3>
+                        <p class="project-card__lede">Portuguese-language RAG over CIRS, CIRC, CIVA, RITI, LGT, EBF, SNC, NCRF. 4,448 article-level chunks in Chroma, queried via MiniMax M3 on OpenRouter. Retrieval iteration moved recall@5 from 47.6% to 61.9% under a strict tuple-based grader on a 25-question held-out eval; 100% refusal on refuse-worthy questions.</p>
+                        <ul class="project-card__tags">
+                            <li>RAG</li>
+                            <li>LangChain</li>
+                            <li>ChromaDB</li>
+                            <li>MiniMax M3</li>
+                            <li>Portuguese NLP</li>
+                        </ul>
+                        <span class="project-card__cta">View case study</span>
+                    </a>
 
-                <details class="case-study">
-                    <summary>Case study</summary>
-                    <div class="case-study__body">
+                    <a class="project-card" href="projects/moneyball.html">
+                        <p class="project-card__kind">Personal project</p>
+                        <h3 class="project-card__title">Money Ball</h3>
+                        <p class="project-card__lede">End-to-end ML system for Liga Record. Chain of forecasts (hurdle + match rating + valorização + event probs + Dixon-Coles fixture strength) feeds an integer program under the real game rules. ~48 to 51 expected pts/round across two seasons of backtesting.</p>
+                        <ul class="project-card__tags">
+                            <li>Python 3.11</li>
+                            <li>scikit-learn</li>
+                            <li>PuLP</li>
+                            <li>Next.js 15</li>
+                        </ul>
+                        <span class="project-card__cta">View case study</span>
+                    </a>
 
-                        <div class="case-study__section">
-                            <h4>Context</h4>
-                            <p>
-                                Practising Portuguese accountants and small-business owners keep asking the same class of question: "which article covers this?", "what's the rate on X?", "how is Y treated for VAT?". The correct answers live in a few thousand pages of primary legislation (Códigos, Decretos-Lei, NCRF standards) that a general-purpose LLM will happily paraphrase from memory, often with a confident but wrong article number. The bar this project sets for itself is narrower than "an accountant in a box": produce an answer in European Portuguese that is (a) traceable to a specific article of a specific code and (b) explicitly refuses when the retrieved context doesn't support the question, so the user knows to escalate instead of trusting a fabrication.
-                            </p>
-                        </div>
+                    <a class="project-card" href="projects/dissertation.html">
+                        <p class="project-card__kind">Master's dissertation (under NDA)</p>
+                        <h3 class="project-card__title">Transformer Classification, Portugal-Wide</h3>
+                        <p class="project-card__lede">Adapted a Transformer for a multiclass classification task with heavily imbalanced classes on a large Portugal-wide dataset. Built a baseline for controlled comparison and worked through several correctness issues in the reference implementation. Domain, data, and results covered by NDA.</p>
+                        <ul class="project-card__tags">
+                            <li>PyTorch</li>
+                            <li>Transformers</li>
+                            <li>Multiclass</li>
+                            <li>Class imbalance</li>
+                        </ul>
+                        <span class="project-card__cta">View case study</span>
+                    </a>
 
-                        <div class="case-study__section">
-                            <h4>Approach</h4>
-                            <p>
-                                Single-tier RAG, deliberately kept simple:
-                            </p>
-                            <ul>
-                                <li><strong>Knowledge layer, RAG.</strong> Primary legislation is chunked article-by-article for the tax codes (Artigo N.º boundary regex) and by recursive character splitting for the accounting standards (NCRF, EC, NI, SNC), which don't follow a strict article structure. Chunks are embedded once with intfloat/multilingual-e5-large and stored in a persistent Chroma collection.</li>
-                                <li><strong>Behaviour layer, prompt only.</strong> No LoRA. The behaviour of the assistant (answer in European Portuguese, only from retrieved context, cite the article, refuse otherwise) is enforced entirely in the system prompt. A LoRA pass was scoped but not run; the choice was to see how far a strong instruction-tuned base could go on a well-chunked corpus before spending on adapter training.</li>
-                                <li><strong>Computation layer, none yet.</strong> The current build does no deterministic numeric computation. Questions that ask "how much would I pay" are treated as refusal cases and pushed back to the user with a "consult a certified accountant" recommendation.</li>
-                            </ul>
-                            <p>
-                                <strong>Autonomy tiers.</strong> The design target is three tiers: (1) read-only lookup, (2) draft-and-review with a human accountant approving, (3) prepare-for-submission with structured outputs for AT portals. The current build only implements tier 1; the eval below is scored against that scope. Tiers 2 and 3 are the next iteration and out of scope for these numbers.
-                            </p>
-                            <p>
-                                <strong>Model choice.</strong> Groq-hosted Llama-3.3-70B-Instruct in the app, chosen for cost (free tier), speed, and adequate multilingual quality in European Portuguese. The evaluation was run against the same model via the Hugging Face inference router when Groq credits ran out; same weights, so answer quality is directly comparable. The latency numbers reflect the HF router path and would be lower on Groq.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Corpus</h4>
-                            <p>
-                                Ingested from 13 PDFs in data/raw/. The baseline snapshot contains <strong>4,448 chunks / ~742k tokens (~2.97 MB of text)</strong>:
-                            </p>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Source</th>
-                                        <th>Chunks</th>
-                                        <th>Chunker</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>CIRS (Personal Income Tax Code)</td><td>860</td><td>strict article</td></tr>
-                                    <tr><td>CIVA (VAT Code)</td><td>836</td><td>strict article</td></tr>
-                                    <tr><td>CIRC (Corporate Income Tax Code)</td><td>734</td><td>strict article</td></tr>
-                                    <tr><td>EBF (Tax Benefits Statute)</td><td>550</td><td>strict article</td></tr>
-                                    <tr><td>RITI (Intra-community VAT)</td><td>443</td><td>strict article</td></tr>
-                                    <tr><td>LGT (General Tax Law)</td><td>308</td><td>strict article</td></tr>
-                                    <tr><td>NCRF, NCRF-PE, NCRF-ESNL, NCRF-ME</td><td>469</td><td>recursive (1000/100)</td></tr>
-                                    <tr><td>SNC, EC, NI</td><td>248</td><td>mixed</td></tr>
-                                </tbody>
-                            </table>
-                            <p>
-                                The v5 ingest pipeline filters this down to <strong>3,211 substantive chunks</strong> by dropping TOC entries and cross-reference stubs (see the retrieval iteration in Outcome).
-                            </p>
-                            <p>
-                                <strong>Not in the corpus (yet).</strong> AT (Autoridade Tributária) circulars, ofícios-circulados, and OE (Orçamento do Estado) annual updates. This is a real gap: the eval question about 2026 IRS brackets falls into it and correctly triggers a refusal instead of an outdated bracket.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Engineering notes</h4>
-                            <ul>
-                                <li><strong>Hybrid chunker.</strong> split_by_article_strict uses a (?i)(Artigo\s+\d+\.º(?:-[A-Z])?) regex on the tax codes (CIVA, CIRC, CIRS, LGT, RITI, EBF, SNC) so every chunk is one legal article with its number in the chunk id ("CIVA - Artigo 18.º"). NCRF, EC, NI use a 1000/100 recursive splitter because those documents don't have article-level structure. This is what makes citations traceable: the retrieved chunk id is the citation.</li>
-                                <li><strong>Multilingual embedding choice.</strong> intfloat/multilingual-e5-large was picked over Portuguese-only encoders because the corpus mixes technical Portuguese (legislative style), abbreviations (IRS, IVA, PPR), and code numbers. E5-large was empirically better at surfacing the correct article across the eval set than smaller multilingual MiniLM variants tested locally.</li>
-                                <li><strong>Retrieval-tight prompt.</strong> The prompt hard-codes three rules (answer only from context, refuse otherwise, respond in European Portuguese). The initial eval showed this doing real work: every one of the 4 refusal-worthy questions produced a proper refusal, and the model correctly refused on retrieval misses instead of hallucinating a number (with two soft-hallucination exceptions covered in Failure modes below).</li>
-                                <li><strong>Streamlit UI with citation panel.</strong> Every answer ships with a "View Sources / Legal Basis" panel that dumps chunk id and a 300-character preview per retrieved doc, so the user can verify the citation without leaving the tab.</li>
-                                <li><strong>What is not in there.</strong> No LangGraph, no agentic tool use, no LoRA, no query decomposition. Those are candidates for later iterations; none are implemented today, and I would rather be measured on what is shipped than on what is planned.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Evaluation setup</h4>
-                            <p>
-                                25-question held-out eval set: 18 single-source factual lookups, 3 cross-source questions that require chunks from two codes, 4 refusal-worthy questions (personal legal advice, personalised numeric computation, post-cutoff regulatory data, cross-border tax planning). Ground-truth citations are stored per question in evals/eval_set.json; a lightweight harness (evals/run_eval.py, evals/eval_retrieval.py) queries the live Chroma store, runs the same prompt the app uses, and auto-grades each answer.
-                            </p>
-                            <p>
-                                <strong>Auto-grader rubric</strong> (a proxy for hand-grading, not a substitute):
-                            </p>
-                            <ul>
-                                <li><strong>Retrieval hit @k.</strong> The expected article id appears as a substring of any retrieved chunk id in the top-k.</li>
-                                <li><strong>Answer accuracy.</strong> The answer contains at least min_keyword_hits of the pre-declared correctness keywords (e.g. "23 %" for the VAT-rate question, "lucro tributável" for the IRC-base question).</li>
-                                <li><strong>Hallucination.</strong> The answer cites an Artigo N.º that does not appear in any of the retrieved chunks fed to the LLM.</li>
-                                <li><strong>Refusal correctness.</strong> For the 4 refuse-questions, the answer matches one of the refusal-phrase patterns.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Outcome</h4>
-                            <p>
-                                Rather than shipping a first-pass baseline and calling it done, retrieval was iterated on because it caps everything downstream. Every row below is a real, reproducible run of evals/eval_retrieval.py against the eval set.
-                            </p>
-                            <p><strong>Retrieval recall (n=21 non-refuse questions):</strong></p>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Config</th>
-                                        <th>recall@1</th>
-                                        <th>recall@3</th>
-                                        <th>recall@5</th>
-                                        <th>recall@10</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>v1 baseline (raw chunks, no prefix)</td><td>28.6%</td><td>42.9%</td><td>57.1%</td><td>71.4%</td></tr>
-                                    <tr><td>v2, E5 "query:" / "passage:" prefixes</td><td>33.3%</td><td>61.9%</td><td>61.9%</td><td>66.7%</td></tr>
-                                    <tr><td>v3, v2 + source-tag headers</td><td>33.3%</td><td>61.9%</td><td>66.7%</td><td>71.4%</td></tr>
-                                    <tr><td>v4, aggressive dedup (1 chunk / article)</td><td>9.5%</td><td>33.3%</td><td>38.1%</td><td>38.1%</td></tr>
-                                    <tr><td><strong>v5, filter-only + source-tag + E5 prefix (chosen baseline)</strong></td><td><strong>28.6%</strong></td><td><strong>52.4%</strong></td><td><strong>66.7%</strong></td><td><strong>71.4%</strong></td></tr>
-                                    <tr><td>v5 + BM25 hybrid (RRF, weight sweep)</td><td>14–19%</td><td>33–48%</td><td>47–57%</td><td>52–71%</td></tr>
-                                    <tr><td>v5 + bge-reranker-v2-m3 cross-encoder</td><td>33.3%</td><td>47.6%</td><td>61.9%</td><td>71.4%</td></tr>
-                                </tbody>
-                            </table>
-                            <p>
-                                <strong>+9.6 points of recall@5 vs the v1 baseline</strong>, the metric that actually decides whether the LLM sees the correct article.
-                            </p>
-                            <p><strong>What each iteration changed:</strong></p>
-                            <ul>
-                                <li><strong>v2, E5 prefixes on both sides.</strong> intfloat/multilingual-e5-large was trained with "query: " in front of queries and "passage: " in front of documents; the original ingest embedded both raw. Re-indexing with the "passage: " prefix and prepending "query: " at retrieval time is a documented free lift. Result: +5 pts on @1 and @3, roughly neutral at @5. Not a game-changer alone, but a prerequisite for later iterations.</li>
-                                <li><strong>v3, source-tag headers in the embedded text.</strong> The chunker was writing the source name (CIVA, CIRC, CIRS) into chunk metadata, but not into the embedded text. A query mentioning "IRC" had no lexical anchor to the CIRC chunks; it had to match through semantics alone, and dense retrieval kept returning CIRS articles for IRC questions. Fix: prepend "[CIVA] CIVA - Artigo 18" to each chunk's text before embedding. Result: +9.6 pts of recall@5, the single biggest win of the iteration.</li>
-                                <li><strong>v4, over-eager dedup (backed out).</strong> Inspection revealed a shocking amount of chunk duplication: CIVA-Artigo 2 was fragmented into 141 chunks, CIVA-Artigo 3 into 109, because the PDFs open with a full table of contents (every article title listed) and inline-reference each article dozens of times. First attempt: keep only the longest fragment per article. Result: retrieval collapsed, recall@5 dropped to 38.1% because the longest fragment often wasn't the one carrying the answer (e.g. for CIVA-18, the longest fragment contained the rules for grouped-goods bundles; the actual rate table with 23% was in a different fragment). Reverted.</li>
-                                <li><strong>v5, filter, don't dedup (kept).</strong> Kept multiple fragments per article, but dropped chunks that were mostly "............" dot-leaders (TOC entries) or shorter than 120 non-dot characters. Corpus went from 4,448 to 3,211 substantive chunks. Result: matched v3 at @5 (66.7%) with a cleaner corpus and a clearer story about what got dropped and why.</li>
-                                <li><strong>BM25 hybrid (tried, didn't ship).</strong> Portuguese legal text saturates BM25 with high-frequency generic phrases ("sujeitos passivos", "matéria coletável", "taxa") that appear in nearly every article. RRF fusion at four different dense/sparse weightings; none beat dense-alone. Kept the code as a reference implementation.</li>
-                                <li><strong>Cross-encoder reranking (tried, didn't ship).</strong> BAAI/bge-reranker-v2-m3 over a pool of 30 dense hits. Gave +5 pts at recall@1 but hurt @3 and @5 (the reranker sorted the pool aggressively toward the very top, which helped exact hits but hurt broader coverage). On CPU it also added ~38 s per query, a non-starter for a Streamlit tool. Kept as a reference for the day this runs on GPU.</li>
-                            </ul>
-                            <p><strong>End-to-end numbers on the initial baseline</strong> (v1 retriever, run before HF free credits ran out):</p>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Metric</th>
-                                        <th>Value</th>
-                                        <th>Denominator</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td>Retrieval recall@5</td><td>57.1% (now 66.7% on v5)</td><td>21 non-refuse questions</td></tr>
-                                    <tr><td>Retrieval recall@10</td><td>71.4%</td><td>21 non-refuse questions</td></tr>
-                                    <tr><td>Answer accuracy (keyword rubric)</td><td>76.2%</td><td>21 non-refuse questions</td></tr>
-                                    <tr><td>Hallucination rate</td><td>9.5% (2 answers)</td><td>21 non-refuse questions</td></tr>
-                                    <tr><td>Refusal accuracy</td><td>100% (4/4)</td><td>4 refuse questions</td></tr>
-                                    <tr><td>Median latency, overall</td><td>4.7 s</td><td>25 questions</td></tr>
-                                </tbody>
-                            </table>
-                            <p>
-                                Answer accuracy on v5 has not been re-measured yet because the HF free-tier credits for the eval LLM ran out mid-run. The v1 refusal accuracy (100%) and the low hallucination rate (9.5%) held under a real Llama-3.3-70B; the v5 retrieval improvements should translate proportionally to answer accuracy, since retrieval is the bottleneck.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Failure modes and confounds</h4>
-                            <p>Six of the 21 non-refuse questions never enter top-10 across any tried config:</p>
-                            <ul>
-                                <li><strong>Q02.</strong> "Qual é a taxa geral do IVA em Portugal continental?" (target CIVA-Artigo 18).</li>
-                                <li><strong>Q03.</strong> "Qual é a taxa geral do IRC aplicável a sujeitos passivos residentes?" (target CIRC-Artigo 87).</li>
-                                <li><strong>Q12.</strong> "Em que consiste o regime do IRS Jovem?" (target CIRS-Artigo 12-B).</li>
-                                <li><strong>Q17.</strong> "Como se determina o lucro tributável em sede de IRC?" (target CIRC-Artigo 17).</li>
-                                <li><strong>Q19.</strong> Cross-code (CIRS-31 + CIRC-17).</li>
-                                <li><strong>Q20.</strong> Cross-code (CIVA-3 + CIRC-23).</li>
-                            </ul>
-                            <p>
-                                Manual inspection confirmed the answer text is in the corpus: CIVA-18 fragment #4 literally contains "a taxa de 23 %"; CIRC-87 fragment #3 literally contains "A taxa do IRC é de 17 %". Dense retrieval isn't finding them because the queries use paraphrases the chunks don't contain. "taxa geral" and "sujeitos passivos residentes" in the query semantically match articles about regime geral and residência fiscal, not the rate table. That is a query-side problem, not a retriever-side one.
-                            </p>
-                            <p>
-                                There is also an upstream PDF-extraction issue: for a few CIVA articles, PyMuPDF loses the multi-column rate tables entirely, leaving literal "1 - ... 2 - ..." dot-leaders where the tax rates should be. That is a floor on retrieval quality no amount of encoder tuning can lift.
-                            </p>
-                            <p><strong>Confounds worth stating out loud:</strong></p>
-                            <ul>
-                                <li>n=25 is small. A real portfolio-grade eval wants 100+ items with inter-annotator agreement on the ground-truth citations.</li>
-                                <li>Keyword auto-grading misses correct paraphrases. Q08's answer identified sujeitos passivos correctly by describing the mechanism, but scored only 1/2 keyword hits because it didn't use the literal phrase "atividade económica".</li>
-                                <li>I graded my own eval. A stronger judge model (Claude Sonnet or GPT-4-class) run as an LLM-as-judge would give a more defensible answer-accuracy figure. The retrieval and refusal numbers, which don't depend on the grader, would not move.</li>
-                                <li>Ground truth had to be corrected mid-run. Q03 and Q04 originally expected "21%" and "17%" for the IRC rates, but the actual PDFs cite Lei n.º 64/2025 which sets the general IRC rate to 17% and the first-50k rate to 15%. The eval was updated to match the corpus. This is a good example of why an assistant that refuses a memorised answer is more valuable than one that confidently recites an out-of-date figure.</li>
-                                <li>Only one base model was evaluated. The plan originally scoped Amália (EuroLLM-9B) and EuroLLM-22B as an A/B; neither is wired up in the current build, so there is no delta to report.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Roadmap</h4>
-                            <p>
-                                Retrieval iteration got recall@5 from 57.1% to 66.7% and identified the exact remaining failure mode. Portfolio-shippable target is ≥80% recall@5. Two concrete levers, in priority order:
-                            </p>
-                            <ul>
-                                <li><strong>Query rewriter.</strong> A small LLM step that reformulates the user's question into 2 or 3 lexical variants and OR-s the results. E.g. "taxa geral do IVA" also tries "taxas do imposto" and "IVA continente". Best guess: +10 to 15 pts of recall@5. Cost: one small Groq call per user question, still well within free tier.</li>
-                                <li><strong>PDF extraction pass.</strong> Swap PyMuPDF for pdfplumber with a table-aware extractor to recover the CIVA rate tables that currently show up as dot-leaders. This lifts a floor rather than a ceiling; it doesn't help most questions, but the ones it helps are unrecoverable today.</li>
-                            </ul>
-                            <p>Longer-horizon, in order of expected value:</p>
-                            <ul>
-                                <li>AT circulars and OE annual updates in the corpus, with a per-chunk validity date so refusals can be precise ("a informação sobre 2026 ainda não está indexada").</li>
-                                <li>Tier-2 autonomy path: a draft-a-reply mode where the assistant produces a structured citation table (article, quote, my interpretation) that a human accountant can approve or reject.</li>
-                                <li>Grow the eval to 100 items and run under an LLM-as-judge with a stronger reference model, plus a small A/B against EuroLLM-9B on the same set.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Stack</h4>
-                            <p>Base model (app and eval): Llama-3.3-70B-Instruct, temperature 0.1. Served via Groq in the app, via HF inference router in the eval. Embedding: intfloat/multilingual-e5-large, run locally on CPU. RAG store: ChromaDB, persistent on disk, ~47 MB per index. Framework: LangChain (langchain_chroma, langchain_huggingface, langchain_groq, langchain_text_splitters) for the retrieval and prompt-templating glue; PyMuPDF (fitz) for PDF extraction. UI: Streamlit. Deployment target: Docker container (Dockerfile stub present) for a single-container Streamlit deploy on Fly.io or Render. Not currently deployed.</p>
-                            <p>
-                                <strong>Portuguese-language notes.</strong> UI and prompts use PT-PT throughout (declaração, coleta, matéria coletável, sujeito passivo, isenção, tributação autónoma), not the Brazilian variants a general LLM would default to. The chunker preserves the ordinal marker (Artigo 68.º) so the retrieved citation reads correctly in the legal-Portuguese convention. The refusal path is phrased as a formal recommendation ("recomendo consultar um contabilista certificado") rather than a shrug, so the assistant fits the register a Portuguese small-business user expects.
-                            </p>
-                        </div>
-
-                        <div class="case-study__screens">
-                            <!-- TODO: replace placeholder with real screenshots. Suggested shots:
-                                 llm-01: Streamlit query with an answer plus the "View Sources / Legal Basis" citation panel expanded
-                                 llm-02: The prompt template / system prompt with the three hard-coded rules visible
-                                 llm-03: A refusal example (a personal-advice or post-cutoff question) showing the formal recommendation phrasing
-                                 llm-04: Terminal or notebook running evals/eval_retrieval.py with the v1 → v5 recall table
-                                 llm-05: One of the six failure-mode questions (e.g. Q02 "taxa geral do IVA") with the retrieved top-10 chunk ids that miss CIVA-18
-                                 Drop files into projects/img/ and update src/alt/figcaption. -->
-                            <figure>
-                                <img src="projects/img/saft-placeholder.svg" alt="Placeholder for Portuguese Accounting RAG screenshot">
-                                <figcaption>// screenshot placeholder</figcaption>
-                            </figure>
-                        </div>
-
-                    </div>
-                </details>
-            </article>
-
-            <article class="project">
-                <header class="project__head">
-                    <h3>SAF-T PT Invoice Analysis</h3>
-                    <p class="project__kind">Shipped, used by my practice</p>
-                </header>
-                <p>
-                    Bulk parser and reconciliation tool for Portuguese fiscal SAF-T files, in production across 2 retail chains and 6 stores. Streams a ~50 MB monthly file (about 15,000 invoices, 55,000 line items) client-side in a Web Worker and parses it in around 2 seconds. Handles fiscal classification (Tabaco, Serviços, Sujeito a IVA, Raspadinhas), reconciles against the accountant's Sage balancete, and exports multi-store multi-month xlsx. All money is bigint cents from the moment it leaves the XML.
-                </p>
-                <p class="project__note">// Streaming XML in a Web Worker, bigint cents, Postgres RPCs</p>
-                <ul class="tags tags--sm">
-                    <li>Next.js 16</li>
-                    <li>React 19</li>
-                    <li>TypeScript</li>
-                    <li>Supabase</li>
-                    <li>ExcelJS</li>
-                </ul>
-
-                <details class="case-study">
-                    <summary>Case study</summary>
-                    <div class="case-study__body">
-
-                        <div class="case-study__section">
-                            <h4>Context</h4>
-                            <p>
-                                Two client retail chains, six stores between them, each store filing SAF-T (Portugal's standard audit file for tax) with the Autoridade Tributária every month. The submission file runs about 50 MB per store per month, with roughly 15,000 invoices and 55,000 line items inside. The previous workflow was a per-file Excel model: import the XML, apply per-line VAT logic, split by fiscal category, reconcile the scratch card commission, cross-check against the accountant's Sage balancete. It worked but it was slow, one file at a time, and it added up to a full day of monthly bookkeeping per client.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Approach</h4>
-                            <p>
-                                Rewrote the workflow as a web app so parsing and classification happen entirely in the browser.
-                            </p>
-                            <ul>
-                                <li>Stream the XML inside a Web Worker, keeping only one document in scope at a time. Progress is reported by bytes read, so a 50 MB file never freezes the UI. Parse time is about 2 seconds per file.</li>
-                                <li>Automatic fiscal classification (Faturação líquida, Comissão de raspadinhas, Tabaco, Sujeito a IVA, split between Produtos and Serviços) applied against product taxonomy rules encoded from the practice, with a reviewable UI to correct edge cases.</li>
-                                <li>Scratch-card commission apuramento by article and by sale type (CF vs Revenda). Unit facial value, quantities, faturado, and the retained margin per store: what the client books as revenue versus what passes through to Santa Casa.</li>
-                                <li>Balancete reconciliation. Upload the accountant's Sage balancete, the tool maps each account (7111112, 711212, 7221112, ...) to (loja × category × VAT rate), cross-references it against the SAF-T aggregate, and produces a Balancete | SAF-T | Diferença matrix with proposed debit/credit journal entries balanced for regularização.</li>
-                                <li>Multi-store, multi-month xlsx export in around 10 seconds per year of data.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Engineering notes</h4>
-                            <ul>
-                                <li><strong>Streaming XML in a Web Worker.</strong> A 50 MB SAF-T can carry 60k+ documents; loading into memory hangs the browser. The parser reads chunks, keeps only one document in scope, and reports progress by bytes. The UI stays responsive throughout.</li>
-                                <li><strong>Money in integer cents.</strong> 0.1 + 0.2 !== 0.3 breaks reconciliation after 25,000 lines. All money is stored and computed as bigint cents; parsing uses a hand-written decimal-to-integer scaler with half-up rounding to match Excel and AT expectations.</li>
-                                <li><strong>Postgres RPCs, not views, for reports.</strong> The initial GROUP BY views hit statement_timeout even for a single (store, month) query because the planner didn't push filters through the aggregation. Rewrote as LANGUAGE SQL STABLE functions with WITH ... AS MATERIALIZED CTEs that force the period-first lookup path, and bumped the per-function statement_timeout for the heavier ones.</li>
-                                <li><strong>Multi-file period support.</strong> AT sometimes splits a month into two files (e.g., 1 to 15 and 16 to 31). Import finds-or-creates the period, dedupes by invoice number, and refuses re-imports of the same file by SHA-256 hash.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Outcome</h4>
-                            <p>
-                                In production across 2 client companies and 6 stores. The Postgres backing store now holds about 700 MB and 2 million line-level rows, indexed for sub-second dashboard queries.
-                            </p>
-                            <p>
-                                For one accountant working three stores, monthly bookkeeping collapsed from a full day into about 5 minutes:
-                            </p>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Task</th>
-                                        <th>Manual Excel flow</th>
-                                        <th>This tool</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Import and parse one month</td>
-                                        <td>30 to 60 min</td>
-                                        <td>~2 s parse plus one click</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Classify lines (product, tobacco, services, games)</td>
-                                        <td>~1 hour, error-prone</td>
-                                        <td>Automatic, reviewable</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Cross-check with balancete</td>
-                                        <td>~2 hours monthly, manual</td>
-                                        <td>Upload plus instant matrix</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Multi-store, multi-month export</td>
-                                        <td>Not feasible</td>
-                                        <td>~10 s per year</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <p>
-                                Reconciliation also surfaced errors the manual flow was silently missing:
-                            </p>
-                            <ul>
-                                <li><strong>Store-level revenue misallocation.</strong> The accounting software couldn't split revenue by store, so the accountant had been posting everything to one store's account. Reconciliation surfaced about €90,000 of Turquel sales sitting on the Ermidas ledger in a single month.</li>
-                                <li><strong>Service classification bug.</strong> A lookup key mismatch was routing all café and bar sales to plain product VAT instead of Prestação de Serviços. Once caught, about €5,000 per store per month shifted to the correct VAT category, correcting the client's monthly VAT declaration.</li>
-                                <li><strong>Bar-variant collisions.</strong> SAF-T uses a "B" suffix for bar variants of a product (e.g., 1102010101066815B). The normaliser was stripping the B and silently treating bar sales and mercearia sales as the same article.</li>
-                                <li><strong>Credit-note double-counting.</strong> Scratch cards returned via credit notes were being subtracted twice in reconciliation totals, causing a phantom shortfall.</li>
-                                <li><strong>Partial-account exceptions.</strong> Accounts like 7221113 (Cafetaria Ermidas 23%) had €1,908 booked but only €14.83 was a legitimate manual adjustment; the rest had to match SAF-T. The tool lets the user mark exceptions with editable amounts.</li>
-                                <li><strong>Services-catalog typos.</strong> Comparing the client's monthly list of service-classified products against what actually got classified surfaced consistent typos and forgotten items (SUMFRES2/3X, BOL15, SANDES6).</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Stack</h4>
-                            <p>Next.js 16 (App Router) with React 19 and TypeScript. Streaming SAX parser running inside a Web Worker for the SAF-T XML. ExcelJS for balancete import and multi-store xlsx export. Supabase for Postgres with row-level security, backing about 700 MB and 2 million rows of line-level data. Tailwind CSS. Deployed on Vercel.</p>
-                        </div>
-
-                        <div class="case-study__screens">
-                            <!-- TODO: replace placeholder with real screenshots. Suggested shots:
-                                 saft-01: Upload and parsing progress. Drag-and-drop of a 50 MB SAF-T file; live progress bar showing bytes read and document count; reconciliation panel comparing the file's own DocumentTotals with the sum of lines.
-                                 saft-02: Fiscal classification breakdown. Per-month per-store dashboard with cards for Faturação líquida, Comissão de raspadinhas, Tabaco, Sujeito a IVA; VAT-by-rate table split between Produtos and Serviços; scratch-card commission table (CF vs Revenda) with facial, faturado, comissão, cedida, retida, CMVMC.
-                                 saft-03: Scratch-card commission calculator (apuramento by article and sale type).
-                                 saft-04: Per-store drill-down / balancete reconciliation. Uploaded balancete, account mapping, Balancete | SAF-T | Diferença matrix with proposed debit/credit journal entries.
-                                 Drop files into projects/img/ and update src/alt/figcaption. -->
-                            <figure>
-                                <img src="projects/img/saft-placeholder.svg" alt="Placeholder for SAF-T PT app screenshot">
-                                <figcaption>// screenshot placeholder</figcaption>
-                            </figure>
-                        </div>
-
-                    </div>
-                </details>
-            </article>
-
-            <article class="project">
-                <header class="project__head">
-                    <h3>Money Ball</h3>
-                    <p class="project__kind">Personal project</p>
-                </header>
-                <p>
-                    End-to-end system for Liga Record. A chain of ML models forecasts expected points per player per round (hurdle for P(plays) × E(minutes), match rating, valorização, event probabilities under the official scoring rules), then integer programming in PuLP picks the 23-man squad and starting XI under the €40M budget, 3/8/8/4 position quotas, captain rule, and the real transfer regime. Backtested across two full seasons at ~48 to 51 expected points per round versus a random baseline near 17. Weekly autonomous pipeline on GitHub Actions with 450+ tests.
-                </p>
-                <p class="project__note">// Chained forecasts, ILP under real game rules, Dixon-Coles fixture strength</p>
-                <ul class="tags tags--sm">
-                    <li>Python</li>
-                    <li>Postgres</li>
-                    <li>Optimization</li>
-                    <li>Sports analytics</li>
-                </ul>
-
-                <details class="case-study">
-                    <summary>Case study</summary>
-                    <div class="case-study__body">
-
-                        <div class="case-study__section">
-                            <h4>Context</h4>
-                            <p>
-                                Liga Record is Record newspaper's fantasy game for Portugal's Primeira Liga. Each round you manage a 23-man squad and a starting XI under a €40M budget, 3/8/8/4 position quotas, one captain (points doubled), and hard transfer rules (one per round, six in the February window). Scoring blends objective events (goals, clean sheets, cards) with the newspaper's own subjective valorização, which accounts for roughly three quarters of a player's points. Source data is not archived by anyone, so the pipeline had to solve data collection before it could solve the game.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Approach</h4>
-                            <p>
-                                Two connected pieces: a chain of forecasts, then an optimiser under the real rules of the game.
-                            </p>
-                            <p>
-                                <strong>Forecasts.</strong> Points per player per round come from a chain, not a single model:
-                            </p>
-                            <ul>
-                                <li>Hurdle for participation: P(plays) × E(minutes given plays).</li>
-                                <li>Match-rating model per player-fixture.</li>
-                                <li>A model for valorização, the subjective score that carries roughly three quarters of a player's points.</li>
-                                <li>Event probability components (goals, clean sheets, cards) combined through the official scoring rules.</li>
-                                <li>Fixture difficulty from a Dixon-Coles team-strength model, blended with live betting-market odds.</li>
-                            </ul>
-                            <p>
-                                <strong>Optimiser.</strong> The forecasts feed an integer program in PuLP that maximises expected total points for the round subject to every real rule: €40M budget, 3/8/8/4 quotas, valid formation, one captain with points doubled, and the transfer regime with wallet accounting. Output is a suggested XI and bench plus a diff against the current squad.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Engineering notes</h4>
-                            <ul>
-                                <li><strong>Leakage discipline.</strong> Features are computed against the round's deadline as a time boundary, not the round number. A naive by-round implementation was silently pulling future information into 38.7% of training games. A second, subtler look-ahead lived in the squad-selection horizon and was worth about 6 pts/round; caught in a self-audit and fixed by freezing form at each decision deadline.</li>
-                                <li><strong>Honest evaluation over a tempting result.</strong> Concentrating the budget on the starting XI looked like +6 pts/round on a single season. Validating out-of-sample on a second season showed it was overfitting, so the simpler baseline stayed. Not shipping a lucky number is part of the model too.</li>
-                                <li><strong>Dead code paths surfaced by the audit.</strong> Betting-market odds were being computed but never actually consumed by the forecast (+2.55 pts/round once wired in). Adding each player's own past-score history as a feature added another +0.98.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Outcome</h4>
-                            <p>
-                                Backtested across two full seasons (2024/25 and 2025/26) with a leakage-free pipeline:
-                            </p>
-                            <ul>
-                                <li>~48 to 51 expected points per round, capturing about 44% of a perfect-hindsight ideal. Stable across both seasons.</li>
-                                <li>+31 pts/round versus a random-selection baseline.</li>
-                                <li>+18 pts/round versus a most-minutes heuristic.</li>
-                                <li>450+ tests, weekly autonomous pipeline on GitHub Actions.</li>
-                            </ul>
-                            <p>
-                                Reported as expected points in backtesting and replay, not live winnings. The system is a decision aid.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Stack</h4>
-                            <p>Python 3.11. Modelling with scikit-learn (gradient-boosted trees), NumPy, SciPy, and a Dixon-Coles football model. PuLP for the integer program. PostgreSQL via Supabase, psycopg v3. Data from API-Football, football-data.co.uk, and the official Liga Record newsletter and spreadsheets. Web app in Next.js 15 (App Router, React server components) and TypeScript on Vercel. GitHub Actions for the weekly cron. ruff and pytest (450+ tests).</p>
-                        </div>
-
-                        <div class="case-study__screens">
-                            <!-- TODO: replace placeholder with real screenshots. Suggested shots:
-                                 mb-01: 3D tilted-pitch view of the XI + bench
-                                 mb-02: interactive team editor with live budget check on a transfer
-                                 mb-03: per-fixture panel with odds / xG / form
-                                 mb-04: season replay view
-                                 Drop files into projects/img/ and update src/alt/figcaption. -->
-                            <figure>
-                                <img src="projects/img/saft-placeholder.svg" alt="Placeholder for Money Ball screenshot">
-                                <figcaption>// screenshot placeholder</figcaption>
-                            </figure>
-                        </div>
-
-                    </div>
-                </details>
-            </article>
-
-            <article class="project">
-                <header class="project__head">
-                    <h3>AfonsoAuto</h3>
-                    <p class="project__kind">Shipped for a client</p>
-                </header>
-                <p>
-                    Private, mobile-first stock and sales manager for a Portuguese used-car dealership. One auth-gated dashboard covers each car's full lifecycle: acquisition, reconditioning expenses, sale, and VAT settlement under the correct Portuguese regime (Regime da Margem or Regime Geral). On sale, a plaintext summary of acquisition, expenses, sale, VAT, and net result is emailed to the accountant automatically. European Portuguese UI, built to be used on a phone while walking the lot.
-                </p>
-                <p class="project__note">// Both VAT regimes, RSC data fetching, transactional email</p>
-                <ul class="tags tags--sm">
-                    <li>Next.js 16</li>
-                    <li>React 19</li>
-                    <li>TypeScript</li>
-                    <li>Supabase</li>
-                    <li>Tailwind v4</li>
-                </ul>
-
-                <details class="case-study">
-                    <summary>Case study</summary>
-                    <div class="case-study__body">
-
-                        <div class="case-study__section">
-                            <h4>Context</h4>
-                            <p>
-                                Small Portuguese used-car dealerships (stands) run on paper folders, WhatsApp photos, and Excel. Every vehicle carries a growing pile of costs (mechanic, painting, IPO inspection, ISV legalisation, tyres, detailing, transport) and each sale has to be booked under one of two very different VAT regimes: Regime da Margem (VAT on the margin only, common for cars bought from private sellers) or Regime Geral (VAT on the full sale price). Choose the wrong regime or misplace an expense receipt and you either pay tax you didn't owe or miss tax you did. The dealer wanted one place to see stock, running cost per car, days in stock, and a live per-vehicle P&L that already applied the correct regime.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Approach</h4>
-                            <p>
-                                One private, auth-gated app that owns the full lifecycle of a car from intake to sale:
-                            </p>
-                            <ul>
-                                <li><strong>Painel.</strong> Four live KPIs (cars in stock, immobilised capital, average margin, monthly sales) and a sortable stock table with per-vehicle expense totals.</li>
-                                <li><strong>Vehicle intake.</strong> Full record: plate, VIN, brand and model and version, mileage, fuel, purchase date and price, supplier type (particular, stand, auction, company), NIF, VAT regime, and the scanned purchase document.</li>
-                                <li><strong>Expenses tracker.</strong> Typed entries (mechanical, bodywork, tyres, IPO, ISV, transport, commission, detailing) with a deductible-VAT flag and a document upload, each attached to a specific vehicle.</li>
-                                <li><strong>Sale registration and apuramento.</strong> Records the sale and instantly computes margem tributável, IVA apurado at 23%, total costs, days in stock, and the net result. Green or red on the bottom line.</li>
-                                <li><strong>Automated sale email.</strong> On sale creation a plaintext summary (acquisition, all expenses, sale, VAT, result) is sent to the office inbox via Resend and the sale is stamped as email_enviado.</li>
-                            </ul>
-                            <p>
-                                The UI is entirely in European Portuguese (Painel, Viaturas, Despesas, Apuramento, Fornecedor, Matrícula) and mobile-first. The dealer opens it on a phone while walking the lot.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Engineering notes</h4>
-                            <ul>
-                                <li><strong>One pure tax function.</strong> calcularApuramento() is a small, tested pure function that implements both Portuguese regimes correctly. It's called identically from the dashboard aggregate, the vehicle detail view, and the sale API route. The regime logic exists in exactly one place.</li>
-                                <li><strong>Server-first rendering.</strong> Dashboard and vehicle detail pages are async React Server Components fetching directly from Supabase, so the initial paint already has data.</li>
-                                <li><strong>Split Supabase clients.</strong> A browser client for the login form, a server client for RSC data fetching, and a middleware client for session refresh, matching the SSR patterns of the newer @supabase/ssr SDK.</li>
-                                <li><strong>Fail-open on email.</strong> A Resend outage never blocks a sale. The sale is committed first, the email is attempted, and only a successful send updates the email_enviado flag.</li>
-                                <li><strong>Typed domain with label maps.</strong> src/types/database.ts mirrors the Postgres schema and centralises the human-readable labels for states, supplier types, and expense categories, so display strings live in one file.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Outcome</h4>
-                            <p>
-                                <!-- TODO: fill in launch date, current stock size the dealer manages, any specific errors or missed VAT catches the tool prevented, feedback from the dealer. -->
-                                In production at the dealership. Concrete usage figures to be added.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Stack</h4>
-                            <p>Next.js 16 (App Router, React Server Components) with React 19. TypeScript. Tailwind CSS v4 through the PostCSS pipeline. Supabase for Postgres, Auth, and Storage (scanned documents), accessed via @supabase/ssr with proper server, client, and middleware client separation. Resend for transactional email. Deployed on Vercel.</p>
-                        </div>
-
-                        <div class="case-study__screens">
-                            <!-- TODO: replace placeholder with real screenshots. Suggested shots:
-                                 afonso-01: Painel dashboard (4 KPIs + stock table)
-                                 afonso-02: Vehicle detail with expense list and live apuramento
-                                 afonso-03: Sale registration form with margem tributável and IVA apurado
-                                 afonso-04: Expense entry with document upload
-                                 afonso-05: The automated plaintext summary email
-                                 Drop files into projects/img/ and update src/alt/figcaption. -->
-                            <figure>
-                                <img src="projects/img/saft-placeholder.svg" alt="Placeholder for AfonsoAuto screenshot">
-                                <figcaption>// screenshot placeholder</figcaption>
-                            </figure>
-                        </div>
-
-                    </div>
-                </details>
-            </article>
-
-            <article class="project">
-                <header class="project__head">
-                    <h3>SAF-T PT Submission Tool</h3>
-                    <p class="project__kind">In monthly production at my practice</p>
-                </header>
-                <p>
-                    Streamlit frontend around FACTEMICLI, the Autoridade Tributária's Java CLI for SAF-T PT submissions. Replaces a 4-minute-per-client portal flow (open Excel for credentials, log in, click through, upload, verify) with a 30-second one: pick client, pick file, click. Parses the AT's latin-1 XML response, surfaces totals and errors in-app, and appends every submission to a structured CSV log. In monthly production across the practice's ~40-client book, saving close to 28 hours a year.
-                </p>
-                <p class="project__note">// AT CLI wrapper, latin-1 responses, CSV audit log</p>
-                <ul class="tags tags--sm">
-                    <li>Python</li>
-                    <li>Streamlit</li>
-                    <li>XML parsing</li>
-                    <li>FACTEMICLI</li>
-                </ul>
-
-                <details class="case-study">
-                    <summary>Case study</summary>
-                    <div class="case-study__body">
-
-                        <div class="case-study__section">
-                            <h4>Context</h4>
-                            <p>
-                                The Autoridade Tributária requires every business to submit a SAF-T PT invoice file every month. Before the app, doing this across the practice's clients meant, for each one: open the Excel with the client's NIF and password, log in to Portal das Finanças, click through several pages to the SAF-T submission form, pick year and month, browse the file system for the right XML, upload, wait, verify the confirmation. Close the session, back to the Excel, repeat for the next client. Around 3 to 5 minutes per submission when the portal cooperated, longer when it did not, and the only audit trail was whatever the accountant wrote down by hand.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Approach</h4>
-                            <p>
-                                A Streamlit frontend around FACTEMICLI, the AT's Java CLI for SAF-T submissions. The CLI is a scriptable alternative to the portal, but on its own it means typing a 60-character command with credentials, paths, and period flags every time. The app never replaces the official binary; it makes it usable.
-                            </p>
-                            <ul>
-                                <li>Client registry as a local JSON store. Adding a client (name, NIF, password) once means picking them from a dropdown ever after. NIF is validated on entry: 9 digits, no duplicates.</li>
-                                <li>Year and month pickers default to the current period, which is the right choice almost every time.</li>
-                                <li>XML uploader, then a single "Executar Envio" button assembles the full java -jar command with the right flags and runs it as a subprocess with captured stdout and stderr.</li>
-                                <li>The AT's response file is parsed as XML instead of dumped as-is. The tool pulls out the status code, totalFaturas, totalCreditos, totalDebitos, and any error message inside &lt;errors&gt;&lt;error&gt;, then renders success or failure with the numbers front and centre.</li>
-                                <li>Every submission is appended to a CSV log: timestamp, client, NIF, period, filename, success flag, response code, message, and the three totals. One file, sortable in Excel, complete history.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Engineering notes</h4>
-                            <ul>
-                                <li><strong>Latin-1 responses.</strong> The AT tool writes its result file in latin-1, not UTF-8. Decoding as UTF-8 corrupts the error messages, so the reader opens with encoding="latin1" explicitly.</li>
-                                <li><strong>Subprocess with graceful failure.</strong> If the jar exits non-zero, the CalledProcessError is caught and stderr is written into the result file so the user still sees what happened. The XML parser falls through to a "could not interpret response" state instead of crashing the app.</li>
-                                <li><strong>Structured logging over shell history.</strong> The CSV header is written once on file creation; every subsequent submission appends a row. Nothing to configure, nothing to click.</li>
-                                <li><strong>Zero credential re-entry.</strong> Passwords sit in the JSON registry alongside the NIF. Trade-off: the file is local to the accountant's machine, but it saves typing (or pasting from a text file) on every submission.</li>
-                                <li><strong>Sensible period defaults.</strong> The year dropdown covers the current year and the previous five; the month defaults to the current month. Historical resubmissions still work, but the common case is one click.</li>
-                                <li><strong>Scoped, disposable temp directory.</strong> Uploaded XML and AT responses live under temp/, nothing else survives a session.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Outcome</h4>
-                            <p>
-                                In monthly production use across the practice. Per-submission time dropped from around 4 minutes on the portal to under 30 seconds in the app. About 3.5 minutes saved per client per month. Across the practice's 40-client book, that is roughly 2h20 back every month, or close to 28 hours a year. Failed submissions carry the AT's error code and message straight into the CSV log, so retries can be triaged without redoing the whole portal flow. "Did we submit for client X in April?" goes from a portal login to a Ctrl+F.
-                            </p>
-                            <table>
-                                <thead>
-                                    <tr>
-                                        <th>Task</th>
-                                        <th>Portal flow</th>
-                                        <th>This tool</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Retrieve client credentials</td>
-                                        <td>Open Excel, find row</td>
-                                        <td>Pick from dropdown</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Reach the submission form</td>
-                                        <td>Login, click through pages</td>
-                                        <td>N/A</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Set period and pick file</td>
-                                        <td>Manual, per client</td>
-                                        <td>Defaults to current month</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Submit and verify</td>
-                                        <td>Upload, wait, read screen</td>
-                                        <td>One click, status in-app</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Record the submission</td>
-                                        <td>Handwritten note</td>
-                                        <td>Automatic CSV row</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Time per client</td>
-                                        <td>~4 min</td>
-                                        <td>~30 s</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Stack</h4>
-                            <p>Python 3. Streamlit for the UI. PIL for the logo. FACTEMICLI 2.8.6 (Autoridade Tributária) as the actual submission engine, invoked via subprocess. Local JSON for the client registry, CSV for the audit log, xml.etree for parsing AT responses.</p>
-                        </div>
-
-                        <div class="case-study__screens">
-                            <!-- TODO: replace placeholder with real screenshots. Suggested shots:
-                                 submit-01: Main form (client dropdown, year/month pickers, XML uploader, Executar Envio button)
-                                 submit-02: Success result with parsed totalFaturas, totalCreditos, totalDebitos
-                                 submit-03: A failure result showing the AT error code and message extracted from <errors><error>
-                                 submit-04: The CSV audit log opened in Excel
-                                 Drop files into projects/img/ and update src/alt/figcaption. -->
-                            <figure>
-                                <img src="projects/img/saft-placeholder.svg" alt="Placeholder for SAF-T PT Submission Tool screenshot">
-                                <figcaption>// screenshot placeholder</figcaption>
-                            </figure>
-                        </div>
-
-                    </div>
-                </details>
-            </article>
-
-            <article class="project">
-                <header class="project__head">
-                    <h3>Liga Record</h3>
-                    <p class="project__kind">Live for a friends' league</p>
-                </header>
-                <p>
-                    Fantasy football league manager for a friends' group of about 20 players. Turns the weekly Fantasy Record Excel export into a live dashboard, a parallel cup competition, a 1-X-2 prediction bet flow with automatic scoring penalties, and a shared accounting ledger that everyone can check when the end-of-season dinner comes around. European Portuguese UI, mobile-first, glass-styled. Live at <a href="https://liga-record-ermidas.vercel.app/">liga-record-ermidas.vercel.app</a>.
-                </p>
-                <p class="project__note">// RLS-first schema, rank at read time, namespace-agnostic .xlsx parser</p>
-                <ul class="tags tags--sm">
-                    <li>Next.js 16</li>
-                    <li>React 19</li>
-                    <li>TypeScript</li>
-                    <li>Supabase</li>
-                    <li>Tailwind v4</li>
-                </ul>
-
-                <details class="case-study">
-                    <summary>Case study</summary>
-                    <div class="case-study__body">
-
-                        <div class="case-study__section">
-                            <h4>Context</h4>
-                            <p>
-                                A friends' Fantasy Record league had grown to around 20 players and was being run out of a WhatsApp group and a shared Excel. Whoever landed first place each round was owed €0.10 per point of difference by everyone else, plus a side bet, plus a running tab for the end-of-season dinner. Every week the admin was doing the math by hand and chasing people to pay. The app takes the weekly Excel export from Fantasy Record and turns it into a live dashboard, a cup with a random group draw, a 1-X-2 betting flow with penalties, and a single accounting view.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Approach</h4>
-                            <p>
-                                Six connected surfaces built on one authorised Postgres schema:
-                            </p>
-                            <ul>
-                                <li><strong>Dashboard.</strong> Round points, cumulative total, current league position, money-owed tile, and a form chart (SVG line, dual series: you vs the round winner, clickable per round).</li>
-                                <li><strong>Classificação.</strong> General league table plus a per-round view, both with abbreviated mobile-first columns.</li>
-                                <li><strong>Taça.</strong> Cup running in parallel. 4 groups of 5 with a random draw button (admin), Fase de Grupos, Oitavos, Quartos, Meias, Final. Top 4 of each group advance, current phase is highlighted.</li>
-                                <li><strong>Apostas.</strong> Admin creates a slate (name, deadline, up to 4 games as 1-X-2). Each player picks. After the deadline the scoring rule kicks in: 0€ if all correct, 0.50€ per wrong pick, 1€ if the player didn't pick at all. Every open slate has a "Partilhar no WhatsApp" button that opens the composer pre-filled with the formatted announcement.</li>
-                                <li><strong>Contabilidade.</strong> Carryover from last season (admin-editable), current-season pot (auto-summed from rounds and settled slates), dinner budget (admin-editable), available balance. Full player × round × slate breakdown matrix with a totals row.</li>
-                                <li><strong>Admin.</strong> Excel upload (custom parser that survives the Fantasy Record namespace prefix), team CRUD, slate and game CRUD, cup draw.</li>
-                            </ul>
-                            <p>
-                                Login is Supabase Auth restricted to email addresses the admin has whitelisted by mapping them to a team row. The whole UI is European Portuguese.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Engineering notes</h4>
-                            <ul>
-                                <li><strong>RLS-first authorisation.</strong> Every table is authorised by row-level security in the database, not at the app layer. Two SECURITY DEFINER helpers, public.is_admin() and public.my_team_id(), break the recursion that would otherwise happen when policies on the teams table query the teams table, and give clean predicates like team_id = my_team_id() or is_admin() on write policies.</li>
-                                <li><strong>Rank at read time, not at write time.</strong> Positions aren't stored. Sorting a team's points_round against every other team happens in the query at request time, so the leaderboard is always correct even if the Excel loaded a stale global position. Standard-competition ranking (ties share a rank) lives in one assignRanks&lt;T&gt;() utility.</li>
-                                <li><strong>Namespace-agnostic .xlsx parser.</strong> The Fantasy Record export uses the x: XML namespace prefix on every element (&lt;x:sheets&gt;, &lt;x:worksheet&gt;), which broke off-the-shelf libraries. Dropped exceljs (which choked on the prefix and carried a uuid sub-dep advisory) and wrote a small parser: JSZip to unzip the file, a namespace-agnostic regex over the sheet XML to extract the rows. Smaller bundle, no known vulns.</li>
-                                <li><strong>Feature-scoped SQL migrations.</strong> Each vertical (cup, accounting, bet slates) ships with its own idempotent migration file alongside a schema.sql that re-derives the same tables from scratch. The RLS reset lives in dedicated helpers so migrations are safe to re-run without dropping data.</li>
-                                <li><strong>Design-token overrides, no component rewrites.</strong> The shift from a generic dark-slate palette to warm charcoal with camel accents on a stadium photo background was done by remapping Tailwind's slate-* and emerald-* scales inside @theme, not by editing 20+ components. Adding new colours is a diff in one CSS file.</li>
-                                <li><strong>middleware.ts to proxy.ts.</strong> Next.js 16 renamed the file. Session refresh and route protection were migrated to the new proxy convention as part of the initial scaffold.</li>
-                            </ul>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Outcome</h4>
-                            <p>
-                                <!-- TODO: fill in how long the league has been using it, whether payment disputes / chasing have dropped, any feedback from the group. -->
-                                In use by the league. Concrete before-and-after notes to be added.
-                            </p>
-                        </div>
-
-                        <div class="case-study__section">
-                            <h4>Stack</h4>
-                            <p>Next.js 16 (App Router, Turbopack) with React 19 and TypeScript. Tailwind CSS v4 with a custom warm-neutral palette overlaid on a full-viewport stadium photo, a hand-rolled .glass utility for the frosted panels, lucide-react for icons, Geist Sans and Mono. Supabase for Postgres, Auth, and row-level security, accessed via @supabase/ssr for the Next.js 16 proxy-based session refresh. JSZip plus a small custom worksheet parser for the Fantasy Record Excel exports. Deployed on Vercel (Hobby), pushes to main auto-deploy.</p>
-                        </div>
-
-                        <div class="case-study__screens">
-                            <!-- TODO: replace placeholder with real screenshots. Suggested shots:
-                                 lr-01: Dashboard with round points, money-owed tile, and form chart
-                                 lr-02: Classificação (league table)
-                                 lr-03: Taça bracket view with current phase highlighted
-                                 lr-04: Apostas slate with the Partilhar no WhatsApp button
-                                 lr-05: Contabilidade with the player × round × slate matrix
-                                 Drop files into projects/img/ and update src/alt/figcaption. -->
-                            <figure>
-                                <img src="projects/img/saft-placeholder.svg" alt="Placeholder for Liga Record screenshot">
-                                <figcaption>// screenshot placeholder</figcaption>
-                            </figure>
-                        </div>
-
-                    </div>
-                </details>
-            </article>
-
-            <details class="more-projects">
-                <summary>More projects</summary>
-                <div class="more-projects__list">
-                    <div>
-                        <h4>CineMatch</h4>
-                        <p>Hybrid SVD + TF-IDF movie recommender, deployed on Streamlit.</p>
-                    </div>
-                    <div>
-                        <h4>Steam Game Recommender</h4>
-                        <p>Content-based recommender for Steam titles, deployed on Vercel.</p>
-                    </div>
-                    <div>
-                        <h4>PySpark Fraud Detection Pipeline</h4>
-                        <p>Fraud detection pipeline built on Databricks with PySpark.</p>
-                    </div>
-                    <div>
-                        <h4>Transformer from scratch</h4>
-                        <p>Built and trained a Transformer end to end as part of structured Python and ML self-study.</p>
-                    </div>
                 </div>
-            </details>
+            </div>
 
+            <div class="work-group">
+                <h3 class="work-group__label">Shipped products &amp; tools</h3>
+                <div class="project-grid">
+
+                    <a class="project-card" href="projects/saft-analysis.html">
+                        <p class="project-card__kind">Shipped, used by my practice</p>
+                        <h3 class="project-card__title">SAF-T PT Invoice Analysis</h3>
+                        <p class="project-card__lede">Bulk parser and reconciliation tool for fiscal SAF-T files. 2 chains, 6 stores. Streams ~50 MB / 15k invoices in a Web Worker in ~2 s. Collapsed a full day of monthly bookkeeping into 5 minutes, and caught €90k of misallocated store revenue in one month.</p>
+                        <ul class="project-card__tags">
+                            <li>Next.js 16</li>
+                            <li>Supabase</li>
+                            <li>ExcelJS</li>
+                            <li>Web Workers</li>
+                        </ul>
+                        <span class="project-card__cta">View case study</span>
+                    </a>
+
+                    <a class="project-card" href="projects/afonso.html">
+                        <p class="project-card__kind">Shipped for a client</p>
+                        <h3 class="project-card__title">AfonsoAuto</h3>
+                        <p class="project-card__lede">Private, mobile-first stock and sales manager for a Portuguese used-car dealership. Handles both Regime da Margem and Regime Geral VAT correctly, with one pure <code>calcularApuramento()</code> function. Sends a plaintext summary email on every sale.</p>
+                        <ul class="project-card__tags">
+                            <li>Next.js 16</li>
+                            <li>Supabase</li>
+                            <li>Tailwind v4</li>
+                            <li>Resend</li>
+                        </ul>
+                        <span class="project-card__cta">View case study</span>
+                    </a>
+
+                    <a class="project-card" href="projects/saft-submit.html">
+                        <p class="project-card__kind">In monthly production at my practice</p>
+                        <h3 class="project-card__title">SAF-T PT Submission Tool</h3>
+                        <p class="project-card__lede">Streamlit frontend around FACTEMICLI, the AT's Java CLI for SAF-T PT submissions. Replaces a 4-min portal flow with a 30-second one. Parses the AT's latin-1 XML response and logs every submission to a structured CSV. ~28 hours a year saved across the 40-client book.</p>
+                        <ul class="project-card__tags">
+                            <li>Python</li>
+                            <li>Streamlit</li>
+                            <li>XML parsing</li>
+                            <li>FACTEMICLI</li>
+                        </ul>
+                        <span class="project-card__cta">View case study</span>
+                    </a>
+
+                    <a class="project-card" href="projects/liga-record.html">
+                        <p class="project-card__kind">Live for a friends' league</p>
+                        <h3 class="project-card__title">Liga Record</h3>
+                        <p class="project-card__lede">Fantasy football league manager for ~20 friends. Weekly Excel export becomes a live dashboard, a parallel cup, a 1-X-2 betting flow, and a shared accounting ledger. RLS-first schema, namespace-agnostic .xlsx parser, glass-styled PT-PT UI.</p>
+                        <ul class="project-card__tags">
+                            <li>Next.js 16</li>
+                            <li>Supabase</li>
+                            <li>Tailwind v4</li>
+                            <li>Live</li>
+                        </ul>
+                        <span class="project-card__cta">View case study</span>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="work-group">
+                <h3 class="work-group__label">Academic &amp; self-study</h3>
+                <div class="mini-grid">
+
+                    <div class="mini-card">
+                        <h4 class="mini-card__title">CineMatch</h4>
+                        <p class="mini-card__desc">Movie recommender on the MovieLens 25M dataset. SVD collaborative filtering plus TF-IDF content-based, evaluated with Precision@10 and NDCG@10 on a temporal train/test split. TMDb API enrichment (posters, descriptions), deployed as a Netflix-inspired Streamlit app.</p>
+                        <p class="mini-card__stack">// Python · scikit-surprise · scikit-learn · Streamlit · TMDb API</p>
+                        <!-- TODO: swap # for real URLs once provided -->
+                        <div class="mini-card__links">
+                            <a href="#" aria-disabled="true">Live demo ↗</a>
+                            <a href="#" aria-disabled="true">GitHub ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="mini-card">
+                        <h4 class="mini-card__title">Steam Game Recommender</h4>
+                        <p class="mini-card__desc">Content-based recommender over ~5,000 games using SteamSpy tag data. TF-IDF plus cosine similarity on a sparse feature matrix pipeline, exposed via a FastAPI REST endpoint supporting multi-game queries by averaging feature vectors. Backend on Render, frontend on Vercel.</p>
+                        <p class="mini-card__stack">// Python · FastAPI · scikit-learn · React · Vite</p>
+                        <div class="mini-card__links">
+                            <a href="#" aria-disabled="true">Live demo ↗</a>
+                            <a href="#" aria-disabled="true">GitHub ↗</a>
+                        </div>
+                    </div>
+
+                    <div class="mini-card">
+                        <h4 class="mini-card__title">PySpark Fraud Detection</h4>
+                        <p class="mini-card__desc">End-to-end PySpark pipeline on Databricks for credit-card fraud detection. Compared Logistic Regression, GBTs, Random Forest, and a Neural Network under class-imbalanced data. StandardScaler + log-transform preprocessing, cross-validation for hyperparameter tuning, AUC / precision / recall / F1 evaluation. Best model persisted to DBFS.</p>
+                        <p class="mini-card__stack">// Python · PySpark · MLlib · Databricks</p>
+                    </div>
+
+                    <div class="mini-card">
+                        <h4 class="mini-card__title">Transformer from scratch</h4>
+                        <p class="mini-card__desc">Built and trained a Transformer end to end as part of structured Python and ML self-study. Multi-head attention, positional encodings, encoder-decoder stack, training loop, and inference implemented from first principles rather than assembled from library primitives.</p>
+                        <p class="mini-card__stack">// PyTorch · self-study</p>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="experience" class="section">
-        <p class="section-label">§ 03 Experience</p>
-        <div class="section-body">
+        <div class="container container--wide">
+            <p class="section-eyebrow">03 · Experience</p>
+            <h2 class="section-heading">Experience</h2>
+            <div class="entry-list">
 
-            <article class="entry">
-                <div class="entry__meta">
+                <article class="entry">
                     <p class="entry__when">11/2025 to 06/2026</p>
-                </div>
-                <div class="entry__body">
-                    <h3>Data Scientist Intern</h3>
-                    <p class="entry__where">Moongy (via DXspark Padawan program)</p>
-                    <ul>
-                        <li>Built a Transformer-based time series forecasting model in PyTorch, training on Azure ML GPU clusters to capture long-range temporal dependencies.</li>
-                        <li>Developed a geospatial clustering pipeline over GPS coordinates and asset-level features to segment assets into groups for more targeted forecasting.</li>
-                        <li>Implemented experiment tracking with MLflow, and built automated pipelines for data ingestion and feature engineering with cyclic temporal embeddings.</li>
-                        <li>Managed the end-to-end ML lifecycle with the Azure ML SDK, including experiment management and model registration.</li>
-                    </ul>
-                </div>
-            </article>
+                    <div>
+                        <h3>Data Scientist Intern</h3>
+                        <p class="entry__where">Moongy (via DXspark Padawan program)</p>
+                        <ul>
+                            <li>Built a Transformer-based time series forecasting model in PyTorch, training on Azure ML GPU clusters to capture long-range temporal dependencies.</li>
+                            <li>Developed a geospatial clustering pipeline over GPS coordinates and asset-level features to segment assets into groups for more targeted forecasting.</li>
+                            <li>Implemented experiment tracking with MLflow, and built automated pipelines for data ingestion and feature engineering with cyclic temporal embeddings.</li>
+                            <li>Managed the end-to-end ML lifecycle with the Azure ML SDK, including experiment management and model registration.</li>
+                        </ul>
+                    </div>
+                </article>
 
-            <article class="entry">
-                <div class="entry__meta">
+                <article class="entry">
                     <p class="entry__when">01/2017 to 11/2025</p>
-                </div>
-                <div class="entry__body">
-                    <h3>Certified Accountant</h3>
-                    <p class="entry__where">M.luz, Contabilidade, Fiscalidade e Gestão Lda.</p>
-                    <ul>
-                        <li>Full accounting and tax service for a portfolio of Portuguese small businesses, covering SAF-T PT, IRS Modelo 3, VAT regimes, and Portal das Finanças submissions.</li>
-                        <li>Introduced automation for bank reconciliation, IRS Modelo 3 preparation, and SAF-T analysis, absorbing more work per client without adding headcount.</li>
-                    </ul>
-                </div>
-            </article>
+                    <div>
+                        <h3>Certified Accountant</h3>
+                        <p class="entry__where">M.luz, Contabilidade, Fiscalidade e Gestão Lda.</p>
+                        <ul>
+                            <li>Full accounting and tax service for a portfolio of Portuguese small and mid-sized businesses (from micro companies up to €40M in yearly turnover), covering SAF-T PT, IRS Modelo 3, VAT regimes, and Portal das Finanças submissions.</li>
+                            <li>Introduced automation for bank reconciliation, IRS Modelo 3 preparation, and SAF-T analysis, absorbing more work per client without adding headcount.</li>
+                        </ul>
+                    </div>
+                </article>
 
+            </div>
         </div>
     </section>
 
     <section id="education" class="section">
-        <p class="section-label">§ 04 Education</p>
-        <div class="section-body">
+        <div class="container container--wide">
+            <p class="section-eyebrow">04 · Education</p>
+            <h2 class="section-heading">Education &amp; certifications</h2>
+            <div class="entry-list">
 
-            <article class="entry">
-                <div class="entry__meta">
+                <article class="entry">
                     <p class="entry__when">2024 to present</p>
-                </div>
-                <div class="entry__body">
-                    <h3>Master's in Data Science</h3>
-                    <p class="entry__where">ESCE-IPS (GPA 4.25)</p>
-                    <ul>
-                        <li>Dissertation on Transformer-based multiclass classification for EV charging infrastructure (under NDA).</li>
-                    </ul>
-                </div>
-            </article>
+                    <div>
+                        <h3>Master's in Data Science</h3>
+                        <p class="entry__where">ESCE-IPS · GPA 4.25</p>
+                        <ul>
+                            <li>Dissertation on Transformer-based multiclass classification with heavy class imbalance on a large Portugal-wide dataset (under NDA).</li>
+                        </ul>
+                    </div>
+                </article>
 
-            <article class="entry">
-                <div class="entry__meta">
-                    <p class="entry__when">2022</p>
-                </div>
-                <div class="entry__body">
-                    <h3>Master's in Accounting and Finance</h3>
-                    <p class="entry__where">Escola Superior de Tecnologia e Gestão, Beja</p>
-                </div>
-            </article>
+                <article class="entry">
+                    <p class="entry__when">2020 to 2022</p>
+                    <div>
+                        <h3>Master's in Accounting and Finance</h3>
+                        <p class="entry__where">ESTG Beja</p>
+                    </div>
+                </article>
 
-            <article class="entry">
-                <div class="entry__meta">
-                    <p class="entry__when">2020</p>
-                </div>
-                <div class="entry__body">
-                    <h3>Bachelor's in Business Management</h3>
-                    <p class="entry__where">Escola Superior de Tecnologia e Gestão, Beja</p>
-                </div>
-            </article>
+                <article class="entry">
+                    <p class="entry__when">2017 to 2020</p>
+                    <div>
+                        <h3>Bachelor's in Business Management</h3>
+                        <p class="entry__where">ESTG Beja</p>
+                    </div>
+                </article>
 
-            <article class="entry">
-                <div class="entry__meta">
+                <article class="entry">
                     <p class="entry__when">Certifications</p>
-                </div>
-                <div class="entry__body">
-                    <h3>Continuing education</h3>
-                    <p class="entry__where">Recent coursework</p>
-                    <ul>
-                        <li>Machine Learning Specialization, DeepLearning.AI (11/2025).</li>
-                        <li>Data Science Professional Certificate, IBM (05/2025).</li>
-                        <li>AI Agents Fundamentals, Hugging Face (06/2025).</li>
-                        <li>Certified Accountant, Ordem dos Contabilistas Certificados (OCC).</li>
-                    </ul>
-                </div>
-            </article>
+                    <div>
+                        <h3>Professional certifications</h3>
+                        <ul>
+                            <li>DeepLearning.AI Machine Learning Specialization · 11/2025</li>
+                            <li>IBM Data Science Professional Certificate · 05/2025</li>
+                            <li>Hugging Face AI Agents Fundamentals · 06/2025</li>
+                            <li>OCC (Ordem dos Contabilistas Certificados) · Certified Accountant</li>
+                        </ul>
+                    </div>
+                </article>
 
+            </div>
         </div>
     </section>
 
-    <section id="contact" class="section section--contact">
-        <p class="section-label">§ 05 Contact</p>
-        <div class="section-body">
-            <p class="contact-lede">
-                Open to data science and ML engineering roles, especially where domain knowledge in accounting, tax, or Portuguese-language NLP is useful.
-            </p>
+    <section id="contact" class="section">
+        <div class="container container--wide">
+            <p class="section-eyebrow">05 · Contact</p>
+            <h2 class="section-heading">Contact</h2>
+            <p class="contact-lede">Available for ML and data engineering roles from June 2026. Open to Portugal-based, remote-EU, and Portuguese-speaking teams.</p>
             <ul class="contact-list">
-                <li><span>Email</span><a href="mailto:1302diogo@gmail.com">1302diogo@gmail.com</a></li>
-                <li><span>GitHub</span><a href="https://github.com/krav0x" target="_blank" rel="noopener">github.com/krav0x</a></li>
-                <li><span>Hugging Face</span><a href="https://huggingface.co/krav0x" target="_blank" rel="noopener">huggingface.co/krav0x</a></li>
-                <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/diogosilvacc/" target="_blank" rel="noopener">linkedin.com/in/diogosilvacc</a></li>
+                <li>
+                    <span>Email</span>
+                    <a href="mailto:1302diogo@gmail.com">1302diogo@gmail.com</a>
+                </li>
+                <li>
+                    <span>LinkedIn</span>
+                    <a href="https://www.linkedin.com/in/diogosilvacc/" target="_blank" rel="noopener">linkedin.com/in/diogosilvacc</a>
+                </li>
+                <li>
+                    <span>GitHub</span>
+                    <a href="https://github.com/krav0x" target="_blank" rel="noopener">github.com/krav0x</a>
+                </li>
+                <li>
+                    <span>Hugging Face</span>
+                    <a href="https://huggingface.co/krav0x" target="_blank" rel="noopener">huggingface.co/krav0x</a>
+                </li>
             </ul>
         </div>
     </section>
 
-    <footer class="footer">
-        <p>© <span id="year">2026</span> Diogo Silva. Built by hand.</p>
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026 &middot; Built with HTML, CSS, and stubbornness</span>
+            <span><a href="https://github.com/krav0x/krav0x.github.io">source</a></span>
+        </div>
     </footer>
 
-</main>
+    <script>
+        (function () {
+            var nav = document.getElementById('topNav');
+            if (!nav) return;
+            function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+    </script>
 
-<script src="main.js"></script>
 </body>
 </html>

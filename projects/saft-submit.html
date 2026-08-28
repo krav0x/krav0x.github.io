@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SAF-T PT Submission Tool · Diogo Silva</title>
+    <meta name="description" content="Streamlit frontend around FACTEMICLI, the AT's Java CLI for SAF-T PT submissions. Saves ~28 hours a year across a 40-client book.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="../styles-v2.css">
+</head>
+<body>
+
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="../index.html" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container container--wide">
+            <a href="../index.html" class="back-link">Back to portfolio</a>
+            <p class="project-kind">In monthly production at my practice</p>
+            <h1 class="project-title">SAF-T PT Submission Tool</h1>
+            <p class="project-lede">
+                Streamlit frontend around FACTEMICLI, the Autoridade Tributária's Java CLI for SAF-T PT submissions. Replaces a 4-minute-per-client portal flow (open Excel for credentials, log in, click through, upload, verify) with a 30-second one: pick client, pick file, click. Parses the AT's latin-1 XML response, surfaces totals and errors in-app, and appends every submission to a structured CSV log. In monthly production across the practice's ~40-client book, saving close to 28 hours a year.
+            </p>
+            <div class="project-meta">
+                <span class="tag">Python 3</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">XML parsing</span>
+                <span class="tag">FACTEMICLI 2.8.6</span>
+                <span class="tag">subprocess</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-figure">
+        <div class="browser-frame" data-browser>
+            <div class="browser-chrome">
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__url" data-url><span class="lock">◉</span>localhost:8501</span>
+            </div>
+            <div class="browser-tabs" role="tablist" aria-label="SAF-T PT Submission Tool screens">
+                <button type="button" class="browser-tab" aria-current="true"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Main form: client dropdown, year/month pickers, XML uploader, Executar Envio button"
+                        data-caption="// main form, client dropdown and Executar Envio"
+                        data-url="localhost:8501">
+                    <span class="browser-tab__index">01</span>Main form
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Success result with parsed totalFaturas, totalCreditos, totalDebitos"
+                        data-caption="// success, parsed totalFaturas / creditos / debitos"
+                        data-url="localhost:8501 · sucesso">
+                    <span class="browser-tab__index">02</span>Success
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Failure result with AT error code and message extracted from errors/error"
+                        data-caption="// failure, AT error code and message from <errors>"
+                        data-url="localhost:8501 · erro">
+                    <span class="browser-tab__index">03</span>Failure
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="CSV audit log opened in Excel"
+                        data-caption="// CSV audit log, one row per submission"
+                        data-url="logs/submissoes.csv">
+                    <span class="browser-tab__index">04</span>CSV log
+                </button>
+            </div>
+            <div class="browser-frame__body">
+                <img src="img/saft-placeholder.svg" alt="Main form" data-image>
+            </div>
+            <div class="browser-caption">
+                <span class="browser-caption__text" data-caption>// main form, client dropdown and Executar Envio</span>
+                <span class="browser-caption__pager" data-pager>01 / 04</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="case-study-body">
+        <div class="container">
+
+            <section class="prose">
+                <p class="section-num">01 · Context</p>
+                <h2 class="section-title">Context</h2>
+                <p>
+                    The Autoridade Tributária requires every business to submit a SAF-T PT invoice file every month. Before the app, doing this across the practice's clients meant, for each one: open the Excel with the client's NIF and password, log in to Portal das Finanças, click through several pages to the SAF-T submission form, pick year and month, browse the file system for the right XML, upload, wait, verify the confirmation. Close the session, back to the Excel, repeat for the next client. Around 3 to 5 minutes per submission when the portal cooperated, longer when it did not, and the only audit trail was whatever the accountant wrote down by hand.
+                </p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">02 · Approach</p>
+                <h2 class="section-title">Approach</h2>
+                <p>A Streamlit frontend around FACTEMICLI, the AT's Java CLI for SAF-T submissions. The CLI is a scriptable alternative to the portal, but on its own it means typing a 60-character command with credentials, paths, and period flags every time. The app never replaces the official binary; it makes it usable.</p>
+                <ul>
+                    <li>Client registry as a local JSON store. Adding a client (name, NIF, password) once means picking them from a dropdown ever after. NIF is validated on entry: 9 digits, no duplicates.</li>
+                    <li>Year and month pickers default to the current period, which is the right choice almost every time.</li>
+                    <li>XML uploader, then a single "Executar Envio" button assembles the full <code>java -jar</code> command with the right flags and runs it as a subprocess with captured stdout and stderr.</li>
+                    <li>The AT's response file is parsed as XML instead of dumped as-is. The tool pulls out the status code, <code>totalFaturas</code>, <code>totalCreditos</code>, <code>totalDebitos</code>, and any error message inside <code>&lt;errors&gt;&lt;error&gt;</code>, then renders success or failure with the numbers front and centre.</li>
+                    <li>Every submission is appended to a CSV log: timestamp, client, NIF, period, filename, success flag, response code, message, and the three totals. One file, sortable in Excel, complete history.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">03 · Engineering notes</p>
+                <h2 class="section-title">Engineering notes</h2>
+                <ul class="notes-list">
+                    <li><strong>Latin-1 responses.</strong> The AT tool writes its result file in latin-1, not UTF-8. Decoding as UTF-8 corrupts the error messages, so the reader opens with <code>encoding="latin1"</code> explicitly.</li>
+                    <li><strong>Subprocess with graceful failure.</strong> If the jar exits non-zero, the <code>CalledProcessError</code> is caught and stderr is written into the result file so the user still sees what happened. The XML parser falls through to a "could not interpret response" state instead of crashing the app.</li>
+                    <li><strong>Structured logging over shell history.</strong> The CSV header is written once on file creation; every subsequent submission appends a row. Nothing to configure, nothing to click.</li>
+                    <li><strong>Zero credential re-entry.</strong> Passwords sit in the JSON registry alongside the NIF. Trade-off: the file is local to the accountant's machine, but it saves typing (or pasting from a text file) on every submission.</li>
+                    <li><strong>Sensible period defaults.</strong> The year dropdown covers the current year and the previous five; the month defaults to the current month. Historical resubmissions still work, but the common case is one click.</li>
+                    <li><strong>Scoped, disposable temp directory.</strong> Uploaded XML and AT responses live under <code>temp/</code>, nothing else survives a session.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">04 · Outcome</p>
+                <h2 class="section-title">Outcome</h2>
+                <p>In monthly production use across the practice. Per-submission time dropped from around 4 minutes on the portal to under 30 seconds in the app. About 3.5 minutes saved per client per month. Across the practice's 40-client book, that is roughly 2h20 back every month, or close to 28 hours a year. Failed submissions carry the AT's error code and message straight into the CSV log, so retries can be triaged without redoing the whole portal flow. "Did we submit for client X in April?" goes from a portal login to a Ctrl+F.</p>
+                <table>
+                    <thead>
+                        <tr><th>Task</th><th>Portal flow</th><th>This tool</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Retrieve client credentials</td><td>Open Excel, find row</td><td>Pick from dropdown</td></tr>
+                        <tr><td>Reach the submission form</td><td>Login, click through pages</td><td>N/A</td></tr>
+                        <tr><td>Set period and pick file</td><td>Manual, per client</td><td>Defaults to current month</td></tr>
+                        <tr><td>Submit and verify</td><td>Upload, wait, read screen</td><td>One click, status in-app</td></tr>
+                        <tr><td>Record the submission</td><td>Handwritten note</td><td>Automatic CSV row</td></tr>
+                        <tr><td>Time per client</td><td>~4 min</td><td>~30 s</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">05 · Stack</p>
+                <h2 class="section-title">Stack</h2>
+                <p>Python 3. Streamlit for the UI. PIL for the logo. FACTEMICLI 2.8.6 (Autoridade Tributária) as the actual submission engine, invoked via <code>subprocess</code>. Local JSON for the client registry, CSV for the audit log, <code>xml.etree</code> for parsing AT responses.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026</span>
+            <span><a href="https://github.com/krav0x">github.com/krav0x</a></span>
+        </div>
+    </footer>
+
+    <script>
+        (function () { var nav = document.getElementById('topNav'); if (!nav) return; function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })();
+        (function () {
+            document.querySelectorAll('[data-browser]').forEach(function (frame) {
+                var tabs = Array.prototype.slice.call(frame.querySelectorAll('.browser-tab'));
+                var img = frame.querySelector('[data-image]'); var caption = frame.querySelector('[data-caption]');
+                var url = frame.querySelector('[data-url]'); var pager = frame.querySelector('[data-pager]');
+                var total = tabs.length;
+                function activate(index) {
+                    if (index < 0) index = total - 1; if (index >= total) index = 0;
+                    var tab = tabs[index]; if (!tab) return;
+                    tabs.forEach(function (t) { t.setAttribute('aria-current', 'false'); });
+                    tab.setAttribute('aria-current', 'true');
+                    if (img && tab.dataset.src) { img.classList.add('is-swapping'); var next = new Image(); next.onload = function () { img.src = tab.dataset.src; if (tab.dataset.alt) img.alt = tab.dataset.alt; img.classList.remove('is-swapping'); }; next.onerror = function () { img.classList.remove('is-swapping'); }; next.src = tab.dataset.src; }
+                    if (caption && tab.dataset.caption) caption.textContent = tab.dataset.caption;
+                    if (url && tab.dataset.url) { var lock = url.querySelector('.lock'); url.textContent = tab.dataset.url; if (lock) url.insertBefore(lock, url.firstChild); }
+                    if (pager) pager.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+                }
+                tabs.forEach(function (tab, i) {
+                    tab.addEventListener('click', function () { activate(i); tab.focus(); });
+                    tab.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowRight') { e.preventDefault(); activate(i + 1); tabs[(i + 1) % total].focus(); }
+                        else if (e.key === 'ArrowLeft') { e.preventDefault(); activate(i - 1); tabs[(i - 1 + total) % total].focus(); }
+                        else if (e.key === 'Home') { e.preventDefault(); activate(0); tabs[0].focus(); }
+                        else if (e.key === 'End') { e.preventDefault(); activate(total - 1); tabs[total - 1].focus(); }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

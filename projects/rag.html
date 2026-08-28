@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portuguese Accounting RAG · Diogo Silva</title>
+    <meta name="description" content="Portuguese-language RAG assistant over the country's core tax and accounting corpus. 4,448 chunks, iterated against a real held-out eval.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="../styles-v2.css">
+</head>
+<body>
+
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="../index.html" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container container--wide">
+            <a href="../index.html" class="back-link">Back to portfolio</a>
+            <p class="project-kind">WIP, retrieval baseline shipping</p>
+            <h1 class="project-title">Portuguese Accounting RAG</h1>
+            <p class="project-lede">
+                Portuguese-language RAG assistant over Portugal's core tax and accounting corpus (CIRS, CIRC, CIVA, RITI, LGT, EBF, SNC, NCRF). 4,448 article-level chunks embedded once with multilingual-e5-large, stored in Chroma, queried via MiniMax M3 on OpenRouter. The prompt hard-codes three rules: answer only from retrieved context, cite the specific article, refuse otherwise. Retrieval iteration moved recall@5 from 47.6% to 61.9% under a strict tuple-based grader on a 25-question held-out eval; 100% refusal accuracy on the 4 refuse-worthy questions; 9.5% hallucination rate on the baseline. Tier-1 (read-only lookup) only in the current build.
+            </p>
+            <div class="project-meta">
+                <span class="tag">RAG</span>
+                <span class="tag">LangChain</span>
+                <span class="tag">ChromaDB</span>
+                <span class="tag">MiniMax M3</span>
+                <span class="tag">Streamlit</span>
+                <span class="tag">Portuguese NLP</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-figure">
+        <div class="browser-frame" data-browser>
+            <div class="browser-chrome">
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__url" data-url><span class="lock">◉</span>localhost:8501/consulta</span>
+            </div>
+            <div class="browser-tabs" role="tablist" aria-label="Portuguese Accounting RAG screens">
+                <button type="button" class="browser-tab" aria-current="true"
+                        data-src="img/llm1_1.png"
+                        data-alt="Streamlit answer to a question about IRS tax rates, structured with headings, a full brackets table, and article citations inline"
+                        data-caption="// query and grounded answer with inline article citations"
+                        data-url="localhost:8501/consulta">
+                    <span class="browser-tab__index">01</span>Query &amp; answer
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/llm1_2.png"
+                        data-alt="View Sources / Legal Basis panel expanded: CIRS Artigo 68.º, 65.º, and 22.º returned with 300-character previews per chunk"
+                        data-caption="// sources panel: retrieved chunk ids and 300-char previews"
+                        data-url="localhost:8501/consulta#sources">
+                    <span class="browser-tab__index">02</span>Citations
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/llm2.png"
+                        data-alt="The ChatPromptTemplate source with the three hard-coded rules: answer only from context, refuse otherwise, respond in European Portuguese"
+                        data-caption="// system prompt, three hard-coded rules"
+                        data-url="src/prompts.py">
+                    <span class="browser-tab__index">03</span>System prompt
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/llm3.png"
+                        data-alt="Refusal example: the model refuses to compute an exact IRS/VAT/Social Security amount for a freelance developer, cites which articles are and aren't in context, and recommends consulting a certified accountant"
+                        data-caption="// refusal with the formal PT recommendation phrasing"
+                        data-url="localhost:8501/consulta">
+                    <span class="browser-tab__index">04</span>Refusal example
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/llm4.png"
+                        data-alt="Eval results dashboard: recall@5 61.9%, recall@10 71.4%, refusal accuracy 100%, median latency 4.7s, plus the retrieval iteration table showing v3 chosen"
+                        data-caption="// eval dashboard, v3 chosen at 61.9% recall@5 (+14.3 vs baseline)"
+                        data-url="evals/results.md">
+                    <span class="browser-tab__index">05</span>Eval results
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/llm5.png"
+                        data-alt="Failure mode Q03: the query 'taxa geral do IRC aplicável a sujeitos passivos residentes' expects CIRC Artigo 87.º; the top 5 returns CIRC-2 then four CIRS articles because the query has no lexical anchor into the target"
+                        data-caption="// Q03 failure mode: query has no lexical anchor, model refuses"
+                        data-url="evals/failure-modes.md#q03">
+                    <span class="browser-tab__index">06</span>Failure mode
+                </button>
+            </div>
+            <div class="browser-frame__body">
+                <img src="img/llm1_1.png" alt="Streamlit answer to an IRS tax-rates question, structured with a brackets table and article citations inline" data-image>
+            </div>
+            <div class="browser-caption">
+                <span class="browser-caption__text" data-caption>// query and grounded answer with inline article citations</span>
+                <span class="browser-caption__pager" data-pager>01 / 06</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="case-study-body">
+        <div class="container">
+
+            <section class="prose">
+                <p class="section-num">01 · Context</p>
+                <h2 class="section-title">Context</h2>
+                <p>
+                    Practising Portuguese accountants and business owners keep asking the same class of question: "which article covers this?", "what's the rate on X?", "how is Y treated for VAT?". The correct answers live in a few thousand pages of primary legislation (Códigos, Decretos-Lei, NCRF standards) that a general-purpose LLM will happily paraphrase from memory, often with a confident but wrong article number. The bar this project sets for itself is narrower than "an accountant in a box": produce an answer in European Portuguese that is (a) traceable to a specific article of a specific code and (b) explicitly refuses when the retrieved context doesn't support the question, so the user knows to escalate instead of trusting a fabrication.
+                </p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">02 · Approach</p>
+                <h2 class="section-title">Approach</h2>
+                <p>Single-tier RAG, deliberately kept simple:</p>
+                <ul>
+                    <li><strong>Knowledge layer, RAG.</strong> Primary legislation is chunked article-by-article for the tax codes (<code>Artigo N.º</code> boundary regex) and by recursive character splitting for the accounting standards (NCRF, EC, NI, SNC), which don't follow a strict article structure. Chunks are embedded once with <code>intfloat/multilingual-e5-large</code> and stored in a persistent Chroma collection.</li>
+                    <li><strong>Behaviour layer, prompt only.</strong> No LoRA. The behaviour of the assistant (answer in European Portuguese, only from retrieved context, cite the article, refuse otherwise) is enforced entirely in the system prompt. A LoRA pass was scoped but not run; the choice was to see how far a strong instruction-tuned base could go on a well-chunked corpus before spending on adapter training.</li>
+                    <li><strong>Computation layer, none yet.</strong> The current build does no deterministic numeric computation. Questions that ask "how much would I pay" are treated as refusal cases and pushed back to the user with a "consult a certified accountant" recommendation.</li>
+                </ul>
+                <p><strong>Autonomy tiers.</strong> The design target is three tiers: (1) read-only lookup, (2) draft-and-review with a human accountant approving, (3) prepare-for-submission with structured outputs for AT portals. The current build only implements tier 1; the eval below is scored against that scope.</p>
+                <p><strong>Model choice.</strong> The app now serves MiniMax M3 via OpenRouter's free tier. Groq had decommissioned <code>llama-3.3-70b-versatile</code> mid-project, and MiniMax was the strongest currently-free Portuguese-capable model on OpenRouter (1M-token context, clean European Portuguese output). Earlier retrieval-iteration runs used Llama-3.3-70B via Groq and then via the Hugging Face inference router until those credits also ran out; recall numbers don't depend on the LLM so they're comparable across the swap.</p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">03 · Corpus</p>
+                <h2 class="section-title">Corpus</h2>
+                <p>Ingested from 13 PDFs in <code>data/raw/</code>. The baseline snapshot contains <strong>4,448 chunks / ~742k tokens (~2.97 MB of text)</strong>:</p>
+                <table>
+                    <thead>
+                        <tr><th>Source</th><th>Chunks</th><th>Chunker</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>CIRS (Personal Income Tax Code)</td><td>860</td><td>strict article</td></tr>
+                        <tr><td>CIVA (VAT Code)</td><td>836</td><td>strict article</td></tr>
+                        <tr><td>CIRC (Corporate Income Tax Code)</td><td>734</td><td>strict article</td></tr>
+                        <tr><td>EBF (Tax Benefits Statute)</td><td>550</td><td>strict article</td></tr>
+                        <tr><td>RITI (Intra-community VAT)</td><td>443</td><td>strict article</td></tr>
+                        <tr><td>LGT (General Tax Law)</td><td>308</td><td>strict article</td></tr>
+                        <tr><td>NCRF, NCRF-PE, NCRF-ESNL, NCRF-ME</td><td>469</td><td>recursive (1000/100)</td></tr>
+                        <tr><td>SNC, EC, NI</td><td>248</td><td>mixed</td></tr>
+                    </tbody>
+                </table>
+                <p>A v5 pipeline that filtered this down to <strong>3,211 substantive chunks</strong> by dropping TOC entries and cross-reference stubs was tried and reverted. See the iteration section below.</p>
+                <p><strong>Not in the corpus (yet).</strong> AT (Autoridade Tributária) circulars, ofícios-circulados, and OE (Orçamento do Estado) annual updates. This is a real gap: the eval question about 2026 IRS brackets falls into it and correctly triggers a refusal instead of an outdated bracket.</p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">04 · Engineering notes</p>
+                <h2 class="section-title">Engineering notes</h2>
+                <ul class="notes-list">
+                    <li><strong>Hybrid chunker.</strong> <code>split_by_article_strict</code> uses a <code>(?i)(Artigo\s+\d+\.º(?:-[A-Z])?)</code> regex on the tax codes so every chunk is one legal article with its number in the chunk id (<code>"CIVA - Artigo 18.º"</code>). NCRF, EC, NI use a 1000/100 recursive splitter because those documents don't have article-level structure. This is what makes citations traceable: the retrieved chunk id is the citation.</li>
+                    <li><strong>Multilingual embedding choice.</strong> <code>intfloat/multilingual-e5-large</code> was picked over Portuguese-only encoders because the corpus mixes technical Portuguese (legislative style), abbreviations (IRS, IVA, PPR), and code numbers. E5-large was empirically better at surfacing the correct article across the eval set than smaller multilingual MiniLM variants tested locally.</li>
+                    <li><strong>Retrieval-tight prompt.</strong> The prompt hard-codes three rules (answer only from context, refuse otherwise, respond in European Portuguese). Every one of the 4 refusal-worthy questions in the eval produced a proper refusal, and the model correctly refused on retrieval misses instead of hallucinating a number.</li>
+                    <li><strong>Streamlit UI with citation panel.</strong> Every answer ships with a "View Sources / Legal Basis" panel that dumps chunk id and a 300-character preview per retrieved doc, so the user can verify the citation without leaving the tab.</li>
+                    <li><strong>What is not in there.</strong> No LangGraph, no agentic tool use, no LoRA, no query decomposition. Those are candidates for later iterations; none are implemented today, and I would rather be measured on what is shipped than on what is planned.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">05 · Evaluation setup</p>
+                <h2 class="section-title">Evaluation setup</h2>
+                <p>
+                    25-question held-out eval set: 18 single-source factual lookups, 3 cross-source questions that require chunks from two codes, 4 refusal-worthy questions (personal legal advice, personalised numeric computation, post-cutoff regulatory data, cross-border tax planning). Ground-truth citations are stored per question in <code>evals/eval_set.json</code>; a lightweight harness (<code>evals/run_eval.py</code>, <code>evals/eval_retrieval.py</code>) queries the live Chroma store, runs the same prompt the app uses, and auto-grades each answer.
+                </p>
+                <p><strong>Auto-grader rubric</strong> (a proxy for hand-grading, not a substitute):</p>
+                <ul>
+                    <li><strong>Retrieval hit @k.</strong> The expected article id and any retrieved chunk id both canonicalise to the same <code>(SOURCE, N, SUFFIX?)</code> tuple, within the top-k. Strict boundary matching, so <code>Artigo 68</code> and <code>Artigo 68-A</code> are distinct. An earlier draft used substring matching, which was flattering every recall number by ~10 pts at @5.</li>
+                    <li><strong>Answer accuracy.</strong> The answer contains at least <code>min_keyword_hits</code> of the pre-declared correctness keywords.</li>
+                    <li><strong>Hallucination.</strong> The answer cites an <code>Artigo N.º</code> that does not appear in any of the retrieved chunks fed to the LLM.</li>
+                    <li><strong>Refusal correctness.</strong> For the 4 refuse-questions, the answer matches one of the refusal-phrase patterns.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">06 · Outcome</p>
+                <h2 class="section-title">Outcome</h2>
+                <p>Retrieval was iterated on because it caps everything downstream. Every row below is a real, reproducible run of <code>evals/eval_retrieval.py</code> against the eval set.</p>
+                <p><strong>Retrieval recall (n=21 non-refuse questions):</strong></p>
+                <table>
+                    <thead>
+                        <tr><th>Config</th><th>@1</th><th>@3</th><th>@5</th><th>@10</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>v1 baseline (raw chunks, no prefix)</td><td>19.0%</td><td>33.3%</td><td>47.6%</td><td>66.7%</td></tr>
+                        <tr><td>v2, E5 "query:" / "passage:" prefixes</td><td>23.8%</td><td>52.4%</td><td>57.1%</td><td>61.9%</td></tr>
+                        <tr><td><strong>v3, v2 + source-tag headers (chosen)</strong></td><td><strong>28.6%</strong></td><td><strong>52.4%</strong></td><td><strong>61.9%</strong></td><td><strong>71.4%</strong></td></tr>
+                        <tr><td>v4, aggressive dedup (1 chunk / article)</td><td>9.5%</td><td>33.3%</td><td>38.1%</td><td>38.1%</td></tr>
+                        <tr><td>v5, filter-only + source-tag + E5 prefix</td><td>19.0%</td><td>42.9%</td><td>57.1%</td><td>71.4%</td></tr>
+                        <tr><td>v5 + BM25 hybrid (RRF, weight sweep)</td><td>14–19%</td><td>33–48%</td><td>47–57%</td><td>52–71%</td></tr>
+                        <tr><td>v5 + bge-reranker-v2-m3 cross-encoder</td><td>33.3%</td><td>47.6%</td><td>61.9%</td><td>71.4%</td></tr>
+                    </tbody>
+                </table>
+                <p><strong>+14.3 points of recall@5 vs the v1 baseline</strong>, the metric that actually decides whether the LLM sees the correct article. v3 (source-tagged, all substantive chunks kept) beats v5 (filtered): the "drop TOC noise" step was marginally hurting more than helping, so v5 was reverted.</p>
+                <p><strong>What each iteration changed:</strong></p>
+                <ul class="notes-list">
+                    <li><strong>v2, E5 prefixes on both sides.</strong> <code>intfloat/multilingual-e5-large</code> was trained with <code>"query: "</code> in front of queries and <code>"passage: "</code> in front of documents. Re-indexing with the <code>"passage: "</code> prefix and prepending <code>"query: "</code> at retrieval time is a documented free lift. Result: +5 pts on @1 and @3.</li>
+                    <li><strong>v3, source-tag headers in the embedded text.</strong> The chunker was writing the source name into chunk metadata, but not into the embedded text. A query mentioning "IRC" had no lexical anchor to the CIRC chunks; it had to match through semantics alone. Fix: prepend <code>"[CIVA] CIVA - Artigo 18"</code> to each chunk's text before embedding. Result: +4.8 pts on top of v2, bringing the total baseline-to-v3 lift to +14.3 pts.</li>
+                    <li><strong>v4, over-eager dedup (backed out).</strong> CIVA-Artigo 2 was fragmented into 141 chunks, CIVA-Artigo 3 into 109, because the PDFs open with a full table of contents and inline-reference each article dozens of times. Keeping only the longest fragment per article dropped recall@5 to 38.1%: for CIVA-18, the longest fragment carried grouped-goods rules, not the rate table with 23%. Reverted.</li>
+                    <li><strong>v5, filter, don't dedup (tried, reverted).</strong> Dropped chunks that were mostly dot-leaders (TOC entries) or shorter than 120 non-dot characters. Corpus went from 4,448 to 3,211 substantive chunks. Result under the strict grader: −4.8 pts at recall@5 vs v3. A few of the "TOC-looking" chunks actually carried answers.</li>
+                    <li><strong>BM25 hybrid (tried, didn't ship).</strong> Portuguese legal text saturates BM25 with high-frequency generic phrases. RRF fusion at four different weightings; none beat dense-alone.</li>
+                    <li><strong>Cross-encoder reranking (tried, didn't ship).</strong> <code>BAAI/bge-reranker-v2-m3</code> over a pool of 30 dense hits. +5 pts at recall@1 but hurt @3 and @5. On CPU it added ~38 s per query, a non-starter for a Streamlit tool.</li>
+                </ul>
+                <p><strong>End-to-end numbers on the initial baseline</strong> (v1 retriever, run before HF free credits ran out):</p>
+                <table>
+                    <thead>
+                        <tr><th>Metric</th><th>Value</th><th>Denominator</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Retrieval recall@5</td><td>47.6% (now 61.9% on v3)</td><td>21 non-refuse questions</td></tr>
+                        <tr><td>Retrieval recall@10</td><td>66.7% (now 71.4% on v3)</td><td>21 non-refuse questions</td></tr>
+                        <tr><td>Answer accuracy (keyword rubric)</td><td>76.2%</td><td>21 non-refuse questions</td></tr>
+                        <tr><td>Hallucination rate</td><td>9.5% (2 answers)</td><td>21 non-refuse questions</td></tr>
+                        <tr><td>Refusal accuracy</td><td>100% (4/4)</td><td>4 refuse questions</td></tr>
+                        <tr><td>Median latency, overall</td><td>4.7 s</td><td>25 questions</td></tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">07 · Failure modes and confounds</p>
+                <h2 class="section-title">Failure modes and confounds</h2>
+                <p>Six of the 21 non-refuse questions never enter top-10 across any tried config:</p>
+                <ul>
+                    <li><strong>Q02.</strong> "Qual é a taxa geral do IVA em Portugal continental?" (target CIVA-Artigo 18).</li>
+                    <li><strong>Q03.</strong> "Qual é a taxa geral do IRC aplicável a sujeitos passivos residentes?" (target CIRC-Artigo 87).</li>
+                    <li><strong>Q12.</strong> "Em que consiste o regime do IRS Jovem?" (target CIRS-Artigo 12-B).</li>
+                    <li><strong>Q17.</strong> "Como se determina o lucro tributável em sede de IRC?" (target CIRC-Artigo 17).</li>
+                    <li><strong>Q19.</strong> Cross-code (CIRS-31 + CIRC-17).</li>
+                    <li><strong>Q20.</strong> Cross-code (CIVA-3 + CIRC-23).</li>
+                </ul>
+                <p>Manual inspection confirmed the answer text is in the corpus: CIVA-18 fragment #4 literally contains <code>"a taxa de 23 %"</code>. Dense retrieval isn't finding them because the queries use paraphrases the chunks don't contain. "taxa geral" and "sujeitos passivos residentes" in the query semantically match articles about regime geral and residência fiscal, not the rate table. That is a query-side problem, not a retriever-side one.</p>
+                <p>There is also an upstream PDF-extraction issue: for a few CIVA articles, PyMuPDF loses the multi-column rate tables entirely. That is a floor on retrieval quality no encoder tuning can lift.</p>
+                <p><strong>Confounds worth stating out loud:</strong></p>
+                <ul>
+                    <li>n=25 is small. A real portfolio-grade eval wants 100+ items with inter-annotator agreement on citations.</li>
+                    <li>Keyword auto-grading misses correct paraphrases; a stronger judge model would give a more defensible answer-accuracy figure.</li>
+                    <li>I graded my own eval. The retrieval and refusal numbers, which don't depend on the grader, would not move.</li>
+                    <li>Ground truth had to be corrected mid-run when the actual PDFs cited Lei n.º 64/2025 (IRC to 17%, first-50k to 15%). This is why an assistant that refuses a memorised answer is more valuable than one that confidently recites an out-of-date figure.</li>
+                    <li>Only one base model was evaluated. Amália (EuroLLM-9B) and EuroLLM-22B were scoped for an A/B but neither is wired up in the current build.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">08 · Roadmap</p>
+                <h2 class="section-title">Roadmap</h2>
+                <p>Portfolio-shippable target is ≥80% recall@5. Two concrete levers, in priority order:</p>
+                <ul>
+                    <li><strong>Query rewriter.</strong> A small LLM step that reformulates the user's question into 2 or 3 lexical variants and OR-s the results. Best guess: +10 to 15 pts of recall@5.</li>
+                    <li><strong>PDF extraction pass.</strong> Swap PyMuPDF for pdfplumber with a table-aware extractor to recover the CIVA rate tables. Lifts a floor rather than a ceiling; helps only a few questions, but they are unrecoverable today.</li>
+                </ul>
+                <p>Longer-horizon:</p>
+                <ul>
+                    <li>AT circulars and OE annual updates in the corpus, with per-chunk validity dates so refusals can be precise.</li>
+                    <li>Tier-2 autonomy path: a draft-a-reply mode where the assistant produces a structured citation table a human accountant can approve or reject.</li>
+                    <li>Grow the eval to 100 items and run under an LLM-as-judge with a stronger reference model, plus a small A/B against EuroLLM-9B on the same set.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">09 · Stack</p>
+                <h2 class="section-title">Stack</h2>
+                <p>Base model (app): MiniMax M3 via OpenRouter free tier, temperature 0.1. Earlier eval runs used Llama-3.3-70B-Instruct via Groq and then via the HF inference router. Embedding: <code>intfloat/multilingual-e5-large</code>, run locally on CPU. RAG store: ChromaDB, persistent on disk, ~47 MB per index. Framework: LangChain (<code>langchain_chroma</code>, <code>langchain_huggingface</code>, <code>langchain_openai</code>, <code>langchain_text_splitters</code>) for the retrieval and prompt-templating glue (OpenRouter is OpenAI-compatible); PyMuPDF (<code>fitz</code>) for PDF extraction. UI: Streamlit. Deployment target: Docker container for a single-container Streamlit deploy on Fly.io or Render.</p>
+                <p><strong>Portuguese-language notes.</strong> UI and prompts use PT-PT throughout (declaração, coleta, matéria coletável, sujeito passivo, isenção, tributação autónoma), not the Brazilian variants a general LLM would default to. The chunker preserves the ordinal marker (<code>Artigo 68.º</code>) so the retrieved citation reads correctly in the legal-Portuguese convention. The refusal path is phrased as a formal recommendation ("recomendo consultar um contabilista certificado") rather than a shrug.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026</span>
+            <span><a href="https://github.com/krav0x">github.com/krav0x</a></span>
+        </div>
+    </footer>
+
+    <script>
+        (function () { var nav = document.getElementById('topNav'); if (!nav) return; function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })();
+        (function () {
+            document.querySelectorAll('[data-browser]').forEach(function (frame) {
+                var tabs = Array.prototype.slice.call(frame.querySelectorAll('.browser-tab'));
+                var img = frame.querySelector('[data-image]'); var caption = frame.querySelector('[data-caption]');
+                var url = frame.querySelector('[data-url]'); var pager = frame.querySelector('[data-pager]');
+                var total = tabs.length;
+                function activate(index) {
+                    if (index < 0) index = total - 1; if (index >= total) index = 0;
+                    var tab = tabs[index]; if (!tab) return;
+                    tabs.forEach(function (t) { t.setAttribute('aria-current', 'false'); });
+                    tab.setAttribute('aria-current', 'true');
+                    if (img && tab.dataset.src) { img.classList.add('is-swapping'); var next = new Image(); next.onload = function () { img.src = tab.dataset.src; if (tab.dataset.alt) img.alt = tab.dataset.alt; img.classList.remove('is-swapping'); }; next.onerror = function () { img.classList.remove('is-swapping'); }; next.src = tab.dataset.src; }
+                    if (caption && tab.dataset.caption) caption.textContent = tab.dataset.caption;
+                    if (url && tab.dataset.url) { var lock = url.querySelector('.lock'); url.textContent = tab.dataset.url; if (lock) url.insertBefore(lock, url.firstChild); }
+                    if (pager) pager.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+                }
+                tabs.forEach(function (tab, i) {
+                    tab.addEventListener('click', function () { activate(i); tab.focus(); });
+                    tab.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowRight') { e.preventDefault(); activate(i + 1); tabs[(i + 1) % total].focus(); }
+                        else if (e.key === 'ArrowLeft') { e.preventDefault(); activate(i - 1); tabs[(i - 1 + total) % total].focus(); }
+                        else if (e.key === 'Home') { e.preventDefault(); activate(0); tabs[0].focus(); }
+                        else if (e.key === 'End') { e.preventDefault(); activate(total - 1); tabs[total - 1].focus(); }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

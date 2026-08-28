@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Money Ball · Diogo Silva</title>
+    <meta name="description" content="End-to-end ML system for Liga Record fantasy football: chained forecasts feeding integer programming.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="../styles-v2.css">
+</head>
+<body>
+
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="../index.html" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container container--wide">
+            <a href="../index.html" class="back-link">Back to portfolio</a>
+            <p class="project-kind">Personal project</p>
+            <h1 class="project-title">Money Ball</h1>
+            <p class="project-lede">
+                End-to-end system for Liga Record. A chain of ML models forecasts expected points per player per round (hurdle for P(plays) × E(minutes), match rating, valorização, event probabilities under the official scoring rules), then integer programming in PuLP picks the 23-man squad and starting XI under the €40M budget, 3/8/8/4 position quotas, captain rule, and the real transfer regime. Backtested across two full seasons at ~48 to 51 expected points per round versus a random baseline near 17. Weekly autonomous pipeline on GitHub Actions with 450+ tests.
+            </p>
+            <div class="project-meta">
+                <span class="tag">Python 3.11</span>
+                <span class="tag">scikit-learn</span>
+                <span class="tag">PuLP</span>
+                <span class="tag">Postgres</span>
+                <span class="tag">Next.js 15</span>
+                <span class="tag">Vercel</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-figure">
+        <div class="browser-frame" data-browser>
+            <div class="browser-chrome">
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__url" data-url><span class="lock">◉</span>moneyball.local/plantel</span>
+            </div>
+            <div class="browser-tabs" role="tablist" aria-label="Money Ball screens">
+                <button type="button" class="browser-tab" aria-current="true"
+                        data-src="img/mb1.png"
+                        data-alt="Plantel and starting XI: the optimiser's chosen 5-3-2 on a 3D tilted pitch, with expected points per player and Zalazar as captain"
+                        data-caption="// plantel e onze, optimiser output at 41.5 xPts / round"
+                        data-url="moneyball.local/plantel">
+                    <span class="browser-tab__index">01</span>Plantel
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/mb2.png"
+                        data-alt="Editar onze: interactive editor showing the model's XI on the left with per-player actions (captain, bench, transfer, injury) and the bench and remaining squad on the right"
+                        data-caption="// editar onze, per-player actions with live budget check"
+                        data-url="moneyball.local/editar">
+                    <span class="browser-tab__index">02</span>Editar onze
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/mb3.png"
+                        data-alt="Jogos: per-fixture panel with 1-X-2 probabilities, expected goals, clean-sheet probabilities, and form for each of the round's matches"
+                        data-caption="// jogos, per-fixture 1-X-2 / xG / clean-sheet / form"
+                        data-url="moneyball.local/jogos">
+                    <span class="browser-tab__index">03</span>Jogos
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/mb4.png"
+                        data-alt="Época 25/26: full-season replay showing our total 1467 pts vs ideal 3385 pts (43% of the perfect-hindsight ceiling), best and worst rounds, and per-round side-by-side breakdown"
+                        data-caption="// época 25/26, replay against the perfect-hindsight ideal (43% captured)"
+                        data-url="moneyball.local/epoca-25-26">
+                    <span class="browser-tab__index">04</span>Época 25/26
+                </button>
+            </div>
+            <div class="browser-frame__body">
+                <img src="img/mb1.png" alt="Plantel and starting XI: the optimiser's chosen 5-3-2 on a 3D tilted pitch" data-image>
+            </div>
+            <div class="browser-caption">
+                <span class="browser-caption__text" data-caption>// plantel e onze, optimiser output at 41.5 xPts / round</span>
+                <span class="browser-caption__pager" data-pager>01 / 04</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="case-study-body">
+        <div class="container">
+
+            <section class="prose">
+                <p class="section-num">01 · Context</p>
+                <h2 class="section-title">Context</h2>
+                <p>
+                    Liga Record is Record newspaper's fantasy game for Portugal's Primeira Liga. Each round you manage a 23-man squad and a starting XI under a €40M budget, 3/8/8/4 position quotas, one captain (points doubled), and hard transfer rules (one per round, six in the February window). Scoring blends objective events (goals, clean sheets, cards) with the newspaper's own subjective valorização, which accounts for roughly three quarters of a player's points. Source data is not archived by anyone, so the pipeline had to solve data collection before it could solve the game.
+                </p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">02 · Approach</p>
+                <h2 class="section-title">Approach</h2>
+                <p>Two connected pieces: a chain of forecasts, then an optimiser under the real rules of the game.</p>
+                <p><strong>Forecasts.</strong> Points per player per round come from a chain, not a single model:</p>
+                <ul>
+                    <li>Hurdle for participation: P(plays) × E(minutes given plays).</li>
+                    <li>Match-rating model per player-fixture.</li>
+                    <li>A model for valorização, the subjective score that carries roughly three quarters of a player's points.</li>
+                    <li>Event probability components (goals, clean sheets, cards) combined through the official scoring rules.</li>
+                    <li>Fixture difficulty from a Dixon-Coles team-strength model, blended with live betting-market odds.</li>
+                </ul>
+                <p><strong>Optimiser.</strong> The forecasts feed an integer program in PuLP that maximises expected total points for the round subject to every real rule: €40M budget, 3/8/8/4 quotas, valid formation, one captain with points doubled, and the transfer regime with wallet accounting. Output is a suggested XI and bench plus a diff against the current squad.</p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">03 · Engineering notes</p>
+                <h2 class="section-title">Engineering notes</h2>
+                <ul class="notes-list">
+                    <li><strong>Leakage discipline.</strong> Features are computed against the round's deadline as a time boundary, not the round number. A naive by-round implementation was silently pulling future information into 38.7% of training games. A second, subtler look-ahead lived in the squad-selection horizon and was worth about 6 pts/round; caught in a self-audit and fixed by freezing form at each decision deadline.</li>
+                    <li><strong>Honest evaluation over a tempting result.</strong> Concentrating the budget on the starting XI looked like +6 pts/round on a single season. Validating out-of-sample on a second season showed it was overfitting, so the simpler baseline stayed. Not shipping a lucky number is part of the model too.</li>
+                    <li><strong>Dead code paths surfaced by the audit.</strong> Betting-market odds were being computed but never actually consumed by the forecast (+2.55 pts/round once wired in). Adding each player's own past-score history as a feature added another +0.98.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">04 · Outcome</p>
+                <h2 class="section-title">Outcome</h2>
+                <p>Backtested across two full seasons (2024/25 and 2025/26) with a leakage-free pipeline:</p>
+                <ul>
+                    <li>~48 to 51 expected points per round, capturing about 44% of a perfect-hindsight ideal. Stable across both seasons.</li>
+                    <li>+31 pts/round versus a random-selection baseline.</li>
+                    <li>+18 pts/round versus a most-minutes heuristic.</li>
+                    <li>450+ tests, weekly autonomous pipeline on GitHub Actions.</li>
+                </ul>
+                <p>Reported as expected points in backtesting and replay, not live winnings. The system is a decision aid.</p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">05 · Stack</p>
+                <h2 class="section-title">Stack</h2>
+                <p>Python 3.11. Modelling with scikit-learn (gradient-boosted trees), NumPy, SciPy, and a Dixon-Coles football model. PuLP for the integer program. PostgreSQL via Supabase, psycopg v3. Data from API-Football, football-data.co.uk, and the official Liga Record newsletter and spreadsheets. Web app in Next.js 15 (App Router, React server components) and TypeScript on Vercel. GitHub Actions for the weekly cron. ruff and pytest (450+ tests).</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026</span>
+            <span><a href="https://github.com/krav0x">github.com/krav0x</a></span>
+        </div>
+    </footer>
+
+    <script>
+        (function () { var nav = document.getElementById('topNav'); if (!nav) return; function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })();
+        (function () {
+            document.querySelectorAll('[data-browser]').forEach(function (frame) {
+                var tabs = Array.prototype.slice.call(frame.querySelectorAll('.browser-tab'));
+                var img = frame.querySelector('[data-image]'); var caption = frame.querySelector('[data-caption]');
+                var url = frame.querySelector('[data-url]'); var pager = frame.querySelector('[data-pager]');
+                var total = tabs.length;
+                function activate(index) {
+                    if (index < 0) index = total - 1; if (index >= total) index = 0;
+                    var tab = tabs[index]; if (!tab) return;
+                    tabs.forEach(function (t) { t.setAttribute('aria-current', 'false'); });
+                    tab.setAttribute('aria-current', 'true');
+                    if (img && tab.dataset.src) { img.classList.add('is-swapping'); var next = new Image(); next.onload = function () { img.src = tab.dataset.src; if (tab.dataset.alt) img.alt = tab.dataset.alt; img.classList.remove('is-swapping'); }; next.onerror = function () { img.classList.remove('is-swapping'); }; next.src = tab.dataset.src; }
+                    if (caption && tab.dataset.caption) caption.textContent = tab.dataset.caption;
+                    if (url && tab.dataset.url) { var lock = url.querySelector('.lock'); url.textContent = tab.dataset.url; if (lock) url.insertBefore(lock, url.firstChild); }
+                    if (pager) pager.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+                }
+                tabs.forEach(function (tab, i) {
+                    tab.addEventListener('click', function () { activate(i); tab.focus(); });
+                    tab.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowRight') { e.preventDefault(); activate(i + 1); tabs[(i + 1) % total].focus(); }
+                        else if (e.key === 'ArrowLeft') { e.preventDefault(); activate(i - 1); tabs[(i - 1 + total) % total].focus(); }
+                        else if (e.key === 'Home') { e.preventDefault(); activate(0); tabs[0].focus(); }
+                        else if (e.key === 'End') { e.preventDefault(); activate(total - 1); tabs[total - 1].focus(); }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

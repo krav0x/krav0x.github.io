@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AfonsoAuto · Diogo Silva</title>
+    <meta name="description" content="Private, mobile-first stock and sales manager for a Portuguese used-car dealership. Handles both VAT regimes.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="../styles-v2.css">
+</head>
+<body>
+
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="../index.html" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container container--wide">
+            <a href="../index.html" class="back-link">Back to portfolio</a>
+            <p class="project-kind">Shipped for a client</p>
+            <h1 class="project-title">AfonsoAuto</h1>
+            <p class="project-lede">
+                Private, mobile-first stock and sales manager for a Portuguese used-car dealership. One auth-gated dashboard covers each car's full lifecycle: acquisition, reconditioning expenses, sale, and VAT settlement under the correct Portuguese regime (Regime da Margem or Regime Geral). On sale, a plaintext summary of acquisition, expenses, sale, VAT, and net result is emailed to the accountant automatically. European Portuguese UI, built to be used on a phone while walking the lot.
+            </p>
+            <div class="project-meta">
+                <span class="tag">Next.js 16</span>
+                <span class="tag">React 19</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">Tailwind v4</span>
+                <span class="tag">Resend</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-figure">
+        <div class="browser-frame" data-browser>
+            <div class="browser-chrome">
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__url" data-url><span class="lock">◉</span>afonsoauto.pt/painel</span>
+            </div>
+            <div class="browser-tabs" role="tablist" aria-label="AfonsoAuto screens">
+                <button type="button" class="browser-tab" aria-current="true"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Painel dashboard with the 4 KPIs and stock table"
+                        data-caption="// painel, 4 KPIs and the stock table"
+                        data-url="afonsoauto.pt/painel">
+                    <span class="browser-tab__index">01</span>Painel
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Vehicle detail with expense list and live apuramento"
+                        data-caption="// vehicle detail, expenses and live apuramento"
+                        data-url="afonsoauto.pt/viatura">
+                    <span class="browser-tab__index">02</span>Viatura
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Sale registration form with margem tributável and IVA apurado"
+                        data-caption="// venda, margem tributável and IVA apurado live"
+                        data-url="afonsoauto.pt/venda">
+                    <span class="browser-tab__index">03</span>Venda
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Expense entry form with document upload"
+                        data-caption="// despesa, typed entry with document upload"
+                        data-url="afonsoauto.pt/despesa">
+                    <span class="browser-tab__index">04</span>Despesa
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="The automated plaintext summary email sent on sale"
+                        data-caption="// automated sale summary email (Resend)"
+                        data-url="inbox · resumo de venda">
+                    <span class="browser-tab__index">05</span>Sale email
+                </button>
+            </div>
+            <div class="browser-frame__body">
+                <img src="img/saft-placeholder.svg" alt="Painel dashboard" data-image>
+            </div>
+            <div class="browser-caption">
+                <span class="browser-caption__text" data-caption>// painel, 4 KPIs and the stock table</span>
+                <span class="browser-caption__pager" data-pager>01 / 05</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="case-study-body">
+        <div class="container">
+
+            <section class="prose">
+                <p class="section-num">01 · Context</p>
+                <h2 class="section-title">Context</h2>
+                <p>
+                    Small Portuguese used-car dealerships (stands) run on paper folders, WhatsApp photos, and Excel. Every vehicle carries a growing pile of costs (mechanic, painting, IPO inspection, ISV legalisation, tyres, detailing, transport) and each sale has to be booked under one of two very different VAT regimes: Regime da Margem (VAT on the margin only, common for cars bought from private sellers) or Regime Geral (VAT on the full sale price). Choose the wrong regime or misplace an expense receipt and you either pay tax you didn't owe or miss tax you did. The dealer wanted one place to see stock, running cost per car, days in stock, and a live per-vehicle P&amp;L that already applied the correct regime.
+                </p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">02 · Approach</p>
+                <h2 class="section-title">Approach</h2>
+                <p>One private, auth-gated app that owns the full lifecycle of a car from intake to sale:</p>
+                <ul>
+                    <li><strong>Painel.</strong> Four live KPIs (cars in stock, immobilised capital, average margin, monthly sales) and a sortable stock table with per-vehicle expense totals.</li>
+                    <li><strong>Vehicle intake.</strong> Full record: plate, VIN, brand and model and version, mileage, fuel, purchase date and price, supplier type (particular, stand, auction, company), NIF, VAT regime, and the scanned purchase document.</li>
+                    <li><strong>Expenses tracker.</strong> Typed entries (mechanical, bodywork, tyres, IPO, ISV, transport, commission, detailing) with a deductible-VAT flag and a document upload, each attached to a specific vehicle.</li>
+                    <li><strong>Sale registration and apuramento.</strong> Records the sale and instantly computes margem tributável, IVA apurado at 23%, total costs, days in stock, and the net result. Green or red on the bottom line.</li>
+                    <li><strong>Automated sale email.</strong> On sale creation a plaintext summary (acquisition, all expenses, sale, VAT, result) is sent to the office inbox via Resend and the sale is stamped as <code>email_enviado</code>.</li>
+                </ul>
+                <p>The UI is entirely in European Portuguese (Painel, Viaturas, Despesas, Apuramento, Fornecedor, Matrícula) and mobile-first. The dealer opens it on a phone while walking the lot.</p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">03 · Engineering notes</p>
+                <h2 class="section-title">Engineering notes</h2>
+                <ul class="notes-list">
+                    <li><strong>One pure tax function.</strong> <code>calcularApuramento()</code> is a small, tested pure function that implements both Portuguese regimes correctly. It's called identically from the dashboard aggregate, the vehicle detail view, and the sale API route. The regime logic exists in exactly one place.</li>
+                    <li><strong>Server-first rendering.</strong> Dashboard and vehicle detail pages are async React Server Components fetching directly from Supabase, so the initial paint already has data.</li>
+                    <li><strong>Split Supabase clients.</strong> A browser client for the login form, a server client for RSC data fetching, and a middleware client for session refresh, matching the SSR patterns of the newer <code>@supabase/ssr</code> SDK.</li>
+                    <li><strong>Fail-open on email.</strong> A Resend outage never blocks a sale. The sale is committed first, the email is attempted, and only a successful send updates the <code>email_enviado</code> flag.</li>
+                    <li><strong>Typed domain with label maps.</strong> <code>src/types/database.ts</code> mirrors the Postgres schema and centralises the human-readable labels for states, supplier types, and expense categories, so display strings live in one file.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">04 · Outcome</p>
+                <h2 class="section-title">Outcome</h2>
+                <p>In production at the dealership. Concrete usage figures to be added.</p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">05 · Stack</p>
+                <h2 class="section-title">Stack</h2>
+                <p>Next.js 16 (App Router, React Server Components) with React 19. TypeScript. Tailwind CSS v4 through the PostCSS pipeline. Supabase for Postgres, Auth, and Storage (scanned documents), accessed via <code>@supabase/ssr</code> with proper server, client, and middleware client separation. Resend for transactional email. Deployed on Vercel.</p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026</span>
+            <span><a href="https://github.com/krav0x">github.com/krav0x</a></span>
+        </div>
+    </footer>
+
+    <script>
+        (function () { var nav = document.getElementById('topNav'); if (!nav) return; function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })();
+        (function () {
+            document.querySelectorAll('[data-browser]').forEach(function (frame) {
+                var tabs = Array.prototype.slice.call(frame.querySelectorAll('.browser-tab'));
+                var img = frame.querySelector('[data-image]'); var caption = frame.querySelector('[data-caption]');
+                var url = frame.querySelector('[data-url]'); var pager = frame.querySelector('[data-pager]');
+                var total = tabs.length;
+                function activate(index) {
+                    if (index < 0) index = total - 1; if (index >= total) index = 0;
+                    var tab = tabs[index]; if (!tab) return;
+                    tabs.forEach(function (t) { t.setAttribute('aria-current', 'false'); });
+                    tab.setAttribute('aria-current', 'true');
+                    if (img && tab.dataset.src) { img.classList.add('is-swapping'); var next = new Image(); next.onload = function () { img.src = tab.dataset.src; if (tab.dataset.alt) img.alt = tab.dataset.alt; img.classList.remove('is-swapping'); }; next.onerror = function () { img.classList.remove('is-swapping'); }; next.src = tab.dataset.src; }
+                    if (caption && tab.dataset.caption) caption.textContent = tab.dataset.caption;
+                    if (url && tab.dataset.url) { var lock = url.querySelector('.lock'); url.textContent = tab.dataset.url; if (lock) url.insertBefore(lock, url.firstChild); }
+                    if (pager) pager.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+                }
+                tabs.forEach(function (tab, i) {
+                    tab.addEventListener('click', function () { activate(i); tab.focus(); });
+                    tab.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowRight') { e.preventDefault(); activate(i + 1); tabs[(i + 1) % total].focus(); }
+                        else if (e.key === 'ArrowLeft') { e.preventDefault(); activate(i - 1); tabs[(i - 1 + total) % total].focus(); }
+                        else if (e.key === 'Home') { e.preventDefault(); activate(0); tabs[0].focus(); }
+                        else if (e.key === 'End') { e.preventDefault(); activate(total - 1); tabs[total - 1].focus(); }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

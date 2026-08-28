@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SAF-T PT Invoice Analysis · Diogo Silva</title>
+    <meta name="description" content="Bulk parser and reconciliation tool for Portuguese fiscal SAF-T files. In production across 2 retail chains and 6 stores.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="../styles-v2.css">
+</head>
+<body>
+
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="../index.html" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container container--wide">
+            <a href="../index.html" class="back-link">Back to portfolio</a>
+            <p class="project-kind">Shipped, used by my practice</p>
+            <h1 class="project-title">SAF-T PT Invoice Analysis</h1>
+            <p class="project-lede">
+                Bulk parser and reconciliation tool for Portuguese fiscal SAF-T files, in production across 2 retail chains and 6 stores. Streams a ~50 MB monthly file (about 15,000 invoices, 55,000 line items) client-side in a Web Worker and parses it in around 2 seconds. Handles fiscal classification, reconciles against the accountant's Sage balancete, and exports multi-store multi-month xlsx. All money is bigint cents from the moment it leaves the XML.
+            </p>
+            <div class="project-meta">
+                <span class="tag">Next.js 16</span>
+                <span class="tag">React 19</span>
+                <span class="tag">TypeScript</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">ExcelJS</span>
+                <span class="tag">Web Workers</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="hero-figure">
+        <div class="browser-frame" data-browser>
+            <div class="browser-chrome">
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__dot"></span>
+                <span class="browser-chrome__url" data-url><span class="lock">◉</span>saft-tool.local/upload</span>
+            </div>
+            <div class="browser-tabs" role="tablist" aria-label="SAF-T PT Invoice Analysis screens">
+                <button type="button" class="browser-tab" aria-current="true"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Upload and parsing progress"
+                        data-caption="// upload and parsing progress"
+                        data-url="saft-tool.local/upload">
+                    <span class="browser-tab__index">01</span>Upload &amp; parse
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Fiscal classification breakdown"
+                        data-caption="// fiscal classification breakdown"
+                        data-url="saft-tool.local/fiscal">
+                    <span class="browser-tab__index">02</span>Fiscal classification
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Scratch-card commission apuramento"
+                        data-caption="// scratch-card commission apuramento"
+                        data-url="saft-tool.local/apuramento">
+                    <span class="browser-tab__index">03</span>Commission apuramento
+                </button>
+                <button type="button" class="browser-tab"
+                        data-src="img/saft-placeholder.svg"
+                        data-alt="Balancete reconciliation matrix"
+                        data-caption="// balancete reconciliation matrix"
+                        data-url="saft-tool.local/balancete">
+                    <span class="browser-tab__index">04</span>Balancete reconciliation
+                </button>
+            </div>
+            <div class="browser-frame__body">
+                <img src="img/saft-placeholder.svg" alt="Upload and parsing progress" data-image>
+            </div>
+            <div class="browser-caption">
+                <span class="browser-caption__text" data-caption>// upload and parsing progress</span>
+                <span class="browser-caption__pager" data-pager>01 / 04</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="case-study-body">
+        <div class="container">
+
+            <section class="prose">
+                <p class="section-num">01 · Context</p>
+                <h2 class="section-title">Context</h2>
+                <p>
+                    Two client retail chains, six stores between them, each store filing SAF-T (Portugal's standard audit file for tax) with the Autoridade Tributária every month. The submission file runs about 50 MB per store per month, with roughly 15,000 invoices and 55,000 line items inside.
+                </p>
+                <p>
+                    The previous workflow was a per-file Excel model: import the XML, apply per-line VAT logic, split by fiscal category, reconcile the scratch card commission, cross-check against the accountant's Sage balancete. It worked but it was slow, one file at a time, and it added up to a full day of monthly bookkeeping per client.
+                </p>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">02 · Approach</p>
+                <h2 class="section-title">Approach</h2>
+                <p>Rewrote the workflow as a web app so parsing and classification happen entirely in the browser.</p>
+                <ul>
+                    <li>Stream the XML inside a Web Worker, keeping only one document in scope at a time. Progress is reported by bytes read, so a 50 MB file never freezes the UI. Parse time is about 2 seconds per file.</li>
+                    <li>Automatic fiscal classification (Faturação líquida, Comissão de raspadinhas, Tabaco, Sujeito a IVA, split between Produtos and Serviços) applied against product taxonomy rules encoded from the practice, with a reviewable UI to correct edge cases.</li>
+                    <li>Scratch-card commission apuramento by article and by sale type (CF vs Revenda). Unit facial value, quantities, faturado, and the retained margin per store: what the client books as revenue versus what passes through to Santa Casa.</li>
+                    <li>Balancete reconciliation. Upload the accountant's Sage balancete, the tool maps each account (7111112, 711212, 7221112) to (loja × category × VAT rate), cross-references it against the SAF-T aggregate, and produces a Balancete / SAF-T / Diferença matrix with proposed debit and credit journal entries balanced for regularização.</li>
+                    <li>Multi-store, multi-month xlsx export in around 10 seconds per year of data.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">03 · Engineering notes</p>
+                <h2 class="section-title">Engineering notes</h2>
+                <ul class="notes-list">
+                    <li><strong>Streaming XML in a Web Worker.</strong> A 50 MB SAF-T can carry 60k+ documents; loading it into memory hangs the browser. The parser reads chunks, keeps only one document in scope, and reports progress by bytes. The UI stays responsive throughout.</li>
+                    <li><strong>Money in integer cents.</strong> <code>0.1 + 0.2 !== 0.3</code> breaks reconciliation after 25,000 lines. All money is stored and computed as bigint cents; parsing uses a hand-written decimal-to-integer scaler with half-up rounding to match Excel and AT expectations.</li>
+                    <li><strong>Postgres RPCs, not views, for reports.</strong> The initial <code>GROUP BY</code> views hit <code>statement_timeout</code> even for a single (store, month) query because the planner didn't push filters through the aggregation. Rewrote as <code>LANGUAGE SQL STABLE</code> functions with <code>WITH ... AS MATERIALIZED</code> CTEs that force the period-first lookup path, and bumped the per-function <code>statement_timeout</code> for the heavier ones.</li>
+                    <li><strong>Multi-file period support.</strong> AT sometimes splits a month into two files (e.g., 1 to 15 and 16 to 31). Import finds-or-creates the period, dedupes by invoice number, and refuses re-imports of the same file by SHA-256 hash.</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">04 · Outcome</p>
+                <h2 class="section-title">Outcome</h2>
+                <p>
+                    In production across 2 client companies and 6 stores. The Postgres backing store now holds about 700 MB and 2 million line-level rows, indexed for sub-second dashboard queries.
+                </p>
+                <p>
+                    For one accountant working three stores, monthly bookkeeping collapsed from a full day into about 5 minutes:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Manual Excel flow</th>
+                            <th>This tool</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Import and parse one month</td>
+                            <td>30 to 60 min</td>
+                            <td>~2 s parse plus one click</td>
+                        </tr>
+                        <tr>
+                            <td>Classify lines (product, tobacco, services, games)</td>
+                            <td>~1 hour, error-prone</td>
+                            <td>Automatic, reviewable</td>
+                        </tr>
+                        <tr>
+                            <td>Cross-check with balancete</td>
+                            <td>~2 hours monthly, manual</td>
+                            <td>Upload plus instant matrix</td>
+                        </tr>
+                        <tr>
+                            <td>Multi-store, multi-month export</td>
+                            <td>Not feasible</td>
+                            <td>~10 s per year</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>Reconciliation also surfaced errors the manual flow was silently missing:</p>
+                <ul class="notes-list">
+                    <li><strong>Store-level revenue misallocation.</strong> The accounting software couldn't split revenue by store, so the accountant had been posting everything to one store's account. Reconciliation surfaced about €90,000 of Turquel sales sitting on the Ermidas ledger in a single month.</li>
+                    <li><strong>Service classification bug.</strong> A lookup key mismatch was routing all café and bar sales to plain product VAT instead of Prestação de Serviços. Once caught, about €5,000 per store per month shifted to the correct VAT category, correcting the client's monthly VAT declaration.</li>
+                    <li><strong>Bar-variant collisions.</strong> SAF-T uses a "B" suffix for bar variants of a product (e.g., <code>1102010101066815B</code>). The normaliser was stripping the B and silently treating bar sales and mercearia sales as the same article.</li>
+                    <li><strong>Credit-note double-counting.</strong> Scratch cards returned via credit notes were being subtracted twice in reconciliation totals, causing a phantom shortfall.</li>
+                    <li><strong>Partial-account exceptions.</strong> Accounts like <code>7221113</code> (Cafetaria Ermidas 23%) had €1,908 booked but only €14.83 was a legitimate manual adjustment; the rest had to match SAF-T. The tool lets the user mark exceptions with editable amounts.</li>
+                    <li><strong>Services-catalog typos.</strong> Comparing the client's monthly list of service-classified products against what actually got classified surfaced consistent typos and forgotten items (SUMFRES2/3X, BOL15, SANDES6).</li>
+                </ul>
+            </section>
+
+            <section class="prose">
+                <p class="section-num">05 · Stack</p>
+                <h2 class="section-title">Stack</h2>
+                <p>
+                    Next.js 16 (App Router) with React 19 and TypeScript. Streaming SAX parser running inside a Web Worker for the SAF-T XML. ExcelJS for balancete import and multi-store xlsx export. Supabase for Postgres with row-level security, backing about 700 MB and 2 million rows of line-level data. Tailwind CSS. Deployed on Vercel.
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026</span>
+            <span><a href="https://github.com/krav0x">github.com/krav0x</a></span>
+        </div>
+    </footer>
+
+    <script>
+        // Sticky nav border after scroll
+        (function () {
+            var nav = document.getElementById('topNav');
+            if (!nav) return;
+            function onScroll() {
+                if (window.scrollY > 8) nav.classList.add('is-scrolled');
+                else nav.classList.remove('is-scrolled');
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+
+        // Interactive browser: tab click swaps image, URL, and caption.
+        // Arrow keys cycle when focus is inside the tab list.
+        (function () {
+            document.querySelectorAll('[data-browser]').forEach(function (frame) {
+                var tabs = Array.prototype.slice.call(frame.querySelectorAll('.browser-tab'));
+                var img = frame.querySelector('[data-image]');
+                var caption = frame.querySelector('[data-caption]');
+                var url = frame.querySelector('[data-url]');
+                var pager = frame.querySelector('[data-pager]');
+                var total = tabs.length;
+
+                function activate(index) {
+                    if (index < 0) index = total - 1;
+                    if (index >= total) index = 0;
+                    var tab = tabs[index];
+                    if (!tab) return;
+
+                    tabs.forEach(function (t) { t.setAttribute('aria-current', 'false'); });
+                    tab.setAttribute('aria-current', 'true');
+
+                    if (img && tab.dataset.src) {
+                        img.classList.add('is-swapping');
+                        var next = new Image();
+                        next.onload = function () {
+                            img.src = tab.dataset.src;
+                            if (tab.dataset.alt) img.alt = tab.dataset.alt;
+                            img.classList.remove('is-swapping');
+                        };
+                        next.onerror = function () { img.classList.remove('is-swapping'); };
+                        next.src = tab.dataset.src;
+                    }
+                    if (caption && tab.dataset.caption) caption.textContent = tab.dataset.caption;
+                    if (url && tab.dataset.url) {
+                        // Preserve the lock icon span if present.
+                        var lock = url.querySelector('.lock');
+                        url.textContent = tab.dataset.url;
+                        if (lock) url.insertBefore(lock, url.firstChild);
+                    }
+                    if (pager) pager.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+                }
+
+                tabs.forEach(function (tab, i) {
+                    tab.addEventListener('click', function () { activate(i); tab.focus(); });
+                    tab.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowRight') { e.preventDefault(); activate(i + 1); tabs[(i + 1) % total].focus(); }
+                        else if (e.key === 'ArrowLeft') { e.preventDefault(); activate(i - 1); tabs[(i - 1 + total) % total].focus(); }
+                        else if (e.key === 'Home') { e.preventDefault(); activate(0); tabs[0].focus(); }
+                        else if (e.key === 'End') { e.preventDefault(); activate(total - 1); tabs[total - 1].focus(); }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

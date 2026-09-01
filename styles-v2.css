@@ -214,7 +214,7 @@ a:focus-visible {
    the content re-centres in what is left, so the two can never collide. The
    sticky top nav and the footer are inside that padding and shift with it; the
    fixed grid backdrop is not, and still covers the whole viewport. */
-@media (min-width: 1500px) and (hover: hover) and (pointer: fine) {
+@media (min-width: 1280px) and (hover: hover) and (pointer: fine) {
     body {
         padding-left: var(--rail-width);
     }

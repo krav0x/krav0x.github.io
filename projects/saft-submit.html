@@ -67,7 +67,7 @@
     <main class="case-study-body">
         <div class="container">
 
-            <section class="prose">
+            <section class="prose" id="context">
                 <p class="section-num">01 · Context</p>
                 <h2 class="section-title">Context</h2>
                 <p>
@@ -75,7 +75,7 @@
                 </p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="approach">
                 <p class="section-num">02 · Approach</p>
                 <h2 class="section-title">Approach</h2>
                 <p>A Streamlit frontend around FACTEMICLI, the AT's Java CLI for SAF-T submissions. The CLI is a scriptable alternative to the portal, but on its own it means typing a 60-character command with credentials, paths, and period flags every time. The app never replaces the official binary; it makes it usable.</p>
@@ -88,7 +88,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="engineering-notes">
                 <p class="section-num">03 · Engineering notes</p>
                 <h2 class="section-title">Engineering notes</h2>
                 <ul class="notes-list">
@@ -101,7 +101,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="outcome">
                 <p class="section-num">04 · Outcome</p>
                 <h2 class="section-title">Outcome</h2>
                 <p>In monthly production use across the practice. Per-submission time dropped from around 4 minutes on the portal to under 30 seconds in the app. About 3.5 minutes saved per client per month. Across the practice's 40-client book, that is roughly 2h20 back every month, or close to 28 hours a year. Failed submissions carry the AT's error code and message straight into the CSV log, so retries can be triaged without redoing the whole portal flow. "Did we submit for client X in April?" goes from a portal login to a Ctrl+F.</p>
@@ -120,7 +120,7 @@
                 </table>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="stack">
                 <p class="section-num">05 · Stack</p>
                 <h2 class="section-title">Stack</h2>
                 <p>Python 3. Streamlit for the UI. PIL for the logo. FACTEMICLI 2.8.6 (Autoridade Tributária) as the actual submission engine, invoked via <code>subprocess</code>. Local JSON for the client registry, CSV for the audit log, <code>xml.etree</code> for parsing AT responses.</p>
@@ -164,6 +164,7 @@
             document.addEventListener('keydown', function (e) { if (lb.hidden) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1); });
         })();
     </script>
+    <script src="../rail.js"></script>
 
 </body>
 </html>

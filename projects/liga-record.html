@@ -74,7 +74,7 @@
     <main class="case-study-body">
         <div class="container">
 
-            <section class="prose">
+            <section class="prose" id="context">
                 <p class="section-num">01 · Context</p>
                 <h2 class="section-title">Context</h2>
                 <p>
@@ -82,7 +82,7 @@
                 </p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="approach">
                 <p class="section-num">02 · Approach</p>
                 <h2 class="section-title">Approach</h2>
                 <p>Six connected surfaces built on one authorised Postgres schema:</p>
@@ -97,7 +97,7 @@
                 <p>Login is Supabase Auth restricted to email addresses the admin has whitelisted by mapping them to a team row. The whole UI is European Portuguese.</p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="engineering-notes">
                 <p class="section-num">03 · Engineering notes</p>
                 <h2 class="section-title">Engineering notes</h2>
                 <ul class="notes-list">
@@ -110,7 +110,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="outcome">
                 <p class="section-num">04 · Outcome</p>
                 <h2 class="section-title">Outcome</h2>
                 <p>
@@ -118,7 +118,7 @@
                 </p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="stack">
                 <p class="section-num">05 · Stack</p>
                 <h2 class="section-title">Stack</h2>
                 <p>Next.js 16 (App Router, Turbopack) with React 19 and TypeScript. Tailwind CSS v4 with a custom warm-neutral palette overlaid on a full-viewport stadium photo, a hand-rolled <code>.glass</code> utility for the frosted panels, lucide-react for icons, Geist Sans and Mono. Supabase for Postgres, Auth, and row-level security, accessed via <code>@supabase/ssr</code> for the Next.js 16 proxy-based session refresh. JSZip plus a small custom worksheet parser for the Fantasy Record Excel exports. Deployed on Vercel (Hobby), pushes to main auto-deploy.</p>
@@ -248,6 +248,7 @@
             });
         })();
     </script>
+    <script src="../rail.js"></script>
 
 </body>
 </html>

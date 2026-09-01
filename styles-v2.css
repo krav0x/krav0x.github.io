@@ -47,6 +47,8 @@
     /* Layout */
     --content-w: 720px;
     --wide-w: 1120px;
+    /* Width of the docked section rail, reserved out of the page on desktop. */
+    --rail-width: 280px;
     --page-x: clamp(1.25rem, 4vw, 3rem);
 }
 
@@ -196,17 +198,29 @@ a:focus-visible {
     display: none;
     position: fixed;
     top: 50%;
-    /* Hugs the left edge of the content column, with a floor so it never
-       runs off-screen on the narrowest viewport that still shows the rail. */
-    left: max(1rem, calc((100vw - var(--wide-w)) / 2 - 200px));
+    /* Docked to the left edge, in the column the page reserves for it below,
+       so it can never sit over the text. */
+    left: 0;
+    /* Sized by its longest label rather than pinned to --rail-width, so a long
+       section title spills into the reserved column's slack instead of clipping. */
+    padding-left: 2rem;
     transform: translateY(-50%);
     z-index: 40;
 }
-/* Desktop only: the rail needs real gutter beside the 1120px content column,
-   and its proximity effect needs a hovering mouse — a touch screen can never
-   trigger it. Everywhere else the top nav carries navigation. */
-@media (min-width: 1440px) and (hover: hover) and (pointer: fine) {
-    .line-sidebar { display: block; }
+/* Desktop only: the rail needs a column of its own beside the content, and its
+   proximity effect needs a hovering mouse — a touch screen can never trigger
+   it. Everywhere else the top nav carries navigation.
+   Padding the page rather than overlaying it means the rail has real space and
+   the content re-centres in what is left, so the two can never collide. The
+   sticky top nav and the footer are inside that padding and shift with it; the
+   fixed grid backdrop is not, and still covers the whole viewport. */
+@media (min-width: 1500px) and (hover: hover) and (pointer: fine) {
+    body {
+        padding-left: var(--rail-width);
+    }
+    .line-sidebar {
+        display: block;
+    }
 }
 
 .line-sidebar__list {

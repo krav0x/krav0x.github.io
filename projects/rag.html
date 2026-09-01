@@ -76,7 +76,7 @@
     <main class="case-study-body">
         <div class="container">
 
-            <section class="prose">
+            <section class="prose" id="context">
                 <p class="section-num">01 · Context</p>
                 <h2 class="section-title">Context</h2>
                 <p>
@@ -84,7 +84,7 @@
                 </p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="approach">
                 <p class="section-num">02 · Approach</p>
                 <h2 class="section-title">Approach</h2>
                 <p>Single-tier RAG, deliberately kept simple:</p>
@@ -97,7 +97,7 @@
                 <p><strong>Model choice.</strong> The app now serves MiniMax M3 via OpenRouter's free tier. Groq had decommissioned <code>llama-3.3-70b-versatile</code> mid-project, and MiniMax was the strongest currently-free Portuguese-capable model on OpenRouter (1M-token context, clean European Portuguese output). Earlier retrieval-iteration runs used Llama-3.3-70B via Groq and then via the Hugging Face inference router until those credits also ran out; recall numbers don't depend on the LLM so they're comparable across the swap.</p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="corpus">
                 <p class="section-num">03 · Corpus</p>
                 <h2 class="section-title">Corpus</h2>
                 <p>Ingested from 13 PDFs in <code>data/raw/</code>. The baseline snapshot contains <strong>4,448 chunks / ~742k tokens (~2.97 MB of text)</strong>:</p>
@@ -120,7 +120,7 @@
                 <p><strong>Not in the corpus (yet).</strong> AT (Autoridade Tributária) circulars, ofícios-circulados, and OE (Orçamento do Estado) annual updates. This is a real gap: the eval question about 2026 IRS brackets falls into it and correctly triggers a refusal instead of an outdated bracket.</p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="engineering-notes">
                 <p class="section-num">04 · Engineering notes</p>
                 <h2 class="section-title">Engineering notes</h2>
                 <ul class="notes-list">
@@ -132,7 +132,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="evaluation-setup">
                 <p class="section-num">05 · Evaluation setup</p>
                 <h2 class="section-title">Evaluation setup</h2>
                 <p>
@@ -147,7 +147,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="outcome">
                 <p class="section-num">06 · Outcome</p>
                 <h2 class="section-title">Outcome</h2>
                 <p>Retrieval was iterated on because it caps everything downstream. Every row below is a real, reproducible run of <code>evals/eval_retrieval.py</code> against the eval set.</p>
@@ -192,7 +192,7 @@
                 </table>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="failure-modes-and-confounds" data-rail-label="Failure modes">
                 <p class="section-num">07 · Failure modes and confounds</p>
                 <h2 class="section-title">Failure modes and confounds</h2>
                 <p>Six of the 21 non-refuse questions never enter top-10 across any tried config:</p>
@@ -216,7 +216,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="roadmap">
                 <p class="section-num">08 · Roadmap</p>
                 <h2 class="section-title">Roadmap</h2>
                 <p>Portfolio-shippable target is ≥80% recall@5. Two concrete levers, in priority order:</p>
@@ -232,7 +232,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="stack">
                 <p class="section-num">09 · Stack</p>
                 <h2 class="section-title">Stack</h2>
                 <p>Base model (app): MiniMax M3 via OpenRouter free tier, temperature 0.1. Earlier eval runs used Llama-3.3-70B-Instruct via Groq and then via the HF inference router. Embedding: <code>intfloat/multilingual-e5-large</code>, run locally on CPU. RAG store: ChromaDB, persistent on disk, ~47 MB per index. Framework: LangChain (<code>langchain_chroma</code>, <code>langchain_huggingface</code>, <code>langchain_openai</code>, <code>langchain_text_splitters</code>) for the retrieval and prompt-templating glue (OpenRouter is OpenAI-compatible); PyMuPDF (<code>fitz</code>) for PDF extraction. UI: Streamlit. Deployment target: Docker container for a single-container Streamlit deploy on Fly.io or Render.</p>
@@ -277,6 +277,7 @@
             document.addEventListener('keydown', function (e) { if (lb.hidden) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1); });
         })();
     </script>
+    <script src="../rail.js"></script>
 
 </body>
 </html>

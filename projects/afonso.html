@@ -72,7 +72,7 @@
     <main class="case-study-body">
         <div class="container">
 
-            <section class="prose">
+            <section class="prose" id="context">
                 <p class="section-num">01 · Context</p>
                 <h2 class="section-title">Context</h2>
                 <p>
@@ -80,7 +80,7 @@
                 </p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="approach">
                 <p class="section-num">02 · Approach</p>
                 <h2 class="section-title">Approach</h2>
                 <p>One private, auth-gated app that owns the full lifecycle of a car from intake to sale:</p>
@@ -94,7 +94,7 @@
                 <p>The UI is entirely in European Portuguese (Painel, Viaturas, Despesas, Apuramento, Fornecedor, Matrícula) and mobile-first. The dealer opens it on a phone while walking the lot.</p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="engineering-notes">
                 <p class="section-num">03 · Engineering notes</p>
                 <h2 class="section-title">Engineering notes</h2>
                 <ul class="notes-list">
@@ -106,13 +106,13 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="outcome">
                 <p class="section-num">04 · Outcome</p>
                 <h2 class="section-title">Outcome</h2>
                 <p>In production at the dealership. Concrete usage figures to be added.</p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="stack">
                 <p class="section-num">05 · Stack</p>
                 <h2 class="section-title">Stack</h2>
                 <p>Next.js 16 (App Router, React Server Components) with React 19. TypeScript. Tailwind CSS v4 through the PostCSS pipeline. Supabase for Postgres, Auth, and Storage (scanned documents), accessed via <code>@supabase/ssr</code> with proper server, client, and middleware client separation. Resend for transactional email. Deployed on Vercel.</p>
@@ -156,6 +156,7 @@
             document.addEventListener('keydown', function (e) { if (lb.hidden) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1); });
         })();
     </script>
+    <script src="../rail.js"></script>
 
 </body>
 </html>

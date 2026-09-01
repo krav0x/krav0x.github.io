@@ -68,7 +68,7 @@
     <main class="case-study-body">
         <div class="container">
 
-            <section class="prose">
+            <section class="prose" id="context">
                 <p class="section-num">01 · Context</p>
                 <h2 class="section-title">Context</h2>
                 <p>
@@ -79,7 +79,7 @@
                 </p>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="approach">
                 <p class="section-num">02 · Approach</p>
                 <h2 class="section-title">Approach</h2>
                 <p>Rewrote the workflow as a web app so parsing and classification happen entirely in the browser.</p>
@@ -92,7 +92,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="engineering-notes">
                 <p class="section-num">03 · Engineering notes</p>
                 <h2 class="section-title">Engineering notes</h2>
                 <ul class="notes-list">
@@ -103,7 +103,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="outcome">
                 <p class="section-num">04 · Outcome</p>
                 <h2 class="section-title">Outcome</h2>
                 <p>
@@ -154,7 +154,7 @@
                 </ul>
             </section>
 
-            <section class="prose">
+            <section class="prose" id="stack">
                 <p class="section-num">05 · Stack</p>
                 <h2 class="section-title">Stack</h2>
                 <p>
@@ -212,6 +212,7 @@
             document.addEventListener('keydown', function (e) { if (lb.hidden) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1); });
         })();
     </script>
+    <script src="../rail.js"></script>
 
 </body>
 </html>

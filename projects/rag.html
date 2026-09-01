@@ -44,67 +44,34 @@
         </div>
     </header>
 
-    <div class="hero-figure">
-        <div class="browser-frame" data-browser>
-            <div class="browser-chrome">
-                <span class="browser-chrome__dot"></span>
-                <span class="browser-chrome__dot"></span>
-                <span class="browser-chrome__dot"></span>
-                <span class="browser-chrome__url" data-url><span class="lock">◉</span>localhost:8501/consulta</span>
-            </div>
-            <div class="browser-tabs" role="tablist" aria-label="Portuguese Accounting RAG screens">
-                <button type="button" class="browser-tab" aria-current="true"
-                        data-src="img/llm1_1.png"
-                        data-alt="Streamlit answer to a question about IRS tax rates, structured with headings, a full brackets table, and article citations inline"
-                        data-caption="// query and grounded answer with inline article citations"
-                        data-url="localhost:8501/consulta">
-                    <span class="browser-tab__index">01</span>Query &amp; answer
-                </button>
-                <button type="button" class="browser-tab"
-                        data-src="img/llm1_2.png"
-                        data-alt="View Sources / Legal Basis panel expanded: CIRS Artigo 68.º, 65.º, and 22.º returned with 300-character previews per chunk"
-                        data-caption="// sources panel: retrieved chunk ids and 300-char previews"
-                        data-url="localhost:8501/consulta#sources">
-                    <span class="browser-tab__index">02</span>Citations
-                </button>
-                <button type="button" class="browser-tab"
-                        data-src="img/llm2.png"
-                        data-alt="The ChatPromptTemplate source with the three hard-coded rules: answer only from context, refuse otherwise, respond in European Portuguese"
-                        data-caption="// system prompt, three hard-coded rules"
-                        data-url="src/prompts.py">
-                    <span class="browser-tab__index">03</span>System prompt
-                </button>
-                <button type="button" class="browser-tab"
-                        data-src="img/llm3.png"
-                        data-alt="Refusal example: the model refuses to compute an exact IRS/VAT/Social Security amount for a freelance developer, cites which articles are and aren't in context, and recommends consulting a certified accountant"
-                        data-caption="// refusal with the formal PT recommendation phrasing"
-                        data-url="localhost:8501/consulta">
-                    <span class="browser-tab__index">04</span>Refusal example
-                </button>
-                <button type="button" class="browser-tab"
-                        data-src="img/llm4.png"
-                        data-alt="Eval results dashboard: recall@5 61.9%, recall@10 71.4%, refusal accuracy 100%, median latency 4.7s, plus the retrieval iteration table showing v3 chosen"
-                        data-caption="// eval dashboard, v3 chosen at 61.9% recall@5 (+14.3 vs baseline)"
-                        data-url="evals/results.md">
-                    <span class="browser-tab__index">05</span>Eval results
-                </button>
-                <button type="button" class="browser-tab"
-                        data-src="img/llm5.png"
-                        data-alt="Failure mode Q03: the query 'taxa geral do IRC aplicável a sujeitos passivos residentes' expects CIRC Artigo 87.º; the top 5 returns CIRC-2 then four CIRS articles because the query has no lexical anchor into the target"
-                        data-caption="// Q03 failure mode: query has no lexical anchor, model refuses"
-                        data-url="evals/failure-modes.md#q03">
-                    <span class="browser-tab__index">06</span>Failure mode
-                </button>
-            </div>
-            <div class="browser-frame__body">
-                <img src="img/llm1_1.png" alt="Streamlit answer to an IRS tax-rates question, structured with a brackets table and article citations inline" data-image>
-            </div>
-            <div class="browser-caption">
-                <span class="browser-caption__text" data-caption>// query and grounded answer with inline article citations</span>
-                <span class="browser-caption__pager" data-pager>01 / 06</span>
-            </div>
+    <section class="gallery" aria-label="Portuguese Accounting RAG screens">
+        <div class="gallery__row" data-gallery>
+            <button type="button" class="gallery__tile" data-full="img/llm1_1.png">
+                <img src="img/llm1_1.png" alt="Streamlit answer to an IRS tax-rates question, structured with a brackets table and article citations inline" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/llm1_2.png">
+                <img src="img/llm1_2.png" alt="View Sources / Legal Basis panel expanded: CIRS Artigo 68.º, 65.º, and 22.º returned with 300-character previews per chunk" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/llm2.png">
+                <img src="img/llm2.png" alt="The ChatPromptTemplate source with the three hard-coded rules: answer only from context, refuse otherwise, respond in European Portuguese" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/llm3.png">
+                <img src="img/llm3.png" alt="Refusal example on a freelance IRS/VAT/Social Security question: the model refuses, cites which articles are and aren't in context, and recommends consulting a certified accountant" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/llm4.png">
+                <img src="img/llm4.png" alt="Eval results dashboard: recall@5 61.9%, recall@10 71.4%, refusal accuracy 100%, median latency 4.7s, plus the retrieval iteration table showing v3 chosen" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/llm5.png">
+                <img src="img/llm5.png" alt="Failure mode Q03: the query 'taxa geral do IRC aplicável a sujeitos passivos residentes' expects CIRC Artigo 87.º; top 5 returns CIRC-2 then four CIRS articles" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
         </div>
-    </div>
+    </section>
 
     <main class="case-study-body">
         <div class="container">
@@ -285,31 +252,29 @@
     <script>
         (function () { var nav = document.getElementById('topNav'); if (!nav) return; function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); } window.addEventListener('scroll', onScroll, { passive: true }); onScroll(); })();
         (function () {
-            document.querySelectorAll('[data-browser]').forEach(function (frame) {
-                var tabs = Array.prototype.slice.call(frame.querySelectorAll('.browser-tab'));
-                var img = frame.querySelector('[data-image]'); var caption = frame.querySelector('[data-caption]');
-                var url = frame.querySelector('[data-url]'); var pager = frame.querySelector('[data-pager]');
-                var total = tabs.length;
-                function activate(index) {
-                    if (index < 0) index = total - 1; if (index >= total) index = 0;
-                    var tab = tabs[index]; if (!tab) return;
-                    tabs.forEach(function (t) { t.setAttribute('aria-current', 'false'); });
-                    tab.setAttribute('aria-current', 'true');
-                    if (img && tab.dataset.src) { img.classList.add('is-swapping'); var next = new Image(); next.onload = function () { img.src = tab.dataset.src; if (tab.dataset.alt) img.alt = tab.dataset.alt; img.classList.remove('is-swapping'); }; next.onerror = function () { img.classList.remove('is-swapping'); }; next.src = tab.dataset.src; }
-                    if (caption && tab.dataset.caption) caption.textContent = tab.dataset.caption;
-                    if (url && tab.dataset.url) { var lock = url.querySelector('.lock'); url.textContent = tab.dataset.url; if (lock) url.insertBefore(lock, url.firstChild); }
-                    if (pager) pager.textContent = String(index + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
-                }
-                tabs.forEach(function (tab, i) {
-                    tab.addEventListener('click', function () { activate(i); tab.focus(); });
-                    tab.addEventListener('keydown', function (e) {
-                        if (e.key === 'ArrowRight') { e.preventDefault(); activate(i + 1); tabs[(i + 1) % total].focus(); }
-                        else if (e.key === 'ArrowLeft') { e.preventDefault(); activate(i - 1); tabs[(i - 1 + total) % total].focus(); }
-                        else if (e.key === 'Home') { e.preventDefault(); activate(0); tabs[0].focus(); }
-                        else if (e.key === 'End') { e.preventDefault(); activate(total - 1); tabs[total - 1].focus(); }
-                    });
-                });
-            });
+            var gallery = document.querySelector('[data-gallery]');
+            if (!gallery) return;
+            var tiles = Array.prototype.slice.call(gallery.querySelectorAll('.gallery__tile'));
+            var items = tiles.map(function (t) { var img = t.querySelector('img'); return { src: t.dataset.full || img.src, alt: img.alt || '' }; });
+            var total = items.length; var idx = 0;
+            var svgNS = 'http://www.w3.org/2000/svg';
+            function icon(d, size) { var s = document.createElementNS(svgNS, 'svg'); s.setAttribute('viewBox', '0 0 24 24'); s.setAttribute('fill', 'none'); s.setAttribute('stroke', 'currentColor'); s.setAttribute('stroke-width', '2'); s.setAttribute('stroke-linecap', 'round'); s.setAttribute('stroke-linejoin', 'round'); s.setAttribute('width', size); s.setAttribute('height', size); var p = document.createElementNS(svgNS, 'path'); p.setAttribute('d', d); s.appendChild(p); return s; }
+            var lb = document.createElement('div'); lb.className = 'lightbox'; lb.hidden = true;
+            var closeBtn = document.createElement('button'); closeBtn.type = 'button'; closeBtn.className = 'lightbox__btn lightbox__btn--close'; closeBtn.setAttribute('aria-label', 'Close'); closeBtn.appendChild(icon('M6 18L18 6M6 6l12 12', 32)); lb.appendChild(closeBtn);
+            var prevBtn = document.createElement('button'); prevBtn.type = 'button'; prevBtn.className = 'lightbox__btn lightbox__btn--prev'; prevBtn.setAttribute('aria-label', 'Previous'); prevBtn.appendChild(icon('M15 19l-7-7 7-7', 40)); lb.appendChild(prevBtn);
+            var stage = document.createElement('div'); stage.className = 'lightbox__stage'; var img = document.createElement('img'); img.className = 'lightbox__image'; img.alt = ''; stage.appendChild(img); stage.addEventListener('click', function (e) { e.stopPropagation(); }); lb.appendChild(stage);
+            var nextBtn = document.createElement('button'); nextBtn.type = 'button'; nextBtn.className = 'lightbox__btn lightbox__btn--next'; nextBtn.setAttribute('aria-label', 'Next'); nextBtn.appendChild(icon('M9 5l7 7-7 7', 40)); lb.appendChild(nextBtn);
+            var counter = document.createElement('div'); counter.className = 'lightbox__counter'; lb.appendChild(counter);
+            document.body.appendChild(lb);
+            function show(n) { idx = ((n % total) + total) % total; var it = items[idx]; img.style.animation = 'none'; void img.offsetWidth; img.style.animation = ''; img.src = it.src; img.alt = it.alt; counter.textContent = (idx + 1) + ' / ' + total; }
+            function open(n) { show(n); lb.hidden = false; document.body.classList.add('is-lightbox-open'); }
+            function close() { lb.hidden = true; document.body.classList.remove('is-lightbox-open'); }
+            tiles.forEach(function (tile, i) { tile.addEventListener('click', function () { open(i); }); });
+            closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
+            prevBtn.addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+            nextBtn.addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+            lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+            document.addEventListener('keydown', function (e) { if (lb.hidden) return; if (e.key === 'Escape') close(); else if (e.key === 'ArrowLeft') show(idx - 1); else if (e.key === 'ArrowRight') show(idx + 1); });
         })();
     </script>
 

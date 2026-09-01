@@ -333,6 +333,53 @@
             window.addEventListener('scroll', onScroll, { passive: true });
             onScroll();
         })();
+
+        // BorderGlow effect on project cards, ported from React Bits
+        (function () {
+            var cards = document.querySelectorAll('.project-card');
+            if (!cards.length) return;
+
+            cards.forEach(function (card) {
+                // Wrap existing children in a .card-content stacking wrapper so
+                // real content paints above the mesh-gradient and edge-light layers.
+                var inner = document.createElement('div');
+                inner.className = 'card-content';
+                while (card.firstChild) inner.appendChild(card.firstChild);
+                card.appendChild(inner);
+
+                // Outer glow ring, extends beyond the card via negative inset.
+                var edge = document.createElement('span');
+                edge.className = 'edge-light';
+                edge.setAttribute('aria-hidden', 'true');
+                card.appendChild(edge);
+
+                card.addEventListener('pointermove', function (e) {
+                    var rect = card.getBoundingClientRect();
+                    var x = e.clientX - rect.left;
+                    var y = e.clientY - rect.top;
+                    var cx = rect.width / 2;
+                    var cy = rect.height / 2;
+                    var dx = x - cx;
+                    var dy = y - cy;
+
+                    // Edge proximity: 0 at centre, 1 at nearest edge.
+                    var kx = Infinity, ky = Infinity;
+                    if (dx !== 0) kx = cx / Math.abs(dx);
+                    if (dy !== 0) ky = cy / Math.abs(dy);
+                    var edgeProx = Math.min(Math.max(1 / Math.min(kx, ky), 0), 1);
+
+                    // Cursor angle from centre, 0deg = up, clockwise.
+                    var deg = 0;
+                    if (dx !== 0 || dy !== 0) {
+                        deg = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+                        if (deg < 0) deg += 360;
+                    }
+
+                    card.style.setProperty('--edge-proximity', (edgeProx * 100).toFixed(3));
+                    card.style.setProperty('--cursor-angle', deg.toFixed(3) + 'deg');
+                });
+            });
+        })();
     </script>
 
 </body>

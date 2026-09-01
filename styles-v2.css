@@ -174,6 +174,127 @@ a:focus-visible {
     color: var(--accent);
 }
 
+
+/* -----------------------------
+   Section rail (landing)
+   LineSidebar from React Bits, ported to plain CSS/JS. --effect (0..1) is
+   driven per item by a rAF lerp in the page script, so colour, shift and
+   marker scale all read the same continuously-animating value and stay in
+   step, with no CSS transitions to stagger.
+----------------------------- */
+.line-sidebar {
+    --accent-color: var(--accent);
+    --text-color: var(--muted);
+    --marker-color: var(--hairline-strong);
+    --marker-length: 36px;
+    --marker-gap: 14px;
+    --tick-scale: 0.5;
+    --max-shift: 14px;
+    --item-gap: 30px;
+    --font-size: 0.86rem;
+
+    display: none;
+    position: fixed;
+    top: 50%;
+    /* Hugs the left edge of the content column, with a floor so it never
+       runs off-screen on the narrowest viewport that still shows the rail. */
+    left: max(1rem, calc((100vw - var(--wide-w)) / 2 - 200px));
+    transform: translateY(-50%);
+    z-index: 40;
+}
+/* Desktop only: the rail needs real gutter beside the 1120px content column,
+   and its proximity effect needs a hovering mouse — a touch screen can never
+   trigger it. Everywhere else the top nav carries navigation. */
+@media (min-width: 1440px) and (hover: hover) and (pointer: fine) {
+    .line-sidebar { display: block; }
+}
+
+.line-sidebar__list {
+    list-style: none;
+    margin: 0;
+    padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--item-gap);
+}
+
+.line-sidebar__item {
+    position: relative;
+}
+/* Widen the pointer target so items react a touch before the cursor arrives. */
+.line-sidebar__item::before {
+    content: '';
+    position: absolute;
+    inset: -6px -24px;
+}
+
+/* Short static tick centred in the gap between two items. */
+.line-sidebar__item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(100% + var(--item-gap) / 2);
+    left: 0;
+    height: 1px;
+    width: calc(var(--marker-length) * var(--tick-scale));
+    background-color: var(--marker-color);
+    opacity: 0.5;
+    transform-origin: left center;
+    transform: translateY(-50%) scaleX(calc(0.7 + var(--effect, 0) * 0.6));
+}
+
+.line-sidebar__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--marker-gap);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    font-size: var(--font-size);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+.line-sidebar__link:hover {
+    text-decoration: none;
+}
+
+.line-sidebar__marker {
+    flex: none;
+    width: var(--marker-length);
+    height: 1px;
+    background-color: var(--marker-color);
+    background-color: color-mix(in srgb, var(--accent-color) calc(var(--effect, 0) * 100%), var(--marker-color));
+    transform-origin: left center;
+    transform: scaleX(calc(0.7 + var(--effect, 0) * 0.5));
+}
+
+.line-sidebar__label {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    color: var(--text-color);
+    color: color-mix(in srgb, var(--accent-color) calc(var(--effect, 0) * 100%), var(--text-color));
+    transform: translateX(calc(var(--effect, 0) * var(--max-shift)));
+}
+
+.line-sidebar__index {
+    font-size: 0.85em;
+    font-variant-numeric: tabular-nums;
+    opacity: calc(0.55 + var(--effect, 0) * 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .line-sidebar__marker,
+    .line-sidebar__label,
+    .line-sidebar__item::after {
+        transform: none;
+    }
+    .line-sidebar__item:not(:last-child)::after {
+        transform: translateY(-50%);
+    }
+}
+
 /* -----------------------------
    Project hero
 ----------------------------- */
@@ -301,6 +422,74 @@ a:focus-visible {
     border-color: var(--ink);
     color: var(--ink);
     text-decoration: none;
+}
+
+/* Hero CTAs — sweeping shine on hover.
+   Primary carries the terracotta accent, secondary the warm cream ink. */
+.landing-hero .button {
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    box-shadow: 0 0 0 0 transparent;
+    transition: background .2s ease-in, color .2s ease-in,
+                border-color .2s ease-in, box-shadow .2s ease-in;
+}
+.landing-hero .button::before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 86%;
+    position: absolute;
+    top: 7%;
+    left: 0;
+    opacity: 0;
+    background: #FFF3E4;
+    box-shadow: 0 0 50px 30px #FFF3E4;
+    transform: skewX(-20deg);
+    pointer-events: none;
+}
+.landing-hero .button:hover {
+    transition: background .2s ease-out, color .2s ease-out,
+                border-color .2s ease-out, box-shadow .2s ease-out;
+}
+.landing-hero .button:hover::before {
+    animation: button-shine .5s 0s linear;
+}
+.landing-hero .button:active {
+    box-shadow: 0 0 0 0 transparent;
+    transition: box-shadow .2s ease-in;
+}
+
+.landing-hero .button--primary {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+.landing-hero .button--primary:hover {
+    background: var(--accent);
+    color: var(--paper);
+    border-color: var(--accent);
+    box-shadow: 0 0 28px 4px rgba(229, 110, 68, .5);
+}
+
+.landing-hero .button--ghost {
+    color: var(--ink-soft);
+    border-color: var(--hairline-strong);
+}
+.landing-hero .button--ghost:hover {
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
+    box-shadow: 0 0 28px 4px rgba(240, 234, 216, .28);
+}
+
+@keyframes button-shine {
+    from { opacity: 0; left: 0; }
+    50%  { opacity: 1; }
+    to   { opacity: 0; left: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .landing-hero .button:hover::before { animation: none; }
 }
 
 /* -----------------------------
@@ -817,6 +1006,31 @@ body.is-lightbox-open { overflow: hidden; }
     color: var(--accent);
     font-weight: 500;
 }
+
+/* ParticleText — the accent word is rendered as a particle field on canvas.
+   The real text stays in the flow (it sizes the box and keeps the word
+   selectable), turned transparent only once the canvas is live. */
+.particle-word {
+    position: relative;
+    display: inline-block;
+}
+.particle-word.is-particles .particle-word__text {
+    color: transparent;
+}
+.particle-word__canvas {
+    position: absolute;
+    display: block;
+    pointer-events: none;
+    z-index: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+    .particle-word.is-particles .particle-word__text {
+        color: var(--accent);
+    }
+    .particle-word__canvas {
+        display: none;
+    }
+}
 .landing-hero__lede {
     font-family: var(--font-display);
     font-weight: 400;
@@ -912,7 +1126,8 @@ body.is-lightbox-open { overflow: hidden; }
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.25rem;
 }
-.project-card {
+.project-card,
+.mini-card {
     /* BorderGlow-driven properties (idle: no glow) */
     --edge-proximity: 0;
     --cursor-angle: 45deg;
@@ -941,7 +1156,8 @@ body.is-lightbox-open { overflow: hidden; }
     --gradient-six:   radial-gradient(at 82% 18%, #B84A2C 0px, transparent 50%);
     --gradient-seven: radial-gradient(at 51% 4%,  #F5A15D 0px, transparent 50%);
     --gradient-base:  linear-gradient(#E56E44 0 100%);
-
+}
+.project-card {
     display: grid;
     grid-template-rows: 1fr;
     padding: 1.75rem;
@@ -966,7 +1182,8 @@ body.is-lightbox-open { overflow: hidden; }
 }
 
 /* Wrapper injected by JS so real content stacks above the glow layers */
-.project-card > .card-content {
+.project-card > .card-content,
+.mini-card > .card-content {
     display: flex;
     flex-direction: column;
     position: relative;
@@ -976,7 +1193,9 @@ body.is-lightbox-open { overflow: hidden; }
 
 /* Mesh-gradient border, revealed by a cone-gradient mask around the cursor */
 .project-card::before,
-.project-card::after {
+.project-card::after,
+.mini-card::before,
+.mini-card::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -987,11 +1206,15 @@ body.is-lightbox-open { overflow: hidden; }
 }
 .project-card:not(:hover)::before,
 .project-card:not(:hover)::after,
-.project-card:not(:hover) > .edge-light {
+.project-card:not(:hover) > .edge-light,
+.mini-card:not(:hover)::before,
+.mini-card:not(:hover)::after,
+.mini-card:not(:hover) > .edge-light {
     opacity: 0;
     transition: opacity 0.6s ease-in-out;
 }
-.project-card::before {
+.project-card::before,
+.mini-card::before {
     border: 1px solid transparent;
     background:
         linear-gradient(var(--card-bg) 0 100%) padding-box,
@@ -1024,7 +1247,8 @@ body.is-lightbox-open { overflow: hidden; }
 }
 
 /* Mesh-gradient fill inside the card, tinting the interior near edges */
-.project-card::after {
+.project-card::after,
+.mini-card::after {
     border: 1px solid transparent;
     background:
         var(--gradient-one)   padding-box,
@@ -1058,7 +1282,8 @@ body.is-lightbox-open { overflow: hidden; }
 }
 
 /* Outer glow ring, extending beyond the card via negative inset */
-.project-card > .edge-light {
+.project-card > .edge-light,
+.mini-card > .edge-light {
     content: "";
     position: absolute;
     inset: calc(var(--glow-padding) * -1);
@@ -1073,7 +1298,8 @@ body.is-lightbox-open { overflow: hidden; }
     opacity: calc((var(--edge-proximity) - var(--edge-sensitivity)) / (100 - var(--edge-sensitivity)));
     mix-blend-mode: plus-lighter;
 }
-.project-card > .edge-light::before {
+.project-card > .edge-light::before,
+.mini-card > .edge-light::before {
     content: "";
     position: absolute;
     inset: var(--glow-padding);
@@ -1097,7 +1323,10 @@ body.is-lightbox-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
     .project-card::before,
     .project-card::after,
-    .project-card > .edge-light { display: none !important; }
+    .project-card > .edge-light,
+    .mini-card::before,
+    .mini-card::after,
+    .mini-card > .edge-light { display: none !important; }
 }
 .project-card__kind {
     font-family: var(--font-mono);
@@ -1177,10 +1406,18 @@ body.is-lightbox-open { overflow: hidden; }
     display: flex;
     flex-direction: column;
     gap: 0.7rem;
+    position: relative;
+    isolation: isolate;
+    overflow: visible;
+    transform: translate3d(0, 0, 0.01px);
 }
 .mini-card:hover {
     border-color: var(--hairline-strong);
     background: var(--card);
+}
+.mini-card > .card-content {
+    flex: 1 1 auto;
+    gap: 0.7rem;
 }
 .mini-card__title {
     font-family: var(--font-display);
@@ -1304,38 +1541,155 @@ body.is-lightbox-open { overflow: hidden; }
 .contact-list {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 0.75rem;
 }
-.contact-list li {
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    padding: 1rem 1.15rem;
+@media (min-width: 840px) {
+    .contact-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Social cards: circular icon frame, per-brand hover gradient and glow,
+   icon shake — ported from the SocialConnect component. */
+.contact-card {
     background: var(--card);
     border: 1px solid var(--hairline);
     border-radius: var(--radius-md);
     transition: border-color .2s ease, background .2s ease;
 }
-.contact-list li:hover {
+.contact-card:hover {
     border-color: var(--accent);
     background: var(--card-lifted);
 }
-.contact-list li span {
+.contact-card__link {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    border: none;
+}
+
+/* The icon frame */
+.contact-card__icon {
+    display: inline-flex;
+    flex: 0 0 auto;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: transform .3s ease, background .3s ease, box-shadow .3s ease;
+}
+.contact-card__icon svg {
+    width: 21px;
+    height: 21px;
+    color: var(--ink);
+    transition: color .3s ease;
+}
+/* Gmail's envelope is wide and short, so it reads larger at equal width */
+.contact-card--email .contact-card__icon svg {
+    width: 19px;
+    height: 19px;
+}
+/* Soft radial bloom behind the frame, revealed on hover */
+.contact-card__icon::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity .3s ease;
+    z-index: -1;
+}
+.contact-card__link:hover .contact-card__icon {
+    transform: translateY(-6px) scale(1.08);
+}
+.contact-card__link:hover .contact-card__icon::before {
+    opacity: 1;
+}
+.contact-card__link:hover .contact-card__icon svg {
+    animation: icon-shake 0.5s;
+}
+
+@keyframes icon-shake {
+    0%, 100% { transform: translateX(0) rotate(0); }
+    20% { transform: translateX(-4px) rotate(-5deg); }
+    40% { transform: translateX(4px) rotate(5deg); }
+    60% { transform: translateX(-4px) rotate(-5deg); }
+    80% { transform: translateX(4px) rotate(5deg); }
+}
+
+/* Per-social background gradients */
+.contact-card--email .contact-card__link:hover .contact-card__icon {
+    background: linear-gradient(145deg, #FF6B5E 0%, #EA4335 100%);
+    box-shadow: 0 0 20px rgba(234, 67, 53, 0.6);
+}
+.contact-card--linkedin .contact-card__link:hover .contact-card__icon {
+    background: linear-gradient(145deg, #0A91D4 0%, #0077B5 100%);
+    box-shadow: 0 0 20px rgba(0, 119, 181, 0.6);
+}
+.contact-card--github .contact-card__link:hover .contact-card__icon {
+    background: linear-gradient(145deg, #545D68 0%, #24292F 100%);
+    box-shadow: 0 0 20px rgba(140, 148, 158, 0.5);
+}
+.contact-card--hf .contact-card__link:hover .contact-card__icon {
+    background: linear-gradient(145deg, #4A4B57 0%, #23242C 100%);
+    box-shadow: 0 0 20px rgba(255, 210, 30, 0.55);
+}
+
+/* The full-colour mark carries its own fills, so it ignores currentColor;
+   give it slightly more room than the monochrome glyphs. */
+.contact-card__icon .contact-card__icon-colour {
+    width: 30px;
+    height: 30px;
+}
+
+.contact-card__text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+}
+.contact-card__label {
     font-family: var(--font-mono);
     font-size: 0.68rem;
     color: var(--muted);
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    transition: color .2s ease;
 }
-.contact-list li a {
+.contact-card__value {
     font-family: var(--font-mono);
     font-size: 0.9rem;
     color: var(--ink);
-    text-decoration: none;
+    overflow-wrap: break-word;
+    transition: color .2s ease;
 }
-.contact-list li a:hover {
+.contact-card__link:hover .contact-card__value {
     color: var(--accent);
+}
+
+@media (max-width: 520px) {
+    .contact-card__value {
+        font-size: 0.8rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .contact-card__link:hover .contact-card__icon { transform: none; }
+    .contact-card__link:hover .contact-card__icon svg { animation: none; }
 }
 
 /* -----------------------------

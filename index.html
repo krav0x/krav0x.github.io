@@ -26,10 +26,60 @@
         </div>
     </nav>
 
+    <nav class="line-sidebar" id="sectionRail" aria-label="Sections">
+        <ul class="line-sidebar__list">
+            <li class="line-sidebar__item">
+                <a class="line-sidebar__link" href="#about">
+                    <span class="line-sidebar__marker" aria-hidden="true"></span>
+                    <span class="line-sidebar__label">
+                        <span class="line-sidebar__index">01</span>
+                        <span class="line-sidebar__text">About</span>
+                    </span>
+                </a>
+            </li>
+            <li class="line-sidebar__item">
+                <a class="line-sidebar__link" href="#work">
+                    <span class="line-sidebar__marker" aria-hidden="true"></span>
+                    <span class="line-sidebar__label">
+                        <span class="line-sidebar__index">02</span>
+                        <span class="line-sidebar__text">Work</span>
+                    </span>
+                </a>
+            </li>
+            <li class="line-sidebar__item">
+                <a class="line-sidebar__link" href="#experience">
+                    <span class="line-sidebar__marker" aria-hidden="true"></span>
+                    <span class="line-sidebar__label">
+                        <span class="line-sidebar__index">03</span>
+                        <span class="line-sidebar__text">Experience</span>
+                    </span>
+                </a>
+            </li>
+            <li class="line-sidebar__item">
+                <a class="line-sidebar__link" href="#education">
+                    <span class="line-sidebar__marker" aria-hidden="true"></span>
+                    <span class="line-sidebar__label">
+                        <span class="line-sidebar__index">04</span>
+                        <span class="line-sidebar__text">Education</span>
+                    </span>
+                </a>
+            </li>
+            <li class="line-sidebar__item">
+                <a class="line-sidebar__link" href="#contact">
+                    <span class="line-sidebar__marker" aria-hidden="true"></span>
+                    <span class="line-sidebar__label">
+                        <span class="line-sidebar__index">05</span>
+                        <span class="line-sidebar__text">Contact</span>
+                    </span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
     <header class="landing-hero">
         <div class="container container--wide">
             <p class="landing-hero__eyebrow">Available for ML/DS roles from June 2026</p>
-            <h1 class="landing-hero__title">Portuguese <em>accountant,</em><br>ML engineer in training.</h1>
+            <h1 class="landing-hero__title">Portuguese <em class="particle-word">accountant,</em><br>ML engineer in training.</h1>
             <p class="landing-hero__lede">
                 Nine years running the books for Portuguese small and mid-sized businesses, from micro companies to €40M in yearly turnover. Now building domain-specialised ML and data systems for the same corner of the world.
             </p>
@@ -298,21 +348,55 @@
             <h2 class="section-heading">Contact</h2>
             <p class="contact-lede">Available for ML and data engineering roles from June 2026. Open to Portugal-based, remote-EU, and Portuguese-speaking teams.</p>
             <ul class="contact-list">
-                <li>
-                    <span>Email</span>
-                    <a href="mailto:1302diogo@gmail.com">1302diogo@gmail.com</a>
+                <li class="contact-card contact-card--email">
+                    <a class="contact-card__link" href="mailto:1302diogo@gmail.com">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"></path>
+                            </svg>
+                        </span>
+                        <span class="contact-card__text">
+                            <span class="contact-card__label">Email</span>
+                            <span class="contact-card__value">1302diogo@gmail.com</span>
+                        </span>
+                    </a>
                 </li>
-                <li>
-                    <span>LinkedIn</span>
-                    <a href="https://www.linkedin.com/in/diogosilvacc/" target="_blank" rel="noopener">linkedin.com/in/diogosilvacc</a>
+                <li class="contact-card contact-card--linkedin">
+                    <a class="contact-card__link" href="https://www.linkedin.com/in/diogosilvacc/" target="_blank" rel="noopener">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                            </svg>
+                        </span>
+                        <span class="contact-card__text">
+                            <span class="contact-card__label">LinkedIn</span>
+                            <span class="contact-card__value">linkedin.com/in/diogosilvacc</span>
+                        </span>
+                    </a>
                 </li>
-                <li>
-                    <span>GitHub</span>
-                    <a href="https://github.com/krav0x" target="_blank" rel="noopener">github.com/krav0x</a>
+                <li class="contact-card contact-card--github">
+                    <a class="contact-card__link" href="https://github.com/krav0x" target="_blank" rel="noopener">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path>
+                            </svg>
+                        </span>
+                        <span class="contact-card__text">
+                            <span class="contact-card__label">GitHub</span>
+                            <span class="contact-card__value">github.com/krav0x</span>
+                        </span>
+                    </a>
                 </li>
-                <li>
-                    <span>Hugging Face</span>
-                    <a href="https://huggingface.co/krav0x" target="_blank" rel="noopener">huggingface.co/krav0x</a>
+                <li class="contact-card contact-card--hf">
+                    <a class="contact-card__link" href="https://huggingface.co/krav0x" target="_blank" rel="noopener">
+                        <span class="contact-card__icon" aria-hidden="true">
+                            <svg viewBox="0 0 95 88" fill="none" xmlns="http://www.w3.org/2000/svg" class="contact-card__icon-colour"><path fill="#FFD21E" d="M47.21 76.5a34.75 34.75 0 1 0 0-69.5 34.75 34.75 0 0 0 0 69.5Z" /><path fill="#FF9D0B" d="M81.96 41.75a34.75 34.75 0 1 0-69.5 0 34.75 34.75 0 0 0 69.5 0Zm-73.5 0a38.75 38.75 0 1 1 77.5 0 38.75 38.75 0 0 1-77.5 0Z" /><path fill="#3A3B45" d="M58.5 32.3c1.28.44 1.78 3.06 3.07 2.38a5 5 0 1 0-6.76-2.07c.61 1.15 2.55-.72 3.7-.32ZM34.95 32.3c-1.28.44-1.79 3.06-3.07 2.38a5 5 0 1 1 6.76-2.07c-.61 1.15-2.56-.72-3.7-.32Z" /><path fill="#FF323D" d="M46.96 56.29c9.83 0 13-8.76 13-13.26 0-2.34-1.57-1.6-4.09-.36-2.33 1.15-5.46 2.74-8.9 2.74-7.19 0-13-6.88-13-2.38s3.16 13.26 13 13.26Z" /><path fill="#3A3B45" fill-rule="evenodd" d="M39.43 54a8.7 8.7 0 0 1 5.3-4.49c.4-.12.81.57 1.24 1.28.4.68.82 1.37 1.24 1.37.45 0 .9-.68 1.33-1.35.45-.7.89-1.38 1.32-1.25a8.61 8.61 0 0 1 5 4.17c3.73-2.94 5.1-7.74 5.1-10.7 0-2.34-1.57-1.6-4.09-.36l-.14.07c-2.31 1.15-5.39 2.67-8.77 2.67s-6.45-1.52-8.77-2.67c-2.6-1.29-4.23-2.1-4.23.29 0 3.05 1.46 8.06 5.47 10.97Z" clip-rule="evenodd" /><path fill="#FF9D0B" d="M70.71 37a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5ZM24.21 37a3.25 3.25 0 1 0 0-6.5 3.25 3.25 0 0 0 0 6.5ZM17.52 48c-1.62 0-3.06.66-4.07 1.87a5.97 5.97 0 0 0-1.33 3.76 7.1 7.1 0 0 0-1.94-.3c-1.55 0-2.95.59-3.94 1.66a5.8 5.8 0 0 0-.8 7 5.3 5.3 0 0 0-1.79 2.82c-.24.9-.48 2.8.8 4.74a5.22 5.22 0 0 0-.37 5.02c1.02 2.32 3.57 4.14 8.52 6.1 3.07 1.22 5.89 2 5.91 2.01a44.33 44.33 0 0 0 10.93 1.6c5.86 0 10.05-1.8 12.46-5.34 3.88-5.69 3.33-10.9-1.7-15.92-2.77-2.78-4.62-6.87-5-7.77-.78-2.66-2.84-5.62-6.25-5.62a5.7 5.7 0 0 0-4.6 2.46c-1-1.26-1.98-2.25-2.86-2.82A7.4 7.4 0 0 0 17.52 48Zm0 4c.51 0 1.14.22 1.82.65 2.14 1.36 6.25 8.43 7.76 11.18.5.92 1.37 1.31 2.14 1.31 1.55 0 2.75-1.53.15-3.48-3.92-2.93-2.55-7.72-.68-8.01.08-.02.17-.02.24-.02 1.7 0 2.45 2.93 2.45 2.93s2.2 5.52 5.98 9.3c3.77 3.77 3.97 6.8 1.22 10.83-1.88 2.75-5.47 3.58-9.16 3.58-3.81 0-7.73-.9-9.92-1.46-.11-.03-13.45-3.8-11.76-7 .28-.54.75-.76 1.34-.76 2.38 0 6.7 3.54 8.57 3.54.41 0 .7-.17.83-.6.79-2.85-12.06-4.05-10.98-8.17.2-.73.71-1.02 1.44-1.02 3.14 0 10.2 5.53 11.68 5.53.11 0 .2-.03.24-.1.74-1.2.33-2.04-4.9-5.2-5.21-3.16-8.88-5.06-6.8-7.33.24-.26.58-.38 1-.38 3.17 0 10.66 6.82 10.66 6.82s2.02 2.1 3.25 2.1c.28 0 .52-.1.68-.38.86-1.46-8.06-8.22-8.56-11.01-.34-1.9.24-2.85 1.31-2.85Z" /><path fill="#FFD21E" d="M38.6 76.69c2.75-4.04 2.55-7.07-1.22-10.84-3.78-3.77-5.98-9.3-5.98-9.3s-.82-3.2-2.69-2.9c-1.87.3-3.24 5.08.68 8.01 3.91 2.93-.78 4.92-2.29 2.17-1.5-2.75-5.62-9.82-7.76-11.18-2.13-1.35-3.63-.6-3.13 2.2.5 2.79 9.43 9.55 8.56 11-.87 1.47-3.93-1.71-3.93-1.71s-9.57-8.71-11.66-6.44c-2.08 2.27 1.59 4.17 6.8 7.33 5.23 3.16 5.64 4 4.9 5.2-.75 1.2-12.28-8.53-13.36-4.4-1.08 4.11 11.77 5.3 10.98 8.15-.8 2.85-9.06-5.38-10.74-2.18-1.7 3.21 11.65 6.98 11.76 7.01 4.3 1.12 15.25 3.49 19.08-2.12Z" /><path fill="#FF9D0B" d="M77.4 48c1.62 0 3.07.66 4.07 1.87a5.97 5.97 0 0 1 1.33 3.76 7.1 7.1 0 0 1 1.95-.3c1.55 0 2.95.59 3.94 1.66a5.8 5.8 0 0 1 .8 7 5.3 5.3 0 0 1 1.78 2.82c.24.9.48 2.8-.8 4.74a5.22 5.22 0 0 1 .37 5.02c-1.02 2.32-3.57 4.14-8.51 6.1-3.08 1.22-5.9 2-5.92 2.01a44.33 44.33 0 0 1-10.93 1.6c-5.86 0-10.05-1.8-12.46-5.34-3.88-5.69-3.33-10.9 1.7-15.92 2.78-2.78 4.63-6.87 5.01-7.77.78-2.66 2.83-5.62 6.24-5.62a5.7 5.7 0 0 1 4.6 2.46c1-1.26 1.98-2.25 2.87-2.82A7.4 7.4 0 0 1 77.4 48Zm0 4c-.51 0-1.13.22-1.82.65-2.13 1.36-6.25 8.43-7.76 11.18a2.43 2.43 0 0 1-2.14 1.31c-1.54 0-2.75-1.53-.14-3.48 3.91-2.93 2.54-7.72.67-8.01a1.54 1.54 0 0 0-.24-.02c-1.7 0-2.45 2.93-2.45 2.93s-2.2 5.52-5.97 9.3c-3.78 3.77-3.98 6.8-1.22 10.83 1.87 2.75 5.47 3.58 9.15 3.58 3.82 0 7.73-.9 9.93-1.46.1-.03 13.45-3.8 11.76-7-.29-.54-.75-.76-1.34-.76-2.38 0-6.71 3.54-8.57 3.54-.42 0-.71-.17-.83-.6-.8-2.85 12.05-4.05 10.97-8.17-.19-.73-.7-1.02-1.44-1.02-3.14 0-10.2 5.53-11.68 5.53-.1 0-.19-.03-.23-.1-.74-1.2-.34-2.04 4.88-5.2 5.23-3.16 8.9-5.06 6.8-7.33-.23-.26-.57-.38-.98-.38-3.18 0-10.67 6.82-10.67 6.82s-2.02 2.1-3.24 2.1a.74.74 0 0 1-.68-.38c-.87-1.46 8.05-8.22 8.55-11.01.34-1.9-.24-2.85-1.31-2.85Z" /><path fill="#FFD21E" d="M56.33 76.69c-2.75-4.04-2.56-7.07 1.22-10.84 3.77-3.77 5.97-9.3 5.97-9.3s.82-3.2 2.7-2.9c1.86.3 3.23 5.08-.68 8.01-3.92 2.93.78 4.92 2.28 2.17 1.51-2.75 5.63-9.82 7.76-11.18 2.13-1.35 3.64-.6 3.13 2.2-.5 2.79-9.42 9.55-8.55 11 .86 1.47 3.92-1.71 3.92-1.71s9.58-8.71 11.66-6.44c2.08 2.27-1.58 4.17-6.8 7.33-5.23 3.16-5.63 4-4.9 5.2.75 1.2 12.28-8.53 13.36-4.4 1.08 4.11-11.76 5.3-10.97 8.15.8 2.85 9.05-5.38 10.74-2.18 1.69 3.21-11.65 6.98-11.76 7.01-4.31 1.12-15.26 3.49-19.08-2.12Z" /></svg>
+                        </span>
+                        <span class="contact-card__text">
+                            <span class="contact-card__label">Hugging Face</span>
+                            <span class="contact-card__value">huggingface.co/krav0x</span>
+                        </span>
+                    </a>
                 </li>
             </ul>
         </div>
@@ -334,9 +418,9 @@
             onScroll();
         })();
 
-        // BorderGlow effect on project cards, ported from React Bits
+        // BorderGlow effect on project and mini cards, ported from React Bits
         (function () {
-            var cards = document.querySelectorAll('.project-card');
+            var cards = document.querySelectorAll('.project-card, .mini-card');
             if (!cards.length) return;
 
             cards.forEach(function (card) {
@@ -380,6 +464,431 @@
                 });
             });
         })();
+
+        // ParticleText effect on the hero accent word, ported from React Bits.
+        // The real text stays in the flow to size the box and keep the heading
+        // selectable; a canvas overlaid on top — padded on every side so
+        // scattered particles are not clipped — draws the glyphs as particles.
+        (function () {
+            var word = document.querySelector('.particle-word');
+            if (!word) return;
+
+            var PAD = 180;                  // scatter room around the word box
+            var PARTICLE_SIZE = 2;
+            var DENSITY = 3;                // sampling step, lower = more particles
+            var COLOR = '#E56E44';          // --accent
+            var HIGHLIGHT = '#F58255';      // --accent-hover
+            var SCATTER = 100;
+            var GATHER_DURATION = 1500;
+            var STAGGER = 380;
+            var POINTER_REPEL = 34;
+            var REPEL_RADIUS = 90;
+            var IDLE_DRIFT = 0.6;
+            var MAX_PARTICLES = 3200;
+
+            function hexToRgb(hex) {
+                var c = hex.replace('#', '').trim();
+                if (!/^[0-9a-fA-F]{6}$/.test(c)) return null;
+                return {
+                    r: parseInt(c.slice(0, 2), 16),
+                    g: parseInt(c.slice(2, 4), 16),
+                    b: parseInt(c.slice(4, 6), 16)
+                };
+            }
+            function mixRgb(from, to, amount) {
+                return 'rgb(' + Math.round(from.r + (to.r - from.r) * amount) + ', ' +
+                    Math.round(from.g + (to.g - from.g) * amount) + ', ' +
+                    Math.round(from.b + (to.b - from.b) * amount) + ')';
+            }
+            function clamp(v, min, max) { return Math.min(Math.max(v, min), max); }
+            function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+
+            var baseRgb = hexToRgb(COLOR);
+            var highlightRgb = hexToRgb(HIGHLIGHT);
+
+            // Keep the original text in a span so it can be hidden without losing
+            // the layout box, plus a zero-size inline-block probe whose bottom
+            // edge sits exactly on the text baseline.
+            var text = word.textContent;
+            var textEl = document.createElement('span');
+            textEl.className = 'particle-word__text';
+            textEl.textContent = text;
+            var probe = document.createElement('span');
+            probe.setAttribute('aria-hidden', 'true');
+            probe.style.cssText = 'display:inline-block;width:0;height:0;overflow:hidden;';
+            var canvas = document.createElement('canvas');
+            canvas.className = 'particle-word__canvas';
+            canvas.setAttribute('aria-hidden', 'true');
+
+            var ctx = canvas.getContext('2d');
+            if (!ctx) return;
+
+            word.textContent = '';
+            word.appendChild(textEl);
+            word.appendChild(probe);
+            word.appendChild(canvas);
+
+            var reduceQuery = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
+            var reducedMotion = reduceQuery ? reduceQuery.matches : false;
+
+            var particles = [];
+            var frame = null;
+            var resampleFrame = null;
+            var gathering = false;
+            var gatherStart = 0;
+            var visible = true;
+            var width = 0;
+            var height = 0;
+            var pointer = { active: false, x: 0, y: 0, smoothX: 0, smoothY: 0 };
+
+            function ensureLoop() {
+                if (frame === null) frame = window.requestAnimationFrame(render);
+            }
+
+            function startGather(fromScatter) {
+                if (!particles.length || reducedMotion) return;
+                particles.forEach(function (p) {
+                    if (fromScatter) {
+                        var angle = p.seed * Math.PI * 2;
+                        var distance = SCATTER * (0.35 + p.depth * 0.75);
+                        p.x = p.targetX + Math.cos(angle) * distance + (p.depth - 0.5) * SCATTER * 0.55;
+                        p.y = p.targetY + Math.sin(angle) * distance + (p.seed - 0.5) * SCATTER * 0.55;
+                    }
+                    p.startX = p.x;
+                    p.startY = p.y;
+                    p.delay = p.seed * STAGGER;
+                });
+                gatherStart = performance.now();
+                gathering = true;
+                ensureLoop();
+            }
+
+            function render(now) {
+                frame = null;
+                ctx.clearRect(0, 0, width, height);
+                ctx.shadowBlur = PARTICLE_SIZE * 3;
+                ctx.shadowColor = HIGHLIGHT;
+
+                pointer.smoothX += (pointer.x - pointer.smoothX) * 0.18;
+                pointer.smoothY += (pointer.y - pointer.smoothY) * 0.18;
+
+                var complete = true;
+
+                particles.forEach(function (p) {
+                    var baseX = p.targetX;
+                    var baseY = p.targetY;
+                    var progress = 1;
+
+                    if (gathering) {
+                        progress = clamp((now - gatherStart - p.delay) / GATHER_DURATION, 0, 1);
+                        var eased = easeOutCubic(progress);
+                        baseX = p.startX + (p.targetX - p.startX) * eased;
+                        baseY = p.startY + (p.targetY - p.startY) * eased;
+                        if (progress < 1) complete = false;
+                    } else if (IDLE_DRIFT > 0) {
+                        var t = now * 0.001;
+                        baseX += Math.sin(t * 0.9 + p.seed * 10) * IDLE_DRIFT * p.depth;
+                        baseY += Math.cos(t * 0.75 + p.depth * 10) * IDLE_DRIFT * p.depth;
+                    }
+
+                    if (pointer.active) {
+                        var dx = baseX - pointer.smoothX;
+                        var dy = baseY - pointer.smoothY;
+                        var distance = Math.hypot(dx, dy);
+                        if (distance > 0 && distance < REPEL_RADIUS) {
+                            var force = Math.pow(1 - distance / REPEL_RADIUS, 2) * POINTER_REPEL;
+                            baseX += (dx / distance) * force;
+                            baseY += (dy / distance) * force;
+                        }
+                    }
+
+                    p.x += (baseX - p.x) * 0.22;
+                    p.y += (baseY - p.y) * 0.22;
+
+                    ctx.globalAlpha = clamp(0.35 + progress * 0.65, 0, 1);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
+                });
+
+                ctx.globalAlpha = 1;
+                ctx.shadowBlur = 0;
+
+                if (gathering && complete) gathering = false;
+
+                // Keep animating for idle drift and cursor repel, but stop the
+                // loop entirely while the hero is scrolled out of view.
+                if (visible && !reducedMotion) ensureLoop();
+            }
+
+            function sample() {
+                resampleFrame = null;
+                var rect = word.getBoundingClientRect();
+                if (rect.width <= 0 || rect.height <= 0) return;
+
+                var baseline = probe.getBoundingClientRect().bottom - rect.top;
+                width = Math.ceil(rect.width) + PAD * 2;
+                height = Math.ceil(rect.height) + PAD * 2;
+
+                var dpr = Math.min(window.devicePixelRatio || 1, 2);
+                canvas.width = Math.floor(width * dpr);
+                canvas.height = Math.floor(height * dpr);
+                canvas.style.width = width + 'px';
+                canvas.style.height = height + 'px';
+                canvas.style.left = -PAD + 'px';
+                canvas.style.top = -PAD + 'px';
+                ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+                if (reducedMotion) {
+                    particles = [];
+                    ctx.clearRect(0, 0, width, height);
+                    word.classList.remove('is-particles');
+                    return;
+                }
+
+                var computed = window.getComputedStyle(textEl);
+                var fontSize = parseFloat(computed.fontSize) || 64;
+                var font = computed.fontWeight + ' ' + fontSize + 'px ' + computed.fontFamily;
+                var letterSpacing = parseFloat(computed.letterSpacing);
+                if (!isFinite(letterSpacing)) letterSpacing = 0;
+
+                // Sample the glyphs off-screen at CSS-pixel scale, drawn at the
+                // spot the real text occupies, so the targets land exactly on
+                // the word. Glyph by glyph, so letter-spacing matches the DOM
+                // layout regardless of canvas letterSpacing support.
+                var off = document.createElement('canvas');
+                off.width = width;
+                off.height = height;
+                var offCtx = off.getContext('2d', { willReadFrequently: true });
+                if (!offCtx) return;
+                offCtx.font = font;
+                offCtx.textAlign = 'left';
+                offCtx.textBaseline = 'alphabetic';
+                offCtx.fillStyle = '#ffffff';
+
+                var pen = PAD;
+                for (var i = 0; i < text.length; i++) {
+                    var ch = text.charAt(i);
+                    offCtx.fillText(ch, pen, PAD + baseline);
+                    pen += offCtx.measureText(ch).width + letterSpacing;
+                }
+
+                var data = offCtx.getImageData(0, 0, width, height).data;
+                var targets = [];
+                // Sample tighter on small screens, where the coarse step would
+                // leave the word looking thin rather than dotted.
+                var step = fontSize < 56 ? 2 : Math.max(2, Math.floor(DENSITY));
+                for (var y = 0; y < height; y += step) {
+                    for (var x = 0; x < width; x += step) {
+                        var alpha = data[(y * width + x) * 4 + 3];
+                        if (alpha > 40) targets.push({ x: x, y: y, alpha: alpha / 255 });
+                    }
+                }
+
+                var stride = Math.max(1, Math.ceil(targets.length / MAX_PARTICLES));
+                particles = [];
+                for (var t = 0; t < targets.length; t += stride) {
+                    var target = targets[t];
+                    var index = particles.length;
+                    var seed = ((index * 9301 + 49297) % 233280) / 233280;
+                    var depth = 0.45 + (((index * 233 + 97) % 1000) / 1000) * 0.9;
+                    var blend = clamp((target.x - PAD) / Math.max(1, width - PAD * 2) + (seed - 0.5) * 0.35, 0, 1);
+                    var angle = seed * Math.PI * 2;
+                    var distance = SCATTER * (0.35 + depth * 0.75);
+                    var startX = target.x + Math.cos(angle) * distance + (seed - 0.5) * SCATTER * 0.45;
+                    var startY = target.y + Math.sin(angle) * distance + (depth - 0.9) * SCATTER * 0.45;
+
+                    particles.push({
+                        x: startX,
+                        y: startY,
+                        startX: startX,
+                        startY: startY,
+                        targetX: target.x,
+                        targetY: target.y,
+                        size: Math.max(0.6, PARTICLE_SIZE * (0.75 + target.alpha * 0.45)),
+                        color: (baseRgb && highlightRgb) ? mixRgb(baseRgb, highlightRgb, blend) : COLOR,
+                        seed: seed,
+                        depth: depth,
+                        delay: seed * STAGGER
+                    });
+                }
+
+                if (!particles.length) {
+                    word.classList.remove('is-particles');
+                    return;
+                }
+
+                word.classList.add('is-particles');
+                pointer.x = width / 2;
+                pointer.y = height / 2;
+                pointer.smoothX = pointer.x;
+                pointer.smoothY = pointer.y;
+                startGather(false);
+            }
+
+            function queueSample() {
+                if (resampleFrame !== null) window.cancelAnimationFrame(resampleFrame);
+                resampleFrame = window.requestAnimationFrame(sample);
+            }
+
+            // Pointer tracking lives on the hero: the canvas itself ignores
+            // events so the heading stays selectable.
+            var hero = word.closest('.landing-hero') || document.body;
+            hero.addEventListener('pointermove', function (e) {
+                var rect = canvas.getBoundingClientRect();
+                var x = e.clientX - rect.left;
+                var y = e.clientY - rect.top;
+                pointer.active = x >= 0 && y >= 0 && x <= rect.width && y <= rect.height;
+                if (pointer.active) {
+                    pointer.x = x;
+                    pointer.y = y;
+                    ensureLoop();
+                }
+            });
+            hero.addEventListener('pointerleave', function () { pointer.active = false; });
+
+            // Hovering the word replays the scatter-and-reform sequence.
+            word.addEventListener('pointerenter', function () {
+                if (!gathering) startGather(true);
+            });
+
+            if (reduceQuery && reduceQuery.addEventListener) {
+                reduceQuery.addEventListener('change', function (e) {
+                    reducedMotion = e.matches;
+                    queueSample();
+                });
+            }
+
+            if ('ResizeObserver' in window) {
+                new ResizeObserver(queueSample).observe(word);
+            } else {
+                window.addEventListener('resize', queueSample);
+            }
+
+            if ('IntersectionObserver' in window) {
+                new IntersectionObserver(function (entries) {
+                    visible = entries[0].isIntersecting;
+                    if (visible) ensureLoop();
+                }, { rootMargin: '120px' }).observe(word);
+            }
+
+            // Wait for Space Grotesk before sampling, otherwise the particles
+            // would trace the fallback font's glyphs.
+            if (document.fonts && document.fonts.ready) {
+                document.fonts.ready.then(sample);
+            } else {
+                sample();
+            }
+        })();
+
+        // Section rail — LineSidebar from React Bits, ported to plain JS.
+        // A single rAF loop eases every item's --effect toward its target with
+        // frame-rate independent exponential smoothing, so colour, shift and
+        // marker scale move together instead of staggering CSS transitions.
+        // The section the reader is currently in is pinned at full effect.
+        (function () {
+            var rail = document.getElementById('sectionRail');
+            if (!rail) return;
+
+            var list = rail.querySelector('.line-sidebar__list');
+            var items = Array.prototype.slice.call(rail.querySelectorAll('.line-sidebar__item'));
+            if (!items.length) return;
+
+            var NEIGHBOUR_REACH = 10;     // px past an item's own row before its effect dies
+            var SMOOTHING = 100;          // ms time constant of the ease
+
+            var targets = items.map(function () { return 0; });
+            var current = items.map(function () { return 0; });
+            var activeIndex = 0;
+            var raf = null;
+            var last = 0;
+
+            // Smoothstep falloff: gentle at the edges, steep through the middle.
+            function falloff(p) { return p * p * (3 - 2 * p); }
+
+            function frame(now) {
+                var dt = Math.min((now - last) / 1000, 0.05);
+                last = now;
+                var k = 1 - Math.exp(-dt / (SMOOTHING / 1000));
+                var moving = false;
+
+                for (var i = 0; i < items.length; i++) {
+                    var target = Math.max(targets[i], activeIndex === i ? 1 : 0);
+                    var next = current[i] + (target - current[i]) * k;
+                    var settled = Math.abs(target - next) < 0.0015;
+                    current[i] = settled ? target : next;
+                    items[i].style.setProperty('--effect', current[i].toFixed(4));
+                    if (!settled) moving = true;
+                }
+
+                raf = moving ? requestAnimationFrame(frame) : null;
+            }
+
+            function startLoop() {
+                if (raf != null) cancelAnimationFrame(raf);
+                last = performance.now();
+                raf = requestAnimationFrame(frame);
+            }
+
+            list.addEventListener('pointermove', function (e) {
+                var rect = list.getBoundingClientRect();
+                var pointerY = e.clientY - rect.top;
+                for (var i = 0; i < items.length; i++) {
+                    var top = items[i].offsetTop;
+                    var bottom = top + items[i].offsetHeight;
+                    // Distance to the item's own row, so it reads 0 anywhere inside
+                    // that row and falls off within a few px of leaving it. Only the
+                    // item under the cursor takes the effect; its neighbours stay put.
+                    var distance = Math.max(top - pointerY, 0, pointerY - bottom);
+                    targets[i] = falloff(Math.max(0, 1 - distance / NEIGHBOUR_REACH));
+                }
+                startLoop();
+            });
+
+            list.addEventListener('pointerleave', function () {
+                targets = targets.map(function () { return 0; });
+                startLoop();
+            });
+
+            // Keep the active item in sync with the section being read, so the
+            // rail doubles as a position indicator rather than just a menu.
+            function setActive(index) {
+                if (index === activeIndex) return;
+                activeIndex = index;
+                items.forEach(function (item, i) {
+                    if (i === index) item.setAttribute('aria-current', 'true');
+                    else item.removeAttribute('aria-current');
+                });
+                startLoop();
+            }
+
+            var sections = items
+                .map(function (item) {
+                    var href = item.querySelector('a').getAttribute('href');
+                    return document.querySelector(href);
+                })
+                .filter(Boolean);
+
+            if (sections.length && 'IntersectionObserver' in window) {
+                var ratios = sections.map(function () { return 0; });
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        var i = sections.indexOf(entry.target);
+                        if (i !== -1) ratios[i] = entry.isIntersecting ? entry.intersectionRatio : 0;
+                    });
+                    var best = 0;
+                    for (var i = 1; i < ratios.length; i++) {
+                        if (ratios[i] > ratios[best]) best = i;
+                    }
+                    if (ratios[best] > 0) setActive(best);
+                }, { threshold: [0, 0.15, 0.35, 0.6, 0.85, 1] });
+
+                sections.forEach(function (section) { observer.observe(section); });
+            }
+
+            items[0].setAttribute('aria-current', 'true');
+            startLoop();
+        })();
+
     </script>
 
 </body>

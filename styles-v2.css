@@ -325,25 +325,76 @@ a:focus-visible {
     max-width: var(--wide-w);
 }
 
+/* Back button — Uiverse's expanding-icon pill (AKAspidey01), recoloured to the
+   site palette. The icon block sits over the label and grows to fill the pill
+   on hover, sweeping the arrow across it. */
 .back-link {
+    position: relative;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.76rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
+    justify-content: center;
+    width: 12.5rem;
+    height: 2.5rem;
     margin-bottom: 2.75rem;
+    /* Left padding clears the resting icon block (its 4px inset + 32px width)
+       so the label centres in the space beside it rather than in the whole
+       pill, where the block would push it visually off centre. */
+    padding: 4px 4px 4px 36px;
+    border: 1px solid var(--hairline-strong);
+    border-radius: var(--radius-md);
+    background: var(--card);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    overflow: hidden;
 }
 .back-link:hover {
-    color: var(--accent);
+    text-decoration: none;
+    border-color: var(--accent);
 }
-.back-link::before {
-    content: "←";
-    font-size: 0.95rem;
+.back-link__icon {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    bottom: 4px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    border-radius: calc(var(--radius-md) - 4px);
+    background: var(--accent);
+    color: var(--paper);
+    transition: width .5s ease, background-color .3s ease, color .3s ease;
+}
+.back-link__label {
+    /* All caps, no descenders: the line box centres on metrics that reserve
+       descender space, so the glyphs read slightly high. 1px back down puts
+       them on the optical centre. */
     line-height: 1;
+    transform: translateY(1px);
+}
+.back-link__icon svg {
+    width: 15px;
+    height: 15px;
+}
+.back-link:hover .back-link__icon,
+.back-link:focus-visible .back-link__icon {
+    width: calc(100% - 8px);
+    background: color-mix(in oklab, var(--accent-hover) 62%, transparent);
+    backdrop-filter: saturate(150%) blur(7px);
+    -webkit-backdrop-filter: saturate(150%) blur(7px);
+    box-shadow: inset 0 0 0 1px rgba(240, 234, 216, 0.18);
+    /* Dark arrow reads on solid accent, but not through the glass. */
+    color: var(--ink);
+}
+@media (prefers-reduced-motion: reduce) {
+    .back-link__icon {
+        transition: background-color .2s ease;
+    }
 }
 
 .project-kind {
@@ -785,7 +836,15 @@ body.is-lightbox-open { overflow: hidden; }
 .case-study-body {
     padding-bottom: 4rem;
 }
+/* Share the hero's column so every left edge on the page agrees, then hold the
+   prose to its own measure inside it. Centring a narrower container instead
+   would inset the body by (wide - content) / 2 and leave it floating right of
+   the title above. */
+.case-study-body .container {
+    max-width: var(--wide-w);
+}
 .case-study-body section {
+    max-width: var(--content-w);
     padding: clamp(2.5rem, 6vh, 3.75rem) 0;
     border-top: 1px solid var(--hairline);
 }

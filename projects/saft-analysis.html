@@ -27,7 +27,15 @@
 
     <header class="project-hero">
         <div class="container container--wide">
-            <a href="../index.html" class="back-link">Back to portfolio</a>
+            <a href="../index.html" class="back-link">
+                <span class="back-link__icon" aria-hidden="true">
+                    <svg viewBox="0 0 1024 1024" width="18" height="18" fill="currentColor">
+                        <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
+                        <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"></path>
+                    </svg>
+                </span>
+                <span class="back-link__label">Back to portfolio</span>
+            </a>
             <p class="project-kind">Shipped, used by my practice</p>
             <h1 class="project-title">SAF-T PT Invoice Analysis</h1>
             <p class="project-lede">
@@ -46,20 +54,20 @@
 
     <section class="gallery" aria-label="SAF-T PT Invoice Analysis screens">
         <div class="gallery__row" data-gallery>
-            <button type="button" class="gallery__tile" data-full="img/saft-placeholder.svg">
-                <img src="img/saft-placeholder.svg" alt="Upload and parsing progress (placeholder)" loading="lazy">
+            <button type="button" class="gallery__tile" data-full="img/saft1.png">
+                <img src="img/saft1.png" alt="Dashboard with fiscal breakdown by store and period, showing faturação líquida, comissão retida, tabaco and IVA totals for the month" loading="lazy">
                 <div class="gallery__tile__overlay"></div>
             </button>
-            <button type="button" class="gallery__tile" data-full="img/saft-placeholder.svg">
-                <img src="img/saft-placeholder.svg" alt="Fiscal classification breakdown (placeholder)" loading="lazy">
+            <button type="button" class="gallery__tile" data-full="img/saft2.png">
+                <img src="img/saft2.png" alt="SAF-T import screen — pick company and store, drag-and-drop the monthly XML, parsed client-side" loading="lazy">
                 <div class="gallery__tile__overlay"></div>
             </button>
-            <button type="button" class="gallery__tile" data-full="img/saft-placeholder.svg">
-                <img src="img/saft-placeholder.svg" alt="Scratch-card commission apuramento (placeholder)" loading="lazy">
+            <button type="button" class="gallery__tile" data-full="img/saft3.png">
+                <img src="img/saft3.png" alt="Line review screen — articles the automatic classifier did not recognise are queued for the user to assign, and remembered next import" loading="lazy">
                 <div class="gallery__tile__overlay"></div>
             </button>
-            <button type="button" class="gallery__tile" data-full="img/saft-placeholder.svg">
-                <img src="img/saft-placeholder.svg" alt="Balancete reconciliation matrix (placeholder)" loading="lazy">
+            <button type="button" class="gallery__tile" data-full="img/saft4.png">
+                <img src="img/saft4.png" alt="Balancete reconciliation matrix — Sage balancete uploaded and cross-checked against SAF-T aggregates by loja, categoria and IVA rate, with differences to regularize" loading="lazy">
                 <div class="gallery__tile__overlay"></div>
             </button>
         </div>

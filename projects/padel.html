@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Campo de Padel · Diogo Silva</title>
+    <meta name="description" content="Booking platform for the padel court run by the Junta de Freguesia de Ermidas-Sado. Next.js 16 and Supabase, served in Portuguese.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+
+    <link rel="stylesheet" href="../styles-v2.css">
+</head>
+<body>
+
+    <nav class="top-nav" id="topNav">
+        <div class="top-nav__inner">
+            <a href="../index.html" class="top-nav__mark">Diogo Silva</a>
+            <ul class="top-nav__links">
+                <li><a href="../index.html#work">Work</a></li>
+                <li><a href="../index.html#about">About</a></li>
+                <li><a href="../index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="project-hero">
+        <div class="container container--wide">
+            <a href="../index.html" class="back-link">
+                <span class="back-link__icon" aria-hidden="true">
+                    <svg viewBox="0 0 1024 1024" width="18" height="18" fill="currentColor">
+                        <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
+                        <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"></path>
+                    </svg>
+                </span>
+                <span class="back-link__label">Back to portfolio</span>
+            </a>
+            <p class="project-kind">Personal project &middot; shipped for a real client</p>
+            <h1 class="project-title">Campo de Padel</h1>
+            <p class="project-lede">
+                The parish had one padel court and no booking system &mdash; slots were handled by phone and by walking into the office. This platform replaces that with authenticated web bookings against a Postgres <code>bookings</code> table. Users pick from 30 fixed start times (every 30 minutes, 08:00&ndash;22:30), each locked to a 90-minute duration; the server rejects any insert whose interval overlaps an existing row on the same date. A 2-per-day per-user quota is enforced in the server action, and a sentinel <code>user_id</code> marks slots blocked by the admin for maintenance. An Open-Meteo call annotates each slot with temperature, wind, and rain probability so residents can see conditions before confirming. Auth is Supabase, by email/password or Google OAuth; a Supabase Edge Function sends the confirmation email after a successful insert.
+            </p>
+            <div class="project-meta">
+                <span class="tag">Next.js 16.2.7</span>
+                <span class="tag">React 19.2.7</span>
+                <span class="tag">Supabase</span>
+                <span class="tag">@supabase/ssr 0.10.3</span>
+                <span class="tag">TypeScript 5</span>
+                <span class="tag">Tailwind CSS 4</span>
+            </div>
+        </div>
+    </header>
+
+    <section class="gallery" aria-label="Campo de Padel screens">
+        <div class="gallery__row" data-gallery>
+            <button type="button" class="gallery__tile" data-full="img/padel1.png">
+                <img src="img/padel1.png" alt="Login card with the parish crest and Portuguese copy, email and password fields above the Google sign-in option" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/padel2.png">
+                <img src="img/padel2.png" alt="Booking grid: the seven-day date strip over the half-hour slot grid, showing a confirmed reservation alongside a slot held by an admin maintenance block" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/padel3.png">
+                <img src="img/padel3.png" alt="The same booking page at phone width, with the snap-scrolling date strip and a single-column slot list" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/padel4.png">
+                <img src="img/padel4.png" alt="Admin executive panel: occupancy tiles for active games, maintenance blocks, peak hour and peak weekday, above the reservations list" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+            <button type="button" class="gallery__tile" data-full="img/padel5.png">
+                <img src="img/padel5.png" alt="Terms and privacy page setting out the data controller, booking quota rules, and data retention under the RGPD" loading="lazy">
+                <div class="gallery__tile__overlay"></div>
+            </button>
+        </div>
+    </section>
+
+    <main class="case-study-body">
+        <div class="container">
+
+            <section class="prose" id="context">
+                <p class="section-num">01 &middot; Context</p>
+                <h2 class="section-title">Context</h2>
+                <p>
+                    The Junta de Freguesia de Ermidas-Sado, a parish council in Alentejo, Portugal, runs a single padel court open to residents. Before this platform there was no digital booking &mdash; reservations went through phone calls to the parish office and a paper agenda, which meant no visibility outside office hours, no way to enforce fair per-user quotas, and no self-service cancellation.
+                </p>
+                <p>
+                    The people booking are neighbours of a small rural parish, not padel-club regulars, so the whole UI is in Portuguese, uses parish branding, and keeps the per-slot decisions &mdash; rain, wind, time already passed &mdash; visible at a glance.
+                </p>
+            </section>
+
+            <section class="prose" id="approach">
+                <p class="section-num">02 &middot; Approach</p>
+                <h2 class="section-title">Approach</h2>
+                <p>
+                    One Next.js App Router page hosts the whole booking surface: a date strip for the next seven days, a grid of 30 half-hour start times per day, and, for the admin, an executive panel with occupancy stats. The rules the system actually encodes:
+                </p>
+                <ul>
+                    <li><strong>Fixed 90-minute slots.</strong> Every booking is exactly <code>startTime + 90 min</code>; duration is not user-selectable.</li>
+                    <li><strong>Grid of 30 start times per day</strong>, 08:00 to 22:30 in 30-minute steps.</li>
+                    <li><strong>Overlap prevention.</strong> A booking is rejected server-side if any existing row on the same date satisfies <code>start_time &lt; newEnd AND end_time &gt; newStart</code>.</li>
+                    <li><strong>Per-user daily quota.</strong> A regular user is blocked at 2 bookings on the same <code>booking_date</code>.</li>
+                    <li><strong>Past-slot filtering.</strong> For today the grid hides any slot whose start time has already passed, and elapsed bookings are stripped from the upcoming-games list.</li>
+                    <li><strong>Admin maintenance blocks.</strong> The admin can mark a slot as <em>Bloqueio T&eacute;cnico</em>; the insert uses a reserved zero-UUID as <code>user_id</code>, and the slot renders in red until it is released.</li>
+                    <li><strong>Weather annotation.</strong> Each cell fetches the hourly forecast from Open-Meteo (lat 38.0264, lon &minus;8.3619, Europe/Lisbon) and colours the cell when rain probability reaches 40% or wind reaches 20 km/h. The confirm button changes wording &mdash; <em>Reservar com Chuva</em>, <em>Reservar com Vento</em> &mdash; but does not block the booking.</li>
+                    <li><strong>Confirmation email.</strong> After a successful non-maintenance insert, the server action invokes a Supabase Edge Function <code>send-email</code> with the user's email, date, and time.</li>
+                </ul>
+            </section>
+
+            <section class="prose" id="engineering-notes">
+                <p class="section-num">03 &middot; Engineering notes</p>
+                <h2 class="section-title">Engineering notes</h2>
+                <ul>
+                    <li><strong>Schema.</strong> Two tables in Supabase: <code>bookings (id, user_id, booking_date, start_time, end_time)</code> and <code>profiles (id, full_name)</code>. Times are stored as Postgres <code>time</code> values and the date as <code>date</code>. No SQL migrations are checked in &mdash; the schema lives in the linked Supabase project only, so a full rebuild currently needs the dashboard rather than the repo.</li>
+                    <li><strong>The overlap check is not race-safe.</strong> The conflict check is a <code>SELECT</code> followed by an <code>INSERT</code> in two round trips, so two simultaneous bookings for the same slot can both see an empty conflict set and both insert. The right fix is a Postgres exclusion constraint over <code>tstzrange</code>, or a unique constraint on <code>(booking_date, start_time)</code> given the fixed grid. Not in place today.</li>
+                    <li><strong>Admin identity is hardcoded.</strong> <code>isAdmin</code> is a string comparison against a fixed email address, in both the page and the server action. Moving it to a <code>role</code> column on <code>profiles</code> is the obvious next step.</li>
+                    <li><strong>Row-level security.</strong> Cancellation is scoped by <code>.eq('user_id', userId)</code> for non-admins, so a user cannot delete someone else's row through the server action. That guard is defence in depth rather than the primary boundary &mdash; it should also be enforced with Postgres RLS on <code>bookings</code>.</li>
+                    <li><strong>Timezone and DST.</strong> Date keys come from <code>new Date().toISOString().split('T')[0]</code> in the browser, which returns the UTC date rather than the Europe/Lisbon one. Late-evening bookings while Lisbon is on WEST can therefore land on the next day's key. Not currently fixed.</li>
+                    <li><strong>Auth.</strong> Supabase email/password plus a Google OAuth flow routed through <code>/auth/callback</code>, a server route that exchanges the code for a session. SSR session handling uses <code>@supabase/ssr</code> with cookie plumbing in <code>src/lib/supabase/server.ts</code>.</li>
+                    <li><strong>Tests.</strong> None. Correctness is currently only exercised by hand.</li>
+                    <li><strong>Scheduled jobs.</strong> None. The confirmation email is invoked inline; there is no reminder or cleanup job.</li>
+                </ul>
+            </section>
+
+            <section class="prose" id="outcome">
+                <p class="section-num">04 &middot; Outcome</p>
+                <h2 class="section-title">Outcome</h2>
+                <p>
+                    What works end to end today: sign-up and sign-in by email or Google, booking against the 30-slot grid with overlap and quota rejection, self-cancellation, admin maintenance blocks, per-slot weather annotation, and a confirmation email through a Supabase Edge Function.
+                </p>
+                <p>These figures come from the repository, not from a running instance:</p>
+                <table>
+                    <thead>
+                        <tr><th>Measure</th><th>Value</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Courts served</td><td>1</td></tr>
+                        <tr><td>Bookable start times per day</td><td>30</td></tr>
+                        <tr><td>Slot duration</td><td>90 minutes</td></tr>
+                        <tr><td>Booking window</td><td>7 days forward</td></tr>
+                        <tr><td>Per-user cap</td><td>2 bookings per day</td></tr>
+                        <tr><td>Tests</td><td>0</td></tr>
+                        <tr><td>Automated migrations</td><td>0</td></tr>
+                    </tbody>
+                </table>
+                <p>
+                    Production usage &mdash; active users, bookings handled, response times &mdash; is not measured. The application has been handed to the parish but is not yet reporting operational metrics back to the repository.
+                </p>
+            </section>
+
+            <section class="prose" id="stack">
+                <p class="section-num">05 &middot; Stack</p>
+                <h2 class="section-title">Stack</h2>
+                <ul>
+                    <li><strong>Framework.</strong> Next.js 16.2.7 with the App Router, Server Actions and <code>next/font</code> Geist; React 19.2.7; TypeScript 5.</li>
+                    <li><strong>Backend and data.</strong> Supabase &mdash; Postgres (<code>bookings</code>, <code>profiles</code>), Supabase Auth (email/password and Google OAuth), Supabase Edge Functions (<code>send-email</code>), and <code>@supabase/ssr</code> 0.10.3 for cookie-based server sessions.</li>
+                    <li><strong>Styling.</strong> Tailwind CSS 4 with <code>@tailwindcss/postcss</code>; glassmorphism surfaces over a fixed gradient backdrop; light and dark themes with a manual toggle and a pre-hydration inline script to avoid the flash.</li>
+                    <li><strong>External APIs.</strong> Open-Meteo hourly forecast, no key required.</li>
+                    <li><strong>Language and locale.</strong> UI in Portuguese (pt-PT), dates and weekdays formatted through <code>toLocaleDateString('pt-PT', …)</code>.</li>
+                    <li><strong>Deploy.</strong> Intended for Vercel-style Next.js hosting; no CI or infrastructure-as-code checked in.</li>
+                </ul>
+            </section>
+
+            <section class="prose" id="roadmap">
+                <p class="section-num">06 &middot; Roadmap</p>
+                <h2 class="section-title">Roadmap</h2>
+                <ul>
+                    <li>Replace the select-then-insert overlap check with a Postgres exclusion constraint over the <code>[start_time, end_time)</code> interval per <code>booking_date</code>.</li>
+                    <li>Move admin identity from a hardcoded email to a <code>role</code> column, and enforce bookings and cancellations with RLS.</li>
+                    <li>Compute date keys in Europe/Lisbon rather than UTC, so late-evening slots do not roll to the next day.</li>
+                    <li>Check the migration set into the repository under <code>supabase/migrations</code>, so the schema is reproducible outside the linked project.</li>
+                </ul>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="site-footer__inner">
+            <span>Diogo Silva &middot; 2026</span>
+            <span><a href="https://github.com/krav0x">github.com/krav0x</a></span>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var nav = document.getElementById('topNav');
+            if (!nav) return;
+            function onScroll() { if (window.scrollY > 8) nav.classList.add('is-scrolled'); else nav.classList.remove('is-scrolled'); }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+        })();
+        // Expandable gallery + lightbox modal
+        (function () {
+            var gallery = document.querySelector('[data-gallery]');
+            if (!gallery) return;
+
+            var tiles = Array.prototype.slice.call(gallery.querySelectorAll('.gallery__tile'));
+            var items = tiles.map(function (t) {
+                var img = t.querySelector('img');
+                return { src: t.dataset.full || img.src, alt: img.alt || '' };
+            });
+            var total = items.length;
+            var idx = 0;
+
+            var svgNS = 'http://www.w3.org/2000/svg';
+            function icon(paths, size) {
+                var s = document.createElementNS(svgNS, 'svg');
+                s.setAttribute('viewBox', '0 0 24 24');
+                s.setAttribute('fill', 'none');
+                s.setAttribute('stroke', 'currentColor');
+                s.setAttribute('stroke-width', '2');
+                s.setAttribute('stroke-linecap', 'round');
+                s.setAttribute('stroke-linejoin', 'round');
+                s.setAttribute('width', size);
+                s.setAttribute('height', size);
+                var p = document.createElementNS(svgNS, 'path');
+                p.setAttribute('d', paths);
+                s.appendChild(p);
+                return s;
+            }
+
+            var lb = document.createElement('div');
+            lb.className = 'lightbox';
+            lb.hidden = true;
+
+            var closeBtn = document.createElement('button');
+            closeBtn.type = 'button';
+            closeBtn.className = 'lightbox__btn lightbox__btn--close';
+            closeBtn.setAttribute('aria-label', 'Close');
+            closeBtn.appendChild(icon('M6 18L18 6M6 6l12 12', 32));
+            lb.appendChild(closeBtn);
+
+            var prevBtn = document.createElement('button');
+            prevBtn.type = 'button';
+            prevBtn.className = 'lightbox__btn lightbox__btn--prev';
+            prevBtn.setAttribute('aria-label', 'Previous');
+            prevBtn.appendChild(icon('M15 19l-7-7 7-7', 40));
+            lb.appendChild(prevBtn);
+
+            var stage = document.createElement('div');
+            stage.className = 'lightbox__stage';
+            var img = document.createElement('img');
+            img.className = 'lightbox__image';
+            img.alt = '';
+            stage.appendChild(img);
+            stage.addEventListener('click', function (e) { e.stopPropagation(); });
+            lb.appendChild(stage);
+
+            var nextBtn = document.createElement('button');
+            nextBtn.type = 'button';
+            nextBtn.className = 'lightbox__btn lightbox__btn--next';
+            nextBtn.setAttribute('aria-label', 'Next');
+            nextBtn.appendChild(icon('M9 5l7 7-7 7', 40));
+            lb.appendChild(nextBtn);
+
+            var counter = document.createElement('div');
+            counter.className = 'lightbox__counter';
+            lb.appendChild(counter);
+
+            document.body.appendChild(lb);
+
+            function show(n) {
+                idx = ((n % total) + total) % total;
+                var it = items[idx];
+                img.style.animation = 'none';
+                void img.offsetWidth;
+                img.style.animation = '';
+                img.src = it.src;
+                img.alt = it.alt;
+                counter.textContent = (idx + 1) + ' / ' + total;
+            }
+            function open(n) {
+                show(n);
+                lb.hidden = false;
+                document.body.classList.add('is-lightbox-open');
+            }
+            function close() {
+                lb.hidden = true;
+                document.body.classList.remove('is-lightbox-open');
+            }
+
+            tiles.forEach(function (tile, i) {
+                tile.addEventListener('click', function () { open(i); });
+            });
+            closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
+            prevBtn.addEventListener('click', function (e) { e.stopPropagation(); show(idx - 1); });
+            nextBtn.addEventListener('click', function (e) { e.stopPropagation(); show(idx + 1); });
+            lb.addEventListener('click', function (e) { if (e.target === lb) close(); });
+
+            document.addEventListener('keydown', function (e) {
+                if (lb.hidden) return;
+                if (e.key === 'Escape') close();
+                else if (e.key === 'ArrowLeft') show(idx - 1);
+                else if (e.key === 'ArrowRight') show(idx + 1);
+            });
+        })();
+    </script>
+    <script src="../rail.js"></script>
+
+</body>
+</html>
